@@ -32,7 +32,7 @@ struct NewMessageView: View {
                             HStack(spacing: 15) {
                                 CircularProfileImageView(user: user, size: .medium)
 
-                                Text(user.fullname)
+                                Text(user.username)
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
 

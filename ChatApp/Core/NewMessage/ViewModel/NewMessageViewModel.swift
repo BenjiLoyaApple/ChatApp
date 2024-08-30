@@ -16,7 +16,7 @@ class NewMessageViewModel: ObservableObject {
             return users
         } else {
             return users.filter({
-                $0.fullname.lowercased().contains(searchText.lowercased())
+                $0.username.lowercased().contains(searchText.lowercased())
             })
         }
     }

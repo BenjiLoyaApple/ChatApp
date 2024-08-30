@@ -10,17 +10,20 @@ import Foundation
 
 struct User: Identifiable, Codable, Hashable {
     @DocumentID var userId: String?
-    let fullname: String
+    let username: String
+    let fullname: String?
     let email: String
     var profileImageUrl: String?
+    var bio: String?
+    var link: String?
     
     var id: String {
         return userId ?? NSUUID().uuidString
     }
     
     var firstName: String {
-        let components = fullname.components(separatedBy: " ")
-        return components.first ?? fullname
+        let components = username.components(separatedBy: " ")
+        return components.first ?? username
     }
 }
 

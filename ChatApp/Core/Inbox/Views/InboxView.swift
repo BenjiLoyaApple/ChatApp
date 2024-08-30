@@ -94,7 +94,7 @@ struct InboxView: View {
                             HStack {
                                 CircularProfileImageView(user: user, size: .xSmall)
                                     
-                                Text(user.fullname)
+                                Text(user.username)
                                     .font(.system(size: 18, weight: .semibold, design: .default))
                             }
                             .onTapGesture { showProfile.toggle() }

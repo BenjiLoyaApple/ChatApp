@@ -22,7 +22,7 @@ class InboxViewModel: ObservableObject {
         } else {
             return recentMessages.filter { message in
                 guard let user = message.user else { return false }
-                return user.fullname.lowercased().contains(searchText.lowercased())
+                return user.username.lowercased().contains(searchText.lowercased())
             }
         }
     }
