@@ -40,7 +40,7 @@ struct ProfileView: View {
                     }
                 }
                 
-                Text(user.fullname)
+                Text(user.username)
                     .font(.title2)
                     .fontWeight(.semibold)
             }

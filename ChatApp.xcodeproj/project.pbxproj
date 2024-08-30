@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E40ECC6E2A8E7CE8001A7C0E /* PageIntro.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40ECC6D2A8E7CE8001A7C0E /* PageIntro.swift */; };
 		E4474F432C7DE4A1003997F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4474F422C7DE4A1003997F2 /* GoogleService-Info.plist */; };
 		E46724BA2A8D328800CD865B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E46724B92A8D328800CD865B /* Kingfisher */; };
 		E46724BD2A8D333600CD865B /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724BC2A8D333600CD865B /* AuthError.swift */; };
@@ -68,7 +67,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E40ECC6D2A8E7CE8001A7C0E /* PageIntro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIntro.swift; sourceTree = "<group>"; };
 		E4474F422C7DE4A1003997F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E46724BC2A8D333600CD865B /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		E46724BE2A8D344B00CD865B /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				E46724BC2A8D333600CD865B /* AuthError.swift */,
-				E40ECC6D2A8E7CE8001A7C0E /* PageIntro.swift */,
 				E474D8312C825AB000FAA4DA /* Page.swift */,
 			);
 			path = Model;
@@ -651,7 +648,6 @@
 				E46724BD2A8D333600CD865B /* AuthError.swift in Sources */,
 				E4FDFAC02A82A2C10058898E /* ChatAppApp.swift in Sources */,
 				E46724D02A8D372000CD865B /* ProfileImageSize.swift in Sources */,
-				E40ECC6E2A8E7CE8001A7C0E /* PageIntro.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

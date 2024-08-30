@@ -26,7 +26,7 @@ struct InboxRowView: View {
             
                 VStack(alignment: .leading, spacing: 6) {
                     if let user = message.user {
-                        Text(user.fullname)
+                        Text(user.username)
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .foregroundColor(Color.theme.primaryText)

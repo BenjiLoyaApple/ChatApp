@@ -18,7 +18,7 @@ extension PreviewProvider {
 class DeveloperPreview {
     static let instance = DeveloperPreview()
     
-    let user = User(fullname: "Bruce Wayne", email: "batman@gmail.com", profileImageUrl: nil)
+    let user = User(username: "benjiloya", fullname: "Benji Loya", email: "batman@gmail.com", profileImageUrl: nil)
     
     let messages: [Message] = [
         .init(

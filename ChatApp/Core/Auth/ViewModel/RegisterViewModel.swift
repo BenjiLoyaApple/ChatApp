@@ -11,6 +11,7 @@ import FirebaseAuth
 class RegistrationViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
+    @Published var username = ""
     @Published var fullname = ""
     @Published var showAlert = false
     @Published var authError: AuthError?
@@ -18,7 +19,7 @@ class RegistrationViewModel: ObservableObject {
     @MainActor
     func createUser() async throws {
         do {
-            try await AuthService.shared.createUser(withEmail: email, password: password, fullname: fullname)
+            try await AuthService.shared.createUser(withEmail: email, password: password, username: username)
         } catch {
             let authError = AuthErrorCode.Code(rawValue: (error as NSError).code)
             self.showAlert = true
