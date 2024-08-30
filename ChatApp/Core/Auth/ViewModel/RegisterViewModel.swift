@@ -19,7 +19,7 @@ class RegistrationViewModel: ObservableObject {
     @MainActor
     func createUser() async throws {
         do {
-            try await AuthService.shared.createUser(withEmail: email, password: password, username: username)
+            try await AuthService.shared.createUser(withEmail: email, password: password, username: username, fullname: fullname)
         } catch {
             let authError = AuthErrorCode.Code(rawValue: (error as NSError).code)
             self.showAlert = true
