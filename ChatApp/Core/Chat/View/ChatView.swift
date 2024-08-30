@@ -46,7 +46,7 @@ struct ChatView: View {
                     }
                     .padding(.vertical)
                 }
-                .onChange(of: viewModel.messages) { newValue in
+                .onChange(of: viewModel.messages) {_, newValue in
                     guard  let lastMessage = newValue.last else { return }
             
                     withAnimation(.spring()) {
