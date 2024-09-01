@@ -82,23 +82,24 @@ struct InboxView: View {
             .coordinateSpace(name: "SCROLL")
             .overlay(alignment: .top) {
                 // Header
-                InboxHeader(user: selectedUser, headerHeight: $headerHeight, headerOffset: $headerOffset,
-                            profileimageTapped: {
-                    router.showScreen(.push) { _ in
-                        if let user = viewModel.user {
-                            ProfileView(user: user)
+                InboxHeader(
+                    headerHeight: $headerHeight, headerOffset: $headerOffset, profileImage: CircularProfileImageView(user: viewModel.user, size: .small), username: viewModel.user?.username ?? "",
+                    profileimageTapped: {
+                        router.showScreen(.push) { _ in
+                            if let user = viewModel.user {
+                                ProfileView(user: user)
+                            }
                         }
+                    },
+                    searchTapped: {
+                        
+                    },
+                    newChatTapped: {
+                        router.showScreen(.fullScreenCover) { _ in
+                            NewMessageView(selectedUser: $selectedUser)
+                        }
+                        selectedUser = nil
                     }
-                },
-                            searchTapped: {
-                    
-                },
-                            newChatTapped: {
-                    router.showScreen(.fullScreenCover) { _ in
-                        NewMessageView(selectedUser: $selectedUser)
-                    }
-                    selectedUser = nil
-                }
                 )
                     .task {
                   //      vm.loadUserData()

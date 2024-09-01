@@ -11,7 +11,7 @@ import SwiftfulUI
 struct MessageCell<ProfileImageView: View>: View {
     
   //  @ObservedObject var viewModel: InboxViewModel
-    let message: Message
+    var message: Message = DeveloperPreview.instance.messages[0]
     
     let profileImage: ProfileImageView
     let username: String
@@ -80,9 +80,8 @@ struct MessageCell<ProfileImageView: View>: View {
 
 
 //#Preview {
-//    // Используем подставные данные для превью
+////    // Используем подставные данные для превью
 //    MessageCell(
-//        message: DeveloperPreview.instance.messages[0],
 //        profileImage: Image(systemName: "person.crop.circle").resizable().frame(width: 40, height: 40),
 //        username: "benjiloya",
 //        timestamp: "10 min",

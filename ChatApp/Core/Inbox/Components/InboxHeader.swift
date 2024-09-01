@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftfulUI
 
 // MARK: Swipe Direction
 enum SwipeDirection {
@@ -14,11 +15,13 @@ enum SwipeDirection {
     case none
 }
 
-struct InboxHeader: View {
-    var user: User?
+struct InboxHeader<ProfileImageView: View>: View {
+  //  var user: User?
     @Binding var headerHeight: CGFloat
     @Binding var headerOffset: CGFloat
 
+    let profileImage: ProfileImageView
+    let username: String
     var profileimageTapped: (() -> Void)? = nil
     var searchTapped: (() -> Void)? = nil
     var newChatTapped: (() -> Void)? = nil
@@ -26,14 +29,14 @@ struct InboxHeader: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .center, spacing: 10) {
-                Button(action: {
-                    profileimageTapped?()
-                }) {
-                    CircularProfileImageView(user: user, size: .small)
-                }
+                profileImage
+                    .asButton(.press) {
+                        profileimageTapped?()
+                    }
+                
                 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(user?.username ?? "benjiloya")
+                    Text(username)
                         .font(.system(size: 23, weight: .semibold, design: .default))
                 }
                 
