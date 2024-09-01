@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Firebase
-import Kingfisher
+import SDWebImageSwiftUI
 
 struct ChatMessageCell: View {
     let message: Message
@@ -89,7 +89,7 @@ struct MessageImageView: View {
     let imageUrlString: String
     
     var body: some View {
-        KFImage(URL(string: imageUrlString))
+        WebImage(url: URL(string: imageUrlString))
             .resizable()
             .scaledToFill()
             .clipped()

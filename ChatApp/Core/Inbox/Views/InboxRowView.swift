@@ -6,23 +6,17 @@
 //
 
 import SwiftUI
+import SwiftfulRouting
 
 struct InboxRowView: View {
-    let message: Message
+    @Environment(\.router) var router
     @ObservedObject var viewModel: InboxViewModel
     
+    let message: Message
+    
     var body: some View {
-        HStack(alignment: .top, spacing: 15) {
-            
-            HStack {
-//                if !message.read && !message.isFromCurrentUser {
-//                    Circle()
-//                        .fill(Color(.systemBlue))
-//                        .frame(width: 6, height: 6, alignment: .leading)
-//                }
-                
-                CircularProfileImageView(user: message.user, size: .medium)
-            }
+        HStack(alignment: .top, spacing: 10) {
+                CircularProfileImageView(user: message.user, size: .small)
             
                 VStack(alignment: .leading, spacing: 6) {
                     if let user = message.user {
@@ -41,7 +35,7 @@ struct InboxRowView: View {
                 }
             VStack(spacing: 20) {
                 HStack {
-                    Text(message.timestamp.dateValue().timeAgoString())
+                    Text(message.timestamp.timestampString())
                         .font(.system(size: 11, weight: .light, design: .default))
                 }
                 .font(.footnote)
@@ -57,21 +51,22 @@ struct InboxRowView: View {
 
         }
         .frame(maxHeight: 72)
-        .swipeActions(content: {
-            withAnimation(.spring()) {
-                Button {
-                    Task { try await viewModel.deleteMessage(message) }
-                } label: {
-                    Image(systemName: "trash")
-                }
-                .tint(Color(.systemRed))
-            }
-        })
+//        .swipeActions(content: {
+//            withAnimation(.spring()) {
+//                Button {
+//                    Task { try await viewModel.deleteMessage(message) }
+//                } label: {
+//                    Image(systemName: "trash")
+//                }
+//                .tint(Color(.systemRed))
+//            }
+//        })
     }
 }
 
-struct InboxRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        InboxRowView(message: dev.messages[0], viewModel: InboxViewModel())
-    }
-}
+
+//#Preview {
+//    RouterView { _ in
+//        InboxRowView(viewModel: InboxViewModel(), message: dev.messages[0])
+//    }
+//}

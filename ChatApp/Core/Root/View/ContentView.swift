@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import SwiftfulRouting
 
 struct ContentView: View {
+    @Environment(\.router) var router
+    
+ //   @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
+    
     @StateObject var viewModel = ContentViewModel()
     
     var body: some View {
@@ -21,8 +26,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
+#Preview {
+    RouterView { _ in
         ContentView()
     }
 }

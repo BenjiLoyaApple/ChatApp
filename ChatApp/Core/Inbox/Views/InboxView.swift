@@ -6,126 +6,151 @@
 //
 
 import SwiftUI
+import SwiftfulRouting
 
 struct InboxView: View {
-    @State private var showNewMessageView = false
+    @Environment(\.router) var router
+    
     @StateObject var viewModel = InboxViewModel()
     @State private var selectedUser: User?
+    
+  //  @State private var showNewMessageView = false
     @State private var showChat = false
     @State private var showProfile = false
     
+    // MARK: View Properties
+    @State private var headerHeight: CGFloat = 0
+    @State private var headerOffset: CGFloat = 0
+    @State private var lastHeaderOffset: CGFloat = 0
+    @State private var direction: SwipeDirection = .none
+    /// MARK: Shift Offset Means The Value From Where It Shifted From Up/Down
+    @State private var shiftOffset: CGFloat = 0
+    
     var body: some View {
-        NavigationStack {
-                List {
+            ScrollView(.vertical, showsIndicators: false) {
+                
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundStyle(.clear)
+                    .frame(width: 200, height: 1)
+                    .padding(.top, headerHeight)
+                    .offsetY { previous, current in
+                        // MARK: Moving Header Based On Direction Scroll
+                        if previous > current {
+                            // MARK: Up
+                            // print("Up")
+                            if direction != .up && current < 0 {
+                                shiftOffset = current - headerOffset
+                                direction = .up
+                                lastHeaderOffset = headerOffset
+                            }
+                            
+                            let offset = current < 0 ? (current - shiftOffset) : 0
+                            // MARK: Checking If It Does Not Go Over Header Height
+                            headerOffset = (-offset < headerHeight ? (offset < 0 ? offset : 0) : -headerHeight)
+                        } else {
+                            // MARK: Down
+                            // print("Down")
+                            if direction != .down {
+                                shiftOffset = current
+                                direction = .down
+                                lastHeaderOffset = headerOffset
+                            }
+                            
+                            let offset = lastHeaderOffset + (current - shiftOffset)
+                            headerOffset = (offset > 0 ? 0 : offset)
+                        }
+                    }
+                    
+                
+                
                     ActiveNowView()
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets())
                         .padding(.bottom)
-                        .padding(.leading, 8)
-                        .padding(.top, 5)
+                        .padding(.horizontal)
                     
                     HStack {
                         Text("Recent Chat")
-                            .font(.system(size: 18, weight: .semibold, design: .default))
+                            .font(.title3.bold())
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
                     
-                    ForEach(viewModel.filteredMessages) { recentMessage in
-                        ZStack {
-                            NavigationLink(value: recentMessage) {
-                                EmptyView()
-                            }.opacity(0.0)
-                            
-                            InboxRowView(message: recentMessage, viewModel: viewModel)
-                                .onAppear {
-                                    if recentMessage == viewModel.recentMessages.last {
-                                        print("DEBUG: Paginate here..")
-                                    }
-                                }
-                        }
-                    }
-                    .listRowInsets(EdgeInsets())
-                    .padding(.vertical)
-                    .padding(.horizontal, 10)
-                }
-                .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Search")
-                .listStyle(PlainListStyle())
-                .onChange(of: selectedUser, perform: { newValue in
-                    showChat = newValue != nil
-                })
-                .fullScreenCover(isPresented: $showNewMessageView, content: {
-                    NewMessageView(selectedUser: $selectedUser)
-                })
-                .navigationDestination(for: Message.self, destination: { message in
-                    if let user = message.user {
-                        ChatView(user: user)
-                    }
-                })
-                .navigationDestination(isPresented: $showChat, destination: {
-                    if let user = selectedUser {
-                        ChatView(user: user)
-                    }
-                })
-                .navigationDestination(isPresented: $showProfile, destination: {
-                    if let user = viewModel.user {
-                        ProfileView(user: user)
-                    }
-                })
-                .navigationDestination(for: Route.self, destination: { route in
-                    switch route {
-                    case .profile(let user):
-                        ProfileView(user: user)
-                    case .chatView(let user):
-                        ChatView(user: user)
-                    }
-                })
-                .overlay { if !viewModel.didCompleteInitialLoad { ProgressView() } }
-                .navigationTitle("Chats")
-                // .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-//                    ToolbarItem(placement: .navigationBarLeading) {
-//                            if let user = viewModel.user {
-//                                CircularProfileImageView(user: user, size: .xSmall)
-//                                    .onTapGesture { showProfile.toggle() }
-//                            }
-//                    }
-                    
-                    ToolbarItem(placement: .navigationBarLeading) {
+                ChatsView()
+                
+                   
+            }
+            .background(Color.theme.darkBlack)
+            .coordinateSpace(name: "SCROLL")
+            .overlay(alignment: .top) {
+                // Header
+                InboxHeader(user: selectedUser, headerHeight: $headerHeight, headerOffset: $headerOffset,
+                            profileimageTapped: {
+                    router.showScreen(.push) { _ in
                         if let user = viewModel.user {
-                            HStack {
-                                CircularProfileImageView(user: user, size: .xSmall)
-                                    
-                                Text(user.username)
-                                    .font(.system(size: 18, weight: .semibold, design: .default))
-                            }
-                            .onTapGesture { showProfile.toggle() }
+                            ProfileView(user: user)
                         }
                     }
-
+                },
+                            searchTapped: {
                     
-                    ToolbarItem(placement: .navigationBarTrailing) {
-//                        Image(systemName: "square.and.pencil.circle.fill")
-//                            .resizable()
-//                            .frame(width: 28, height: 28)
-                        Image("edit")
-                        .renderingMode(.template)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 28, height: 28)
-                        .foregroundColor(.gray)
-                            .foregroundStyle(Color.theme.primaryText, Color(.systemGray5))
-                            .onTapGesture {
-                                showNewMessageView.toggle()
-                                selectedUser = nil
+                },
+                            newChatTapped: {
+                    router.showScreen(.fullScreenCover) { _ in
+                        NewMessageView(selectedUser: $selectedUser)
+                    }
+                    selectedUser = nil
+                }
+                )
+                    .task {
+                  //      vm.loadUserData()
+                    }
+            }
+            .refreshable {
+            //    Task { try await viewModel.fetchThreads() }
+            }
+            // MARK: Due To Safe Area
+            .ignoresSafeArea(.all, edges: .top)
+    }
+    
+    @ViewBuilder
+    func ChatsView() -> some View {
+            LazyVStack {
+                if !viewModel.didCompleteInitialLoad {
+                    ForEach(0..<10) { _ in
+                        PlaceholderFeedView()
+                            .redacted(reason: .placeholder)
+                            .shimmer(.init(tint: Color.theme.buttonsPostCard.opacity(0.6), highlight: .gray, blur: 5))
+                    }
+                } else {
+                    ForEach(viewModel.filteredMessages) { recentMessage in
+                        if let user = recentMessage.user {
+                            MessageCell(
+                                //     viewModel: viewModel,
+                                message: recentMessage,
+                                profileImage: CircularProfileImageView(user: user, size: .small),
+                                username: user.username,
+                                timestamp: recentMessage.timestamp.timestampString(),
+                                textMessage: recentMessage.text,
+                                actionButtonTapped: {
+                                    Task { try await viewModel.deleteMessage(recentMessage) }
+                                }
+                            )
+                            .padding(.horizontal, 10)
+                            .padding(.top, 10)
+                            .onAppear {
+                                if recentMessage == viewModel.recentMessages.last {
+                                    print("DEBUG: Paginate here..")
+                                }
                             }
+                        }
                     }
                 }
-            
-        }
+            }
+            .padding(.bottom, 20)
     }
 }
 
-struct InboxView_Previews: PreviewProvider {
-    static var previews: some View {
+#Preview {
+    RouterView { _ in
         InboxView()
     }
 }

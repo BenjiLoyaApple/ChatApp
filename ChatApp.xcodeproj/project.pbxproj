@@ -28,6 +28,18 @@
 		E474D83F2C825C5600FAA4DA /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D83E2C825C5600FAA4DA /* View+Extensions.swift */; };
 		E474D8422C8269F100FAA4DA /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E474D8412C8269F100FAA4DA /* SDWebImageSwiftUI */; };
 		E474D8462C830AE900FAA4DA /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = E474D8452C830AE900FAA4DA /* FirebaseMessaging */; };
+		E474D8492C8397C600FAA4DA /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = E474D8482C8397C600FAA4DA /* SwiftfulRouting */; };
+		E474D84C2C8397E300FAA4DA /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = E474D84B2C8397E300FAA4DA /* SwiftfulUI */; };
+		E474D84F2C83999400FAA4DA /* InboxHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D84E2C83999400FAA4DA /* InboxHeader.swift */; };
+		E474D8512C839A0800FAA4DA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8502C839A0800FAA4DA /* Extensions.swift */; };
+		E474D8532C839C2300FAA4DA /* PlaceholderFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8522C839C2300FAA4DA /* PlaceholderFeedView.swift */; };
+		E474D8552C839C5100FAA4DA /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8542C839C5100FAA4DA /* ShimmerEffect.swift */; };
+		E474D8572C839C6500FAA4DA /* CustomRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8562C839C6500FAA4DA /* CustomRefreshView.swift */; };
+		E474D8592C839C8C00FAA4DA /* ThemeChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8582C839C8C00FAA4DA /* ThemeChangeView.swift */; };
+		E474D85B2C83A2C900FAA4DA /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D85A2C83A2C900FAA4DA /* CustomButton.swift */; };
+		E474D85D2C83AA2600FAA4DA /* InboxView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D85C2C83AA2600FAA4DA /* InboxView2.swift */; };
+		E474D85F2C844EBA00FAA4DA /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D85E2C844EBA00FAA4DA /* MessageCell.swift */; };
+		E474D8612C84A15200FAA4DA /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8602C84A15200FAA4DA /* Test.swift */; };
 		E4F3B0432A879F9C00CA37ED /* NewMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3B0422A879F9C00CA37ED /* NewMessageViewModel.swift */; };
 		E4F3B0452A87A81700CA37ED /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3B0442A87A81700CA37ED /* Message.swift */; };
 		E4F3B0472A87AA1300CA37ED /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3B0462A87AA1300CA37ED /* MessageService.swift */; };
@@ -87,6 +99,16 @@
 		E474D83C2C825C0900FAA4DA /* OffsetKeyLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffsetKeyLogin.swift; sourceTree = "<group>"; };
 		E474D83E2C825C5600FAA4DA /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		E474D8432C83086000FAA4DA /* ChatApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatApp.entitlements; sourceTree = "<group>"; };
+		E474D84E2C83999400FAA4DA /* InboxHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxHeader.swift; sourceTree = "<group>"; };
+		E474D8502C839A0800FAA4DA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E474D8522C839C2300FAA4DA /* PlaceholderFeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderFeedView.swift; sourceTree = "<group>"; };
+		E474D8542C839C5100FAA4DA /* ShimmerEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
+		E474D8562C839C6500FAA4DA /* CustomRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshView.swift; sourceTree = "<group>"; };
+		E474D8582C839C8C00FAA4DA /* ThemeChangeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeChangeView.swift; sourceTree = "<group>"; };
+		E474D85A2C83A2C900FAA4DA /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		E474D85C2C83AA2600FAA4DA /* InboxView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView2.swift; sourceTree = "<group>"; };
+		E474D85E2C844EBA00FAA4DA /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		E474D8602C84A15200FAA4DA /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		E4F3B0422A879F9C00CA37ED /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 		E4F3B0442A87A81700CA37ED /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E4F3B0462A87AA1300CA37ED /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
@@ -128,8 +150,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E474D8462C830AE900FAA4DA /* FirebaseMessaging in Frameworks */,
+				E474D8492C8397C600FAA4DA /* SwiftfulRouting in Frameworks */,
 				E474D8422C8269F100FAA4DA /* SDWebImageSwiftUI in Frameworks */,
 				E4FDFB012A86790D0058898E /* FirebaseAuth in Frameworks */,
+				E474D84C2C8397E300FAA4DA /* SwiftfulUI in Frameworks */,
 				E4FDFB072A86790D0058898E /* FirebaseStorage in Frameworks */,
 				E4FDFB032A86790D0058898E /* FirebaseFirestore in Frameworks */,
 				E4FDFB052A86790D0058898E /* FirebaseFirestoreSwift in Frameworks */,
@@ -189,6 +213,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E474D84D2C83996F00FAA4DA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E474D8522C839C2300FAA4DA /* PlaceholderFeedView.swift */,
+				E474D84E2C83999400FAA4DA /* InboxHeader.swift */,
+				E474D85E2C844EBA00FAA4DA /* MessageCell.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		E4F3B0402A879F5700CA37ED /* Views */ = {
@@ -353,10 +387,16 @@
 			isa = PBXGroup;
 			children = (
 				E4FDFAF22A854DB60058898E /* CircularProfileImageView.swift */,
-				E474D8352C825B3E00FAA4DA /* MorphingSymbolView.swift */,
+				E474D85A2C83A2C900FAA4DA /* CustomButton.swift */,
 				E46724CD2A8D36DC00CD865B /* Color.swift */,
-				E474D83E2C825C5600FAA4DA /* View+Extensions.swift */,
+				E474D8562C839C6500FAA4DA /* CustomRefreshView.swift */,
 				E4F3B0552A88109E00CA37ED /* Date.swift */,
+				E474D8502C839A0800FAA4DA /* Extensions.swift */,
+				E474D8352C825B3E00FAA4DA /* MorphingSymbolView.swift */,
+				E474D8542C839C5100FAA4DA /* ShimmerEffect.swift */,
+				E474D8582C839C8C00FAA4DA /* ThemeChangeView.swift */,
+				E474D83E2C825C5600FAA4DA /* View+Extensions.swift */,
+				E474D8602C84A15200FAA4DA /* Test.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -406,6 +446,7 @@
 		E4FDFADB2A83E7E80058898E /* Inbox */ = {
 			isa = PBXGroup;
 			children = (
+				E474D84D2C83996F00FAA4DA /* Components */,
 				E4F3B0522A87C4EF00CA37ED /* Service */,
 				E4FDFB182A86AC430058898E /* Views */,
 				E4FDFB192A86AC460058898E /* ViewModel */,
@@ -513,6 +554,7 @@
 			isa = PBXGroup;
 			children = (
 				E4FDFADC2A83E8050058898E /* InboxView.swift */,
+				E474D85C2C83AA2600FAA4DA /* InboxView2.swift */,
 				E4FDFAE12A83ECC00058898E /* InboxRowView.swift */,
 			);
 			path = Views;
@@ -549,6 +591,8 @@
 				E4FDFB062A86790D0058898E /* FirebaseStorage */,
 				E474D8412C8269F100FAA4DA /* SDWebImageSwiftUI */,
 				E474D8452C830AE900FAA4DA /* FirebaseMessaging */,
+				E474D8482C8397C600FAA4DA /* SwiftfulRouting */,
+				E474D84B2C8397E300FAA4DA /* SwiftfulUI */,
 			);
 			productName = ChatApp;
 			productReference = E4FDFABC2A82A2C10058898E /* ChatApp.app */;
@@ -580,8 +624,9 @@
 			mainGroup = E4FDFAB32A82A2C10058898E;
 			packageReferences = (
 				E4FDFAFF2A86790D0058898E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				E46724B82A8D328800CD865B /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				E474D8402C8269F100FAA4DA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				E474D8472C8397C600FAA4DA /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
+				E474D84A2C8397E300FAA4DA /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
 			);
 			productRefGroup = E4FDFABD2A82A2C10058898E /* Products */;
 			projectDirPath = "";
@@ -630,33 +675,43 @@
 				E474D8322C825AB000FAA4DA /* Page.swift in Sources */,
 				E4FDFB112A867B6C0058898E /* AuthService.swift in Sources */,
 				E4F3B0542A87C52700CA37ED /* InboxService.swift in Sources */,
+				E474D8552C839C5100FAA4DA /* ShimmerEffect.swift in Sources */,
 				E4F3B0512A87BFC000CA37ED /* Constants.swift in Sources */,
 				E4FDFB0F2A867B380058898E /* RegisterViewModel.swift in Sources */,
 				E4FDFAFA2A855D2D0058898E /* ChatBubble.swift in Sources */,
 				E4FDFAF32A854DB60058898E /* CircularProfileImageView.swift in Sources */,
 				E4F3B04E2A87BE0A00CA37ED /* ChatService.swift in Sources */,
 				E46724BF2A8D344B00CD865B /* MessageInputView.swift in Sources */,
+				E474D84F2C83999400FAA4DA /* InboxHeader.swift in Sources */,
 				E474D83D2C825C0900FAA4DA /* OffsetKeyLogin.swift in Sources */,
 				E4FDFADD2A83E8050058898E /* InboxView.swift in Sources */,
 				E4FDFB0D2A867AF90058898E /* LoginViewModel.swift in Sources */,
 				E4F3B0432A879F9C00CA37ED /* NewMessageViewModel.swift in Sources */,
+				E474D85D2C83AA2600FAA4DA /* InboxView2.swift in Sources */,
 				E46724CC2A8D36C700CD865B /* PreviewProvider.swift in Sources */,
 				E4F3B05D2A8819AE00CA37ED /* Route.swift in Sources */,
 				E46724C42A8D34F200CD865B /* LinkPreviewViewModel.swift in Sources */,
 				E4FDFB172A86A9C00058898E /* UserService.swift in Sources */,
+				E474D8612C84A15200FAA4DA /* Test.swift in Sources */,
 				E474D83F2C825C5600FAA4DA /* View+Extensions.swift in Sources */,
 				E4FDFAE02A83EA0B0058898E /* ActiveNowView.swift in Sources */,
 				E4FDFAEE2A8545FB0058898E /* ProfileViewModel.swift in Sources */,
 				E4FDFAF02A85493C0058898E /* User.swift in Sources */,
 				E4F3B0472A87AA1300CA37ED /* MessageService.swift in Sources */,
 				E4FDFAC22A82A2C10058898E /* ContentView.swift in Sources */,
+				E474D85B2C83A2C900FAA4DA /* CustomButton.swift in Sources */,
+				E474D8592C839C8C00FAA4DA /* ThemeChangeView.swift in Sources */,
 				E46724D22A8D378C00CD865B /* ImageUploader.swift in Sources */,
 				E46724D62A8D380F00CD865B /* MSGButtonModifier.swift in Sources */,
 				E4F3B05A2A88155300CA37ED /* ActiveNowViewModel.swift in Sources */,
 				E4F3B0452A87A81700CA37ED /* Message.swift in Sources */,
+				E474D8512C839A0800FAA4DA /* Extensions.swift in Sources */,
+				E474D85F2C844EBA00FAA4DA /* MessageCell.swift in Sources */,
 				E4FDFAEC2A83FA980058898E /* SettingsOptionsViewModel.swift in Sources */,
+				E474D8572C839C6500FAA4DA /* CustomRefreshView.swift in Sources */,
 				E46724D82A8D384000CD865B /* PhotosPickerHelper.swift in Sources */,
 				E46724BD2A8D333600CD865B /* AuthError.swift in Sources */,
+				E474D8532C839C2300FAA4DA /* PlaceholderFeedView.swift in Sources */,
 				E4FDFAC02A82A2C10058898E /* ChatAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -874,20 +929,28 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E46724B82A8D328800CD865B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
 		E474D8402C8269F100FAA4DA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 3.1.2;
+			};
+		};
+		E474D8472C8397C600FAA4DA /* XCRemoteSwiftPackageReference "SwiftfulRouting" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulRouting.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.6;
+			};
+		};
+		E474D84A2C8397E300FAA4DA /* XCRemoteSwiftPackageReference "SwiftfulUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
 			};
 		};
 		E4FDFAFF2A86790D0058898E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -910,6 +973,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E4FDFAFF2A86790D0058898E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		E474D8482C8397C600FAA4DA /* SwiftfulRouting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E474D8472C8397C600FAA4DA /* XCRemoteSwiftPackageReference "SwiftfulRouting" */;
+			productName = SwiftfulRouting;
+		};
+		E474D84B2C8397E300FAA4DA /* SwiftfulUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E474D84A2C8397E300FAA4DA /* XCRemoteSwiftPackageReference "SwiftfulUI" */;
+			productName = SwiftfulUI;
 		};
 		E4FDFB002A86790D0058898E /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

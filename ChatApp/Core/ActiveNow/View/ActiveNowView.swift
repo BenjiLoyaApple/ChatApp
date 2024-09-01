@@ -17,7 +17,7 @@ struct ActiveNowView: View {
                     NavigationLink(value: Route.chatView(user)) {
                         VStack {
                             ZStack(alignment: .bottomTrailing) {
-                                CircularProfileImageView(user: user, size: .large)
+                                CircularProfileImageView(user: user, size: .medium)
                                 
                                 ZStack {
                                     Circle()
@@ -30,7 +30,7 @@ struct ActiveNowView: View {
                                 }
                             }
                             
-                            Text(user.firstName)
+                            Text(user.username)
                                 .font(.footnote)
                                 .foregroundColor(.gray)
                         }

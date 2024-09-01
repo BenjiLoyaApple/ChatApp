@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
+import SwiftfulRouting
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
@@ -22,7 +23,9 @@ struct ChatAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RouterView { _ in
+                ContentView()
+            }
         }
     }
 }

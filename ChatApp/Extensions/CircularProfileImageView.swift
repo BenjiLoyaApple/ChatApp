@@ -46,6 +46,23 @@ enum ProfileImageSize {
     
 }
 
+enum ProfileBackgroundColor: CaseIterable {
+    case red, blue, green, orange, purple, yellow, pink, teal
+    
+    var color: Color {
+        switch self {
+        case .red: return Color.red
+        case .blue: return Color.blue
+        case .green: return Color.green
+        case .orange: return Color.orange
+        case .purple: return Color.purple
+        case .yellow: return Color.yellow
+        case .pink: return Color.pink
+        case .teal: return Color.teal
+        }
+    }
+}
+
 struct UserInitialsView: View {
     let fullname: String
     let fontSize: CGFloat
@@ -57,11 +74,15 @@ struct UserInitialsView: View {
         return "\(firstInitial)\(lastInitial)"
     }
     
+    private var backgroundColor: Color {
+            ProfileBackgroundColor.allCases.randomElement()?.color ?? Color.gray
+        }
+    
     var body: some View {
         Text(initials)
             .font(.system(size: fontSize, weight: .semibold))
             .frame(width: fontSize * 2, height: fontSize * 2)
-            .background(Color.gray.opacity(0.25))
+            .background(backgroundColor.opacity(0.5))
             .foregroundColor(.white)
             .clipShape(Circle())
     }
