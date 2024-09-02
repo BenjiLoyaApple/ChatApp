@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftfulUI
 
-struct MessageCell<ProfileImageView: View>: View {
+struct InboxCell<ProfileImageView: View>: View {
     
     var message: Message = DeveloperPreview.instance.messages[0]
     
@@ -72,10 +72,14 @@ struct MessageCell<ProfileImageView: View>: View {
                             showChatTapped?()
                         }
                 }
+                
+                Divider()
+                
+                
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 5)
-            .offset(y: -2)
+            .offset(y: -2)       
         }
 
     }

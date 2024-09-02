@@ -18,7 +18,7 @@ struct ActiveNowView: View {
                 ForEach(viewModel.users) { user in
                         VStack {
                             ZStack(alignment: .bottomTrailing) {
-                                CircularProfileImageView(user: user, size: .medium)
+                                CircularProfileImageView(user: user, size: .medium50)
                                     .onTapGesture {
                                         router.showScreen(.push) { _ in
                                         ChatView(user: user)

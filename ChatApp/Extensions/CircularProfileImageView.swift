@@ -9,45 +9,48 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 enum ProfileImageSize {
-    case xxxLSmall
-    case xxxSmall
-    case xxSmall
-    case xSmall
-    case small
-    case medium
-    case large
-    case xLarge
+    case small14
+    case small22
+    case small28
+    case small34
+    case small40
+    case medium46
+    case medium50
+    case large56
+    case large60
     
     var dimension: CGFloat {
         switch self {
-        case .xxxLSmall: return 14
-        case .xxxSmall: return 22
-        case .xxSmall: return 28
-        case .xSmall: return 34
-        case .small: return 40
-        case .medium: return 46
-        case .large: return 54
-        case .xLarge: return 60
+        case .small14: return 14
+        case .small22: return 22
+        case .small28: return 28
+        case .small34: return 34
+        case .small40: return 40
+        case .medium46: return 46
+        case .medium50: return 50
+        case .large56: return 56
+        case .large60: return 60
         }
     }
     
     var fontSize: CGFloat {
           switch self {
-          case .xxxLSmall: return 7
-          case .xxxSmall: return 11
-          case .xxSmall: return 14
-          case .xSmall: return 17
-          case .small: return 20
-          case .medium: return 23
-          case .large: return 27
-          case .xLarge: return 30
+          case .small14: return 7
+          case .small22: return 11
+          case .small28: return 14
+          case .small34: return 17
+          case .small40: return 20
+          case .medium46: return 23
+          case .medium50: return 25
+          case .large56: return 28
+          case .large60: return 30
           }
       }
     
 }
 
 enum ProfileBackgroundColor: CaseIterable {
-    case red, blue, green, orange, purple, yellow, pink, teal
+    case red, blue, green, orange, purple, yellow, pink, teal, mint
     
     var color: Color {
         switch self {
@@ -59,6 +62,7 @@ enum ProfileBackgroundColor: CaseIterable {
         case .yellow: return Color.yellow
         case .pink: return Color.pink
         case .teal: return Color.teal
+        case .mint: return Color.mint
         }
     }
 }
@@ -115,5 +119,5 @@ struct CircularProfileImageView: View {
 
 
 #Preview {
-    CircularProfileImageView(size: .large)
+    CircularProfileImageView(size: .medium50)
 }

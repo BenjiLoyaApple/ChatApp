@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import SwiftfulRouting
 
 struct ChatView: View {
+    @Environment(\.router) var router
     @State private var messageText = ""
     @State private var isInitialLoad = false
     @StateObject var viewModel: ChatViewModel
@@ -21,11 +23,13 @@ struct ChatView: View {
     
     var body: some View {
         VStack {
+            HeaderView()
+            
             ScrollViewReader { proxy in
                 ScrollView {
                     LazyVStack {
                         VStack {
-                            CircularProfileImageView(user: user, size: .xLarge)
+                            CircularProfileImageView(user: user, size: .large56)
                             
                             VStack(spacing: 4) {
                                 Text(user.username)
@@ -56,19 +60,46 @@ struct ChatView: View {
             
             MessageInputView(messageText: $messageText, viewModel: viewModel)
         }
+        .navigationBarBackButtonHidden()
         .onDisappear {
             viewModel.removeChatListener()
         }
         .onChange(of: viewModel.messages, perform: { _ in
             Task { try await viewModel.updateMessageStatusIfNecessary()}
         })
-      //  .navigationTitle(user.username)
-     //   .navigationBarTitleDisplayMode(.inline)
+        
     }
+    
+    // MARK: - Header
+    @ViewBuilder
+    private func HeaderView() -> some View {
+        VStack(spacing: 0) {
+            HStack(alignment: .center) {
+                Button("Back") {
+                    router.dismissScreen()
+                }
+                .font(.subheadline)
+                .foregroundColor(Color.theme.primaryText)
+                
+                Spacer(minLength: 0)
+                
+                Spacer(minLength: 0)
+                
+                
+            }
+            .padding(.horizontal, 15)
+            .padding(.bottom, 10)
+            
+            Divider()
+                .offset(y: 8)
+        }
+        .padding(.top, 10)
+    }
+    
 }
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-            ChatView(user: dev.user)
+        ChatView(user: .mock)
     }
 }

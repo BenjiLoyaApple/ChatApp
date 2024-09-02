@@ -87,7 +87,7 @@ struct InboxView: View {
             .overlay(alignment: .top) {
                 // Header
                 InboxHeader(
-                    headerHeight: $headerHeight, headerOffset: $headerOffset, profileImage: CircularProfileImageView(user: viewModel.user, size: .small), username: viewModel.user?.username ?? "",
+                    headerHeight: $headerHeight, headerOffset: $headerOffset, profileImage: CircularProfileImageView(user: viewModel.user, size: .small40), username: viewModel.user?.username ?? "",
                     profileimageTapped: {
                         router.showScreen(.push) { _ in
                             if let user = viewModel.user {
@@ -126,10 +126,9 @@ struct InboxView: View {
                 } else {
                     ForEach(viewModel.filteredMessages) { recentMessage in
                         if let user = recentMessage.user {
-                            MessageCell(
-                                //     viewModel: viewModel,
+                            InboxCell(
                                 message: recentMessage,
-                                profileImage: CircularProfileImageView(user: user, size: .small),
+                                profileImage: CircularProfileImageView(user: user, size: .small40),
                                 username: user.username,
                                 timestamp: recentMessage.timestamp.timestampString(),
                                 textMessage: recentMessage.text,

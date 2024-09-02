@@ -24,18 +24,15 @@ struct MessageInputView: View {
                             .frame(width: 80, height: 100)
                             .cornerRadius(10)
                         
-                        Button(action: {
-                            viewModel.messageImage = nil
-                        }, label: {
-                            Image(systemName: "xmark")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 10, height: 10)
-                                .padding(8)
-                        })
-                        .background(Color(.gray))
-                        .foregroundColor(.white)
-                        .clipShape(Circle())
+                        CustomChatButton(
+                            imageName: "xmark.circle.fill",
+                            font: .callout,
+                            foregroundStyle: .gray.opacity(0.8),
+                            padding: 5,
+                            onButtonPressed: {
+                                viewModel.messageImage = nil
+                            }
+                        )
                     }
                     .padding(8)
                     
@@ -43,15 +40,12 @@ struct MessageInputView: View {
                 } else {
                     if messageText.isEmpty {
                         PhotosPicker(selection: $viewModel.selectedItem) {
-//                            Image(systemName: "photo")
-//                                .padding(.horizontal, 4)
-//                                .foregroundColor(.gray)
-                            Image("gallery")
-                            .renderingMode(.template)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(.gray)
+                            Image(systemName: "photo.on.rectangle.angled")
+                                .font(.title3)
+                                .foregroundStyle(.gray)
+                                .padding(5)
+                                .background(Color.black.opacity(0.001))
+                                .clipShape(Circle())
                         }
                     }
                     
@@ -65,27 +59,19 @@ struct MessageInputView: View {
                 }
             }
             
-            Button {
-                Task {
-                    try await viewModel.sendMessage(messageText)
-                    messageText = ""
+            CustomChatButton(
+                imageName: "paperplane",
+                font: .title3,
+                foregroundStyle: .primary,
+                padding: 10,
+                onButtonPressed: {
+                    Task {
+                        try await viewModel.sendMessage(messageText)
+                        messageText = ""
+                    }
                 }
-            } label: {
-                Image("send")
-                .renderingMode(.template)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 25, height: 25)
-                .background(
-                Circle()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(.gray.opacity(0.2))
-                )
-                
-//                Text("Send")
-//                    .fontWeight(.semibold)
-            }
-            .padding(.horizontal)
+            )
+            
 
         }
         .overlay {
@@ -102,6 +88,6 @@ struct MessageInputView: View {
 struct MessageInputView_Previews: PreviewProvider {
     static var previews: some View {
         MessageInputView(messageText: .constant(""),
-                         viewModel: ChatViewModel(user: dev.user))
+                         viewModel: ChatViewModel(user: .mock))
     }
 }

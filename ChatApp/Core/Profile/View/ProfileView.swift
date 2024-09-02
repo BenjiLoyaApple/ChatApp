@@ -107,11 +107,11 @@ struct ProfileView: View {
                         image
                             .resizable()
                             .scaledToFill()
-                            .frame(width: ProfileImageSize.small.dimension, height: ProfileImageSize.small.dimension)
+                            .frame(width: ProfileImageSize.small40.dimension, height: ProfileImageSize.small40.dimension)
                             .clipShape(Circle())
                             .foregroundColor(Color(.systemGray4))
                     } else {
-                        CircularProfileImageView(user: user, size: .small)
+                        CircularProfileImageView(user: user, size: .small40)
                     }
                 }
             }

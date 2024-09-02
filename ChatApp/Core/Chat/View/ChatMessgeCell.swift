@@ -52,7 +52,7 @@ struct ChatMessageCell: View {
             } else {
                 HStack(alignment: .bottom, spacing: 8) {
                     if shouldShowChatPartnerImage {
-                        CircularProfileImageView(user: message.user, size: .xxSmall)
+                        CircularProfileImageView(user: message.user, size: .small28)
                     }
                     
                     switch message.contentType {

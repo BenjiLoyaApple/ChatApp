@@ -67,42 +67,42 @@ struct SettingsView: View {
     @ViewBuilder
     private func OptionsView() -> some View {
         VStack(spacing: 10) {
-            SettingsButton(
+            CustomButton(
                 imageName: "bell",
                 title: "Notifications"
             ) {
                 print("Notifications tapped")
             }
             
-            SettingsButton(
+            CustomButton(
                 imageName: "lock",
                 title: "Privacy"
             ) {
                 print("Privacy tapped")
             }
             
-            SettingsButton(
+            CustomButton(
                 imageName: "person",
                 title: "Account"
             ) {
                 print("Account tapped")
             }
             
-            SettingsButton(
+            CustomButton(
                 imageName: "moon",
                 title: "Theme"
             ) {
                 changeTheme.toggle()
             }
             
-            SettingsButton(
+            CustomButton(
                 imageName: "questionmark.app",
                 title: "Help"
             ) {
                 print("Help tapped")
             }
             
-            SettingsButton(
+            CustomButton(
                 imageName: "info.square",
                 title: "About"
             ) {
@@ -111,7 +111,7 @@ struct SettingsView: View {
             
             Divider()
             
-            SettingsButton(
+            CustomButton(
                 imageName: "power",
                 title: "Log Out"
             ) {
@@ -123,7 +123,7 @@ struct SettingsView: View {
                 }
             }
             
-            SettingsButton(
+            CustomButton(
                 imageName: "puzzlepiece.extension",
                 title: "Delete Account",
                 imageForegroundStyle: .red,

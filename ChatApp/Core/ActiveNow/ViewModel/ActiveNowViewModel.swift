@@ -9,7 +9,7 @@ import Foundation
 
 class ActiveNowViewModel: ObservableObject {
     @Published var users = [User]()
-    private let fetchLimit = 10
+    private let fetchLimit = 20
     
     init() {
         Task { try await fetchUsers() }
