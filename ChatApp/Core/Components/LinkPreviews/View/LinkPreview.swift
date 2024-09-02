@@ -27,6 +27,6 @@ struct LinkPreview: View {
 
 struct LinkPreview_Previews: PreviewProvider {
     static var previews: some View {
-        LinkPreview(urlString: "https://www.youtube.com/watch?v=Qg0PepGlxFs")
+        LinkPreview(urlString: "https://www.youtube.com/@SwiftfulThinking/playlists")
     }
 }
