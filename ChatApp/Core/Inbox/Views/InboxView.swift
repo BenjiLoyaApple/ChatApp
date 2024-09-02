@@ -28,7 +28,6 @@ struct InboxView: View {
     
     var body: some View {
             ScrollView(.vertical, showsIndicators: false) {
-                
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundStyle(.clear)
                     .frame(width: 200, height: 1)
@@ -61,11 +60,17 @@ struct InboxView: View {
                         }
                     }
                     
-                
-                
                     ActiveNowView()
                         .padding(.bottom)
                         .padding(.horizontal)
+                        .onTapGesture {
+                            if let user = selectedUser {
+                                router.showScreen(.push) { _ in
+                                    ChatView(user: user)
+                                }
+                            }
+                        }
+                        
                     
                     HStack {
                         Text("Recent Chat")
@@ -76,7 +81,6 @@ struct InboxView: View {
                     
                 ChatsView()
                 
-                   
             }
             .background(Color.theme.darkBlack)
             .coordinateSpace(name: "SCROLL")
@@ -105,9 +109,7 @@ struct InboxView: View {
                   //      vm.loadUserData()
                     }
             }
-            .refreshable {
-            //    Task { try await viewModel.fetchThreads() }
-            }
+            .refreshable {}
             // MARK: Due To Safe Area
             .ignoresSafeArea(.all, edges: .top)
     }
@@ -133,10 +135,17 @@ struct InboxView: View {
                                 textMessage: recentMessage.text,
                                 actionButtonTapped: {
                                     Task { try await viewModel.deleteMessage(recentMessage) }
+                                },
+                                showChatTapped: {
+                                    router.showScreen(.push) { _ in
+                                        if let user = recentMessage.user {
+                                            ChatView(user: user)
+                                            
+                                        }
+                                    }
                                 }
                             )
                             .padding(.horizontal, 10)
-                            .padding(.top, 10)
                             .onAppear {
                                 if recentMessage == viewModel.recentMessages.last {
                                     print("DEBUG: Paginate here..")

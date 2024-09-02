@@ -61,10 +61,9 @@ struct ProfileView: View {
                     }
                     
                     Button {
-                        AuthService.shared.deleteUser()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                           
-                                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            AuthService.shared.deleteUser()
+                        }
                     } label: {
                         Text("Delete Account")
                             .foregroundColor(.red)
@@ -73,6 +72,7 @@ struct ProfileView: View {
             }
             
         }
+        .background(Color.theme.darkBlack)
     }
 }
 

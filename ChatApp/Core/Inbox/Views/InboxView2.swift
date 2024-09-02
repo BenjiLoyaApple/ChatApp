@@ -81,15 +81,7 @@ struct InboxView2: View {
                 })
                 .overlay { if !viewModel.didCompleteInitialLoad { ProgressView() } }
                 .navigationTitle("Chats")
-                // .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-//                    ToolbarItem(placement: .navigationBarLeading) {
-//                            if let user = viewModel.user {
-//                                CircularProfileImageView(user: user, size: .xSmall)
-//                                    .onTapGesture { showProfile.toggle() }
-//                            }
-//                    }
-                    
                     ToolbarItem(placement: .navigationBarLeading) {
                         if let user = viewModel.user {
                             HStack {

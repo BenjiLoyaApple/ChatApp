@@ -6,19 +6,24 @@
 //
 
 import SwiftUI
+import SwiftfulRouting
 
 struct ActiveNowView: View {
+    @Environment(\.router) var router
     @StateObject var viewModel = ActiveNowViewModel()
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 20) {
                 ForEach(viewModel.users) { user in
-                    NavigationLink(value: Route.chatView(user)) {
                         VStack {
                             ZStack(alignment: .bottomTrailing) {
                                 CircularProfileImageView(user: user, size: .medium)
-                                
+                                    .onTapGesture {
+                                        router.showScreen(.push) { _ in
+                                        ChatView(user: user)
+                                    }
+                                }
                                 ZStack {
                                     Circle()
                                         .fill(Color.theme.background)
@@ -34,7 +39,7 @@ struct ActiveNowView: View {
                                 .font(.footnote)
                                 .foregroundColor(.gray)
                         }
-                    }
+                    
                 }
             }
         }

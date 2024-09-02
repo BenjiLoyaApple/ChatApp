@@ -10,7 +10,6 @@ import SwiftfulUI
 
 struct MessageCell<ProfileImageView: View>: View {
     
-  //  @ObservedObject var viewModel: InboxViewModel
     var message: Message = DeveloperPreview.instance.messages[0]
     
     let profileImage: ProfileImageView
@@ -18,6 +17,7 @@ struct MessageCell<ProfileImageView: View>: View {
     let timestamp: String
     let textMessage: String?
     var actionButtonTapped: (() -> Void)? = nil
+    var showChatTapped: (() -> Void)? = nil
     
     var body: some View {
         HStack(alignment: .top, spacing: 6) {
@@ -68,6 +68,9 @@ struct MessageCell<ProfileImageView: View>: View {
                         .multilineTextAlignment(.leading)
                         .lineLimit(2)
                         .offset(y: -14)
+                        .asButton(.press) {
+                            showChatTapped?()
+                        }
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)

@@ -32,9 +32,6 @@ struct ChatView: View {
                                     .font(.title3)
                                     .fontWeight(.semibold)
                                 
-//                                Text("Messenger")
-//                                    .font(.footnote)
-//                                    .foregroundColor(.gray)
                             }
                         }
                         
@@ -65,13 +62,13 @@ struct ChatView: View {
         .onChange(of: viewModel.messages, perform: { _ in
             Task { try await viewModel.updateMessageStatusIfNecessary()}
         })
-        .navigationTitle(user.username)
-        .navigationBarTitleDisplayMode(.inline)
+      //  .navigationTitle(user.username)
+     //   .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView(user: dev.user)
+            ChatView(user: dev.user)
     }
 }
