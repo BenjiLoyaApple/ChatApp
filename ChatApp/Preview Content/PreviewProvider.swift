@@ -11,14 +11,14 @@ import Firebase
 extension PreviewProvider {
     
     static var dev: DeveloperPreview {
-        return DeveloperPreview.instance
+        return DeveloperPreview.shared
     }
 }
 
 class DeveloperPreview {
-    static let instance = DeveloperPreview()
+    static let shared = DeveloperPreview()
     
-    let user = User(
+    var user = User(
             userId: "12345",
             username: "benjiloya",
             fullname: "Benji Loya",
@@ -28,14 +28,14 @@ class DeveloperPreview {
             link: "https://batman.com"
         )
     
-    let messages: [Message] = [
+    var messages: [Message] = [
         .init(
             messageId: NSUUID().uuidString,
               fromId: "batman",
               toId: "joker",
               text: "Test message for now..",
               timestamp: Timestamp(),
-              user: DeveloperPreview.instance.user,
+              user: DeveloperPreview.shared.user,
               read: false
              ),
         .init(
@@ -44,8 +44,11 @@ class DeveloperPreview {
             toId: "joker",
             text: "Second test message for now..",
             timestamp: Timestamp(),
-            user: DeveloperPreview.instance.user,
+            user: DeveloperPreview.shared.user,
             read: false
         )
     ]
+    
+    lazy var imageUrlString =  "https://i.pinimg.com/originals/63/f0/17/63f017a7b9ad24d609b404515d86f9f4.jpg"
+    
 }

@@ -19,10 +19,14 @@ struct MessageInputView: View {
                     ZStack(alignment: .topTrailing) {
                         image
                             .resizable()
-                            .scaledToFill()
-                            .clipped()
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(Rectangle())
                             .frame(width: 80, height: 100)
                             .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.gray.opacity(0.3), lineWidth: 0.5)
+                            )
                         
                         CustomChatButton(
                             imageName: "xmark.circle.fill",
@@ -77,7 +81,7 @@ struct MessageInputView: View {
         .overlay {
             if viewModel.messageImage != nil {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color(.systemGray4), lineWidth: 1)
+                    .stroke(Color(.systemGray4), lineWidth: 0.7)
             }
         }
         .padding(.horizontal)

@@ -41,6 +41,8 @@
 		E4F2AE0C2C85EF1900FD523A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE052C85EF1900FD523A /* SettingsView.swift */; };
 		E4F2AE0D2C85EF1900FD523A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE072C85EF1900FD523A /* SettingsViewModel.swift */; };
 		E4F2AE102C860B2B00FD523A /* CustomChatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE0F2C860B2B00FD523A /* CustomChatButton.swift */; };
+		E4F2AE122C8613FC00FD523A /* CustomProgressIndicatorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE112C8613FC00FD523A /* CustomProgressIndicatorStyle.swift */; };
+		E4F2AE142C86150900FD523A /* MessageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE132C86150900FD523A /* MessageImageView.swift */; };
 		E4F3B0432A879F9C00CA37ED /* NewMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3B0422A879F9C00CA37ED /* NewMessageViewModel.swift */; };
 		E4F3B0452A87A81700CA37ED /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3B0442A87A81700CA37ED /* Message.swift */; };
 		E4F3B0472A87AA1300CA37ED /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3B0462A87AA1300CA37ED /* MessageService.swift */; };
@@ -109,6 +111,8 @@
 		E4F2AE052C85EF1900FD523A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E4F2AE072C85EF1900FD523A /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E4F2AE0F2C860B2B00FD523A /* CustomChatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChatButton.swift; sourceTree = "<group>"; };
+		E4F2AE112C8613FC00FD523A /* CustomProgressIndicatorStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProgressIndicatorStyle.swift; sourceTree = "<group>"; };
+		E4F2AE132C86150900FD523A /* MessageImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImageView.swift; sourceTree = "<group>"; };
 		E4F3B0422A879F9C00CA37ED /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 		E4F3B0442A87A81700CA37ED /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E4F3B0462A87AA1300CA37ED /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
@@ -268,6 +272,7 @@
 		E4F3B0402A879F5700CA37ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E4F2AE132C86150900FD523A /* MessageImageView.swift */,
 				E4FDFAE42A83F17D0058898E /* NewMessageView.swift */,
 			);
 			path = Views;
@@ -427,6 +432,7 @@
 		E4FDFAD22A82A5470058898E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E4F2AE112C8613FC00FD523A /* CustomProgressIndicatorStyle.swift */,
 				E4FDFAF22A854DB60058898E /* CircularProfileImageView.swift */,
 				E474D85A2C83A2C900FAA4DA /* CustomButton.swift */,
 				E46724CD2A8D36DC00CD865B /* Color.swift */,
@@ -699,6 +705,7 @@
 				E4F2AE102C860B2B00FD523A /* CustomChatButton.swift in Sources */,
 				E4FDFB1B2A86AC8E0058898E /* InboxViewModel.swift in Sources */,
 				E4FDFAEA2A83F65C0058898E /* ProfileView.swift in Sources */,
+				E4F2AE122C8613FC00FD523A /* CustomProgressIndicatorStyle.swift in Sources */,
 				E4FDFAE52A83F17D0058898E /* NewMessageView.swift in Sources */,
 				E474D8362C825B3E00FAA4DA /* MorphingSymbolView.swift in Sources */,
 				E4FDFB152A8699C10058898E /* ContentViewModel.swift in Sources */,
@@ -708,6 +715,7 @@
 				E474D8342C825B1800FAA4DA /* IntrosView.swift in Sources */,
 				E46724C62A8D350100CD865B /* LPLinkViewRepresented.swift in Sources */,
 				E46724CE2A8D36DC00CD865B /* Color.swift in Sources */,
+				E4F2AE142C86150900FD523A /* MessageImageView.swift in Sources */,
 				E474D8322C825AB000FAA4DA /* Page.swift in Sources */,
 				E4FDFB112A867B6C0058898E /* AuthService.swift in Sources */,
 				E4F2AE0C2C85EF1900FD523A /* SettingsView.swift in Sources */,

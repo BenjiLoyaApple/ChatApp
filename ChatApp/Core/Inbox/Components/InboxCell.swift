@@ -10,7 +10,7 @@ import SwiftfulUI
 
 struct InboxCell<ProfileImageView: View>: View {
     
-    var message: Message = DeveloperPreview.instance.messages[0]
+    var message: Message = DeveloperPreview.shared.messages[0]
     
     let profileImage: ProfileImageView
     let username: String

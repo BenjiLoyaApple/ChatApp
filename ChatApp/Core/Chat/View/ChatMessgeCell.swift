@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Firebase
-import SDWebImageSwiftUI
 
 struct ChatMessageCell: View {
     let message: Message
@@ -36,7 +35,6 @@ struct ChatMessageCell: View {
                     Text(messageText)
                         .font(.subheadline)
                         .padding(12)
-                      //  .background(Color.theme.primaryBlue)
                         .background(LinearGradient(colors: [
                             .theme.primaryBlue,
                             .blue.opacity(0.9)
@@ -63,7 +61,6 @@ struct ChatMessageCell: View {
                         Text(messageText)
                             .font(.subheadline)
                             .padding(12)
-                           // .background(Color(.systemGray6))
                             .background(LinearGradient(colors: [
                                 .theme.primaryGray2,
                                 .theme.primaryGray,
@@ -85,19 +82,7 @@ struct ChatMessageCell: View {
     }
 }
 
-struct MessageImageView: View {
-    let imageUrlString: String
-    
-    var body: some View {
-        WebImage(url: URL(string: imageUrlString))
-            .resizable()
-            .scaledToFill()
-            .clipped()
-            .frame(maxWidth: UIScreen.main.bounds.width / 1.5, maxHeight: 400)
-            .cornerRadius(10)
-            .padding(.trailing)
-    }
-}
+
 
 struct ChatMessageCell_Previews: PreviewProvider {
     static var previews: some View {
