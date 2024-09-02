@@ -132,7 +132,6 @@ extension ProfileViewModel {
         self.uiImage = uiImage
         self.profileImage = Image(uiImage: uiImage)
         
-        // После загрузки изображения, обновите данные пользователя
         do {
             try await updateUserData()
         } catch {
