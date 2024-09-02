@@ -9,6 +9,7 @@ import SwiftUI
 import PhotosUI
 
 struct ProfileView: View {
+    @Environment(\.dismiss) var dismiss
     let user: User
     @StateObject var viewModel = ProfileViewModel()
     
@@ -55,14 +56,18 @@ struct ProfileView: View {
                 Section {
                     Button {
                         AuthService.shared.signOut()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            dismiss()
+                        }
                     } label: {
                         Text("Log Out")
                             .foregroundColor(.red)
                     }
                     
                     Button {
+                        AuthService.shared.deleteUser()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            AuthService.shared.deleteUser()
+                            dismiss()
                         }
                     } label: {
                         Text("Delete Account")

@@ -64,11 +64,11 @@ enum ProfileBackgroundColor: CaseIterable {
 }
 
 struct UserInitialsView: View {
-    let fullname: String
+    let username: String
     let fontSize: CGFloat
     
     private var initials: String {
-        let names = fullname.split(separator: " ")
+        let names = username.split(separator: " ")
         let firstInitial = names.first?.first?.uppercased() ?? ""
         let lastInitial = names.count > 1 ? names.last?.first?.uppercased() ?? "" : ""
         return "\(firstInitial)\(lastInitial)"
@@ -82,7 +82,7 @@ struct UserInitialsView: View {
         Text(initials)
             .font(.system(size: fontSize, weight: .semibold))
             .frame(width: fontSize * 2, height: fontSize * 2)
-            .background(backgroundColor.opacity(0.5))
+            .background(backgroundColor.gradient)
             .foregroundColor(.white)
             .clipShape(Circle())
     }
@@ -105,7 +105,7 @@ struct CircularProfileImageView: View {
                         .stroke(Color(.systemGray4), lineWidth: 0.5)
                 }
         } else {
-            UserInitialsView(fullname: user?.fullname ?? "User", fontSize: size.fontSize)
+            UserInitialsView(username: user?.username ?? "", fontSize: size.fontSize)
                 .scaledToFill()
                 .frame(width: size.dimension, height: size.dimension)
                 .clipShape(Circle())
@@ -113,8 +113,7 @@ struct CircularProfileImageView: View {
     }
 }
 
-//struct CircularProfileImageView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CircularProfileImageView(user: dev.user, size: .large)
-//    }
-//}
+
+#Preview {
+    CircularProfileImageView(size: .large)
+}
