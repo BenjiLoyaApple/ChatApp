@@ -1,0 +1,150 @@
+//
+//  SettingsView.swift
+//  Threads
+//
+//  Created by Benji Loya on 24.04.2023.
+//
+
+import SwiftUI
+import SwiftfulRouting
+
+struct SettingsView: View {
+    @Environment(\.router) var router
+    @Environment(\.colorScheme) private var scheme
+    @State private var changeTheme: Bool = false
+    @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
+    
+    var body: some View {
+        VStack(spacing: 10) {
+           
+            HeaderView()
+            
+            OptionsView()
+                .padding(.horizontal)
+            
+            Spacer()
+        }
+        .navigationBarBackButtonHidden()
+        .background(Color.theme.darkBlack)
+        .preferredColorScheme(userTheme.colorScheme)
+        .sheet(isPresented: $changeTheme, content: {
+            ThemeChangeView(scheme: scheme)
+                .presentationDetents([.height(410)])
+                .presentationBackground(.clear)
+        })
+    }
+    
+    // MARK: - Header
+    @ViewBuilder
+    private func HeaderView() -> some View {
+        VStack(spacing: 0) {
+            HStack(alignment: .center) {
+                Button("Back") {
+                    router.dismissScreen()
+                }
+                .font(.subheadline)
+                .foregroundColor(Color.theme.primaryText)
+                
+                Spacer(minLength: 0)
+                
+                Text("Settings")
+                    .offset(x: -15)
+                
+                Spacer(minLength: 0)
+                
+                
+            }
+            .padding(.horizontal, 15)
+            .padding(.bottom, 5)
+            
+            Divider()
+                .offset(y: 10)
+        }
+        .padding(.vertical)
+    }
+    
+    // MARK: - Options
+    @ViewBuilder
+    private func OptionsView() -> some View {
+        VStack(spacing: 10) {
+            SettingsButton(
+                imageName: "bell",
+                title: "Notifications"
+            ) {
+                print("Notifications tapped")
+            }
+            
+            SettingsButton(
+                imageName: "lock",
+                title: "Privacy"
+            ) {
+                print("Privacy tapped")
+            }
+            
+            SettingsButton(
+                imageName: "person",
+                title: "Account"
+            ) {
+                print("Account tapped")
+            }
+            
+            SettingsButton(
+                imageName: "moon",
+                title: "Theme"
+            ) {
+                changeTheme.toggle()
+            }
+            
+            SettingsButton(
+                imageName: "questionmark.app",
+                title: "Help"
+            ) {
+                print("Help tapped")
+            }
+            
+            SettingsButton(
+                imageName: "info.square",
+                title: "About"
+            ) {
+                print("About tapped")
+            }
+            
+            Divider()
+            
+            SettingsButton(
+                imageName: "power",
+                title: "Log Out"
+            ) {
+                Task {
+                    await AuthService.shared.signOut()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        router.dismissScreen()
+                    }
+                }
+            }
+            
+            SettingsButton(
+                imageName: "puzzlepiece.extension",
+                title: "Delete Account",
+                imageForegroundStyle: .red,
+                textForegroundStyle: .red
+            ) {
+                Task {
+                    await AuthService.shared.deleteUser()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        router.dismissScreen()
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        RouterView { _ in
+            SettingsView()
+        }
+    }
+}

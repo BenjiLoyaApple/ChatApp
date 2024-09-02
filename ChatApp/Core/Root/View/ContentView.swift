@@ -11,7 +11,7 @@ import SwiftfulRouting
 struct ContentView: View {
     @Environment(\.router) var router
     
- //   @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
+    @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
     
     @StateObject var viewModel = ContentViewModel()
     
@@ -23,6 +23,7 @@ struct ContentView: View {
                 IntrosView()
             }
         }
+        .preferredColorScheme(userTheme.colorScheme)
     }
 }
 

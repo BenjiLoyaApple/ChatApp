@@ -11,7 +11,6 @@ import SwiftfulRouting
 
 struct ProfileView: View {
     @Environment(\.router) var router
-    @Environment(\.dismiss) var dismiss
     @StateObject var viewModel = ProfileViewModel()
     
     let user: User
@@ -30,26 +29,12 @@ struct ProfileView: View {
             
             Spacer()
             
-            Button {
-                AuthService.shared.signOut()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    dismiss()
+            Text("Settings")
+                .onTapGesture {
+                    router.showScreen(.fullScreenCover) { _ in
+                        SettingsView()
+                    }
                 }
-            } label: {
-                Text("Log Out")
-                    .foregroundColor(.red)
-            }
-            
-            Button {
-                AuthService.shared.deleteUser()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    dismiss()
-                }
-            } label: {
-                Text("Delete Account")
-                    .foregroundColor(.red)
-            }
-            
         }
         .navigationBarBackButtonHidden()
         .background(Color.theme.darkBlack)
@@ -71,7 +56,7 @@ struct ProfileView: View {
                 
                 Spacer(minLength: 0)
                 
-                Text("Edit profile")
+                Text(viewModel.username)
                     .offset(x: -5)
                 
                 Spacer(minLength: 0)
@@ -154,11 +139,6 @@ struct ProfileView: View {
             Divider()
         }
         .padding()
-//        .background {
-//            TransparentBlurView(removeAllFilters: true)
-//                .blur(radius: 9, opaque: true)
-//                .background(.black.opacity(0.03))
-//        }
         .cornerRadius(15)
         .overlay {
             RoundedRectangle(cornerRadius: 15)
@@ -170,7 +150,6 @@ struct ProfileView: View {
 }
 
 extension User {
-    // Создаем статический моковый объект User для использования в превью
     static var mock: User {
         return User(
             userId: "mockUserID",
