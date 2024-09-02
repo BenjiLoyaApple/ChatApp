@@ -19,11 +19,14 @@ class DeveloperPreview {
     static let instance = DeveloperPreview()
     
     let user = User(
-        username: "benjiloya",
-        fullname: "Benji Loya",
-        email: "batman@gmail.com",
-        profileImageUrl: nil
-    )
+            userId: "12345",
+            username: "benjiloya",
+            fullname: "Benji Loya",
+            email: "batman@gmail.com",
+            profileImageUrl: nil,
+            bio: "Just a superhero in disguise.",
+            link: "https://batman.com"
+        )
     
     let messages: [Message] = [
         .init(

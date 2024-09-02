@@ -10,8 +10,8 @@ import Foundation
 
 struct User: Identifiable, Codable, Hashable {
     @DocumentID var userId: String?
-    let username: String
-    let fullname: String?
+    var username: String
+    var fullname: String?
     let email: String
     var profileImageUrl: String?
     var bio: String?
