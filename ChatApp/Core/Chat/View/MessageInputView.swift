@@ -12,6 +12,8 @@ struct MessageInputView: View {
     @Binding var messageText: String
     @ObservedObject var viewModel: ChatViewModel
 
+    @State private var showPhotoPicker: Bool = false
+    
     var body: some View {
         ZStack(alignment: .trailing) {
             HStack {
@@ -52,43 +54,19 @@ struct MessageInputView: View {
                 }
             }
 
-            if messageText.isEmpty {
-                PhotosPicker(selection: $viewModel.selectedItem) {
-                    Image(systemName: "photo.on.rectangle.angled")
-                        .font(.title3)
-                        .foregroundStyle(Color.theme.darkWhite.opacity(0.7))
-                        .padding(10)
-                        .background(Color.black.opacity(0.001))
-                        .clipShape(Circle())
-                }
-            } else {
-                CustomChatButton(
-                    imageName: "paperplane",
-                    font: .title3,
-                    foregroundStyle: .primary.opacity(0.7),
-                    padding: 10,
-                    onButtonPressed: {
-                        Task {
-                            try await viewModel.sendMessage(messageText)
-                            messageText = ""
-                        }
-                    }
-                )
-            }
-            
-            /*
             Button {
-                if messageText.isEmpty {
-                  //  photo
+                if messageText.isEmpty && viewModel.messageImage == nil {
+                    // Открываем фото пикер
+                    showPhotoPicker.toggle()
                 } else {
                     Task {
-                        try await viewModel.sendMessage(messageText)
+                        await viewModel.sendMessageAndClearState(messageText)
                         messageText = ""
                     }
                 }
             } label: {
                 MorphingSymbolView(
-                    symbol: messageText.isEmpty ? "photo" : "paperplane.fill",
+                    symbol: messageText.isEmpty && viewModel.messageImage == nil ? "photo.on.rectangle" : "paperplane.fill",
                     config: .init(
                         font: .title2,
                         frame: .init(width: 50, height: 50),
@@ -101,9 +79,22 @@ struct MessageInputView: View {
                 .background(Color.clear)
                 .clipShape(.circle)
             }
-             */
+          
             
         }
+        .photosPicker(
+            isPresented: $showPhotoPicker,
+            selection: Binding<[PhotosPickerItem]>(
+                get: {
+                    viewModel.selectedItem.map { [$0] } ?? []
+                },
+                set: { newValue in
+                    viewModel.selectedItem = newValue.first
+                }
+            ),
+            maxSelectionCount: 1,
+            selectionBehavior: .ordered
+        )
         .overlay {
             if viewModel.messageImage != nil {
                 RoundedRectangle(cornerRadius: 10)
@@ -121,7 +112,6 @@ struct MessageInputView_Previews: PreviewProvider {
                          viewModel: ChatViewModel(user: .mock))
     }
 }
-
 
 
 /*

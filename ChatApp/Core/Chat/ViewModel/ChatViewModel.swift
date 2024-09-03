@@ -34,6 +34,92 @@ class ChatViewModel: ObservableObject {
     }
     
     @MainActor
+    func sendMessageAndClearState(_ messageText: String) async {
+        do {
+            if messageImage != nil {
+                // Отправляем изображение
+                try await sendMessage("")
+            } else {
+                // Отправляем текст
+                try await sendMessage(messageText)
+            }
+            // Очистка состояния после отправки
+            messageImage = nil
+            uiImage = nil
+        } catch {
+            print("Ошибка при отправке сообщения: \(error.localizedDescription)")
+        }
+    }
+    
+    @MainActor
+    func sendMessage(_ messageText: String) async throws {
+        if let image = uiImage {
+            try await service.sendMessage(type: .image(image))
+            // Очистка состояния после отправки
+            messageImage = nil
+            uiImage = nil
+        } else {
+            try await service.sendMessage(type: .text(messageText))
+        }
+    }
+    
+    func updateMessageStatusIfNecessary() async throws {
+        guard let lastMessage = messages.last else { return }
+        try await service.updateMessageStatusIfNecessary(lastMessage)
+    }
+    
+    func nextMessage(forIndex index: Int) -> Message? {
+        return index != messages.count - 1 ? messages[index + 1] : nil
+    }
+    
+    func removeChatListener() {
+        service.removeListener()
+    }
+}
+
+// MARK: - Images
+
+extension ChatViewModel {
+    
+    @MainActor
+    func loadImage() async throws {
+        guard let selectedItem = selectedItem else { return }
+        guard let uiImage = try await PhotosPickerHelper.loadImage(fromItem: selectedItem) else { return }
+        self.uiImage = uiImage
+        messageImage = Image(uiImage: uiImage)
+    }
+}
+
+/*
+import Foundation
+import Firebase
+import FirebaseFirestoreSwift
+import PhotosUI
+import SwiftUI
+
+class ChatViewModel: ObservableObject {
+    @Published var messages = [Message]()
+    @Published var selectedItem: PhotosPickerItem? {
+        didSet { Task { try await loadImage() } }
+    }
+    @Published var messageImage: Image?
+    
+    private let service: ChatService
+    private var uiImage: UIImage?
+            
+    init(user: User) {
+        self.service = ChatService(chatPartner: user)
+        observeChatMessages()
+    }
+    
+    func observeChatMessages() {
+        service.observeMessages { [weak self] messages in
+            guard let self = self else { return }
+            self.messages.append(contentsOf: messages)
+        }
+    }
+    
+    @MainActor
     func sendMessage(_ messageText: String) async throws {
         if let image = uiImage {
             try await service.sendMessage(type: .image(image))
@@ -61,10 +147,11 @@ class ChatViewModel: ObservableObject {
 
 extension ChatViewModel {
     
-    @MainActor
-    func loadImage() async throws {
-        guard let uiImage = try await PhotosPickerHelper.loadImage(fromItem: selectedItem) else { return }
-        self.uiImage = uiImage
-        messageImage = Image(uiImage: uiImage)
+        @MainActor
+        func loadImage() async throws {
+            guard let uiImage = try await PhotosPickerHelper.loadImage(fromItem: selectedItem) else { return }
+            self.uiImage = uiImage
+            messageImage = Image(uiImage: uiImage)
+        }
     }
-}
+*/
