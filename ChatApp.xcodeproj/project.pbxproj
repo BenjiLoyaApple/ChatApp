@@ -115,6 +115,7 @@
 		E4F2AE112C8613FC00FD523A /* CustomProgressIndicatorStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProgressIndicatorStyle.swift; sourceTree = "<group>"; };
 		E4F2AE132C86150900FD523A /* MessageImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImageView.swift; sourceTree = "<group>"; };
 		E4F2AE152C86376D00FD523A /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		E4F2AE182C87242800FD523A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E4F3B0422A879F9C00CA37ED /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 		E4F3B0442A87A81700CA37ED /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E4F3B0462A87AA1300CA37ED /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
@@ -378,6 +379,7 @@
 		E4FDFABE2A82A2C10058898E /* ChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				E4F2AE182C87242800FD523A /* Info.plist */,
 				E474D8432C83086000FAA4DA /* ChatApp.entitlements */,
 				E4FDFAD62A82A5540058898E /* App */,
 				E4FDFAD52A82A5500058898E /* Core */,
@@ -893,6 +895,7 @@
 				DEVELOPMENT_TEAM = 62UE764E85;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChatApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = chatMan;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -929,6 +932,7 @@
 				DEVELOPMENT_TEAM = 62UE764E85;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChatApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = chatMan;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
