@@ -14,6 +14,9 @@ struct SettingsView: View {
     @State private var changeTheme: Bool = false
     @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
     
+    @StateObject private var notification = NotificationsManager()
+    
+    
     var body: some View {
         VStack(spacing: 10) {
            
@@ -71,7 +74,13 @@ struct SettingsView: View {
                 imageName: "bell",
                 title: "Notifications"
             ) {
-                print("Notifications tapped")
+                Task {
+                    await notification.request()
+                }
+            }
+            .disabled(notification.hasPermission)
+            .task {
+                await notification.getAuthStatus()
             }
             
             CustomButton(
