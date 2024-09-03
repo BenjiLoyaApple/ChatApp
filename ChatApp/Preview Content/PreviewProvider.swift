@@ -26,6 +26,7 @@ class DeveloperPreview {
             profileImageUrl: nil,
             bio: "Just a superhero in disguise.",
             link: "https://batman.com"
+       //     lastActive: Timestamp(date: Date())
         )
     
     var messages: [Message] = [

@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomButton: View {
     
     var imageName: String?
-    var title: String
+    var title: String?
     var imageForegroundStyle: Color? = .primary
     var textForegroundStyle: Color? = .primary
     var onButtonPressed: (() -> Void)? = nil
@@ -24,7 +24,7 @@ struct CustomButton: View {
                     .font(.subheadline)
                     .foregroundStyle(imageForegroundStyle ?? .primary)
                 
-                Text(title)
+                Text(title ?? "")
                     .font(.subheadline)
                     .foregroundStyle(textForegroundStyle ?? .primary)
             }

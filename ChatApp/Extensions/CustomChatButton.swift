@@ -37,7 +37,9 @@ struct CustomChatButton: View {
         
         CustomChatButton(
             imageName: "moon",
-            foregroundStyle: .teal
+            font: .title,
+            foregroundStyle: .teal,
+            padding: 20
         )
         
         CustomChatButton(

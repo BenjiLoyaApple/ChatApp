@@ -64,32 +64,44 @@ struct ChatView: View {
     @ViewBuilder
     private func HeaderView() -> some View {
         VStack(spacing: 0) {
-            HStack(alignment: .center, spacing: 30) {
+            HStack(alignment: .center, spacing: 20) {
                 
-                Button {
+                
+                CustomChatButton(
+                    imageName: "chevron.left",
+                    font: .title2,
+                    foregroundStyle: Color.theme.primaryText,
+                    padding: 5
+                ) {
                     router.dismissScreen()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .font(.subheadline)
-                        .foregroundColor(Color.theme.primaryText)
                 }
                 
                 HStack(spacing: 15) {
                     CircularProfileImageView(user: user, size: .small34)
                     
-                    Text(user.username)
-                        .font(.subheadline)
-                        .foregroundStyle(.primary.opacity(0.7))
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text(user.username)
+                            .font(.subheadline)
+                            .foregroundStyle(.primary.opacity(0.7))
+                        
+                        Text("Active 6m ago")
+                 //       Text(message.timestamp.timestampString())
+                            .font(.caption2)
+                            .foregroundStyle(.gray)
+                        
+                    }
+                    
                 }
                 
                 Spacer(minLength: 0)
                 
             }
             .padding(.horizontal, 15)
-        //    .padding(.bottom, 10)
+            .padding(.bottom, 10)
             
-         //   Divider()
-            //    .offset(y: 8)
+            Divider()
+                .offset(y: 8)
+                .opacity(0.4)
         }
         .padding(.top, 10)
     }

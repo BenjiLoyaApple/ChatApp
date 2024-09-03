@@ -73,3 +73,104 @@ extension UserService {
         ])
     }
 }
+
+
+/*
+ import Foundation
+ import FirebaseFirestoreSwift
+ import Firebase
+
+ class UserService {
+     
+     @Published var currentUser: User?
+     
+     static let shared = UserService()
+     
+     init() {
+         Task {
+             do {
+                 try await fetchCurrentUser()
+             } catch {
+                 print("Failed to fetch current user: \(error.localizedDescription)")
+             }
+         }
+     }
+     
+     @MainActor
+     func fetchCurrentUser() async throws {
+         guard let uid = Auth.auth().currentUser?.uid else {
+             throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User not authenticated"])
+         }
+         let snapshot = try await FirestoreConstants.UsersCollection.document(uid).getDocument()
+         self.currentUser = try snapshot.data(as: User.self)
+     }
+     
+     static func fetchUser(uid: String) async throws -> User {
+         let snapshot = try await FirestoreConstants.UsersCollection.document(uid).getDocument()
+         return try snapshot.data(as: User.self)
+     }
+     
+     static func fetchUsers(limit: Int? = nil) async throws -> [User] {
+         guard let currentUid = Auth.auth().currentUser?.uid else {
+             throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User not authenticated"])
+         }
+         let query = FirestoreConstants.UsersCollection
+         
+         let snapshot: QuerySnapshot
+         if let limit {
+             snapshot = try await query.limit(to: limit).getDocuments()
+         } else {
+             snapshot = try await query.getDocuments()
+         }
+         
+         return mapUsers(fromSnapshot: snapshot, currentUid: currentUid)
+     }
+     
+     static func fetchUser(withUid uid: String, completion: @escaping (Result<User, Error>) -> Void) {
+         FirestoreConstants.UsersCollection.document(uid).getDocument { snapshot, error in
+             if let error = error {
+                 completion(.failure(error))
+                 return
+             }
+             guard let user = try? snapshot?.data(as: User.self) else {
+                 completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to map user"])))
+                 return
+             }
+             completion(.success(user))
+         }
+     }
+     
+     private static func mapUsers(fromSnapshot snapshot: QuerySnapshot, currentUid: String) -> [User] {
+         return snapshot.documents
+             .compactMap({ try? $0.data(as: User.self) })
+             .filter({ $0.id != currentUid })
+     }
+ }
+
+ // MARK: - Update User Data
+
+ extension UserService {
+     @MainActor
+     func updateUserProfileImageUrl(_ profileImageUrl: String) async throws {
+         guard let userId = currentUser?.id else {
+             throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Current user ID is missing"])
+         }
+         self.currentUser?.profileImageUrl = profileImageUrl
+         try await FirestoreConstants.UsersCollection.document(userId).updateData([
+             "profileImageUrl": profileImageUrl
+         ])
+     }
+     
+     @MainActor
+     func updateLastActive() async throws {
+         guard let userId = currentUser?.id else {
+             throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Current user ID is missing"])
+         }
+         let now = Timestamp(date: Date())
+         try await FirestoreConstants.UsersCollection.document(userId).updateData([
+             "lastActive": now
+         ])
+     }
+ }
+
+ */
