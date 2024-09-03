@@ -61,7 +61,7 @@ struct ChatView: View {
             MessageInputView(messageText: $messageText, viewModel: viewModel)
         }
         .navigationBarBackButtonHidden()
-        .background(Color.theme.darkBlack)
+        .background(Color.theme.igChatBG)
         .onDisappear {
             viewModel.removeChatListener()
         }

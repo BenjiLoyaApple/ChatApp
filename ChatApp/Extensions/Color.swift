@@ -20,6 +20,11 @@ struct ColorTheme {
     let primaryGray = Color("PrimaryGray")
     let primaryGray2 = Color("PrimaryGray2")
     
+    
+    // chat
+    let igChatBG = Color("igChatBG")
+    let igChatViolet = Color("igChatViolet")
+    
     /// colors text & BG
     let darkWhite = Color("darkWhite")
     let darkBlack = Color("darkBlack")
@@ -29,11 +34,6 @@ struct ColorTheme {
     let moon = Color("Moon")
     let sun = Color("Sun")
     let themeBG = Color("ThemeBG")
-    
-    // Activity
-    let pink = Color("Pink")
-    let purple = Color("Purple")
-    
     
     let searchShadow = Color("searchShadow")
     
