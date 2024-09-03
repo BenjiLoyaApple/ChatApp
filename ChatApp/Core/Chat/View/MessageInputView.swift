@@ -59,6 +59,7 @@ struct MessageInputView: View {
                     // Открываем фото пикер
                     showPhotoPicker.toggle()
                 } else {
+                    // Отправляем сообщение
                     Task {
                         await viewModel.sendMessageAndClearState(messageText)
                         messageText = ""

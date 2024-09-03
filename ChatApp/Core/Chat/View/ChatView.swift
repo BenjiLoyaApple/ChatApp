@@ -28,17 +28,6 @@ struct ChatView: View {
             ScrollViewReader { proxy in
                 ScrollView {
                     LazyVStack {
-                        VStack {
-                            CircularProfileImageView(user: user, size: .large56)
-                            
-                            VStack(spacing: 4) {
-                                Text(user.username)
-                                    .font(.title3)
-                                    .fontWeight(.semibold)
-                                
-                            }
-                        }
-                        
                         ForEach(viewModel.messages.indices, id: \.self) { index in
                             ChatMessageCell(message: viewModel.messages[index],
                                             nextMessage: viewModel.nextMessage(forIndex: index))
@@ -75,24 +64,32 @@ struct ChatView: View {
     @ViewBuilder
     private func HeaderView() -> some View {
         VStack(spacing: 0) {
-            HStack(alignment: .center) {
-                Button("Back") {
+            HStack(alignment: .center, spacing: 30) {
+                
+                Button {
                     router.dismissScreen()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.subheadline)
+                        .foregroundColor(Color.theme.primaryText)
                 }
-                .font(.subheadline)
-                .foregroundColor(Color.theme.primaryText)
+                
+                HStack(spacing: 15) {
+                    CircularProfileImageView(user: user, size: .small34)
+                    
+                    Text(user.username)
+                        .font(.subheadline)
+                        .foregroundStyle(.primary.opacity(0.7))
+                }
                 
                 Spacer(minLength: 0)
-                
-                Spacer(minLength: 0)
-                
                 
             }
             .padding(.horizontal, 15)
-            .padding(.bottom, 10)
+        //    .padding(.bottom, 10)
             
-            Divider()
-                .offset(y: 8)
+         //   Divider()
+            //    .offset(y: 8)
         }
         .padding(.top, 10)
     }
