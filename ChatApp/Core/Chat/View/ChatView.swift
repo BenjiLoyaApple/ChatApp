@@ -79,15 +79,20 @@ struct ChatView: View {
                 HStack(spacing: 15) {
                     CircularProfileImageView(user: user, size: .small34)
                     
-                    VStack(alignment: .leading, spacing: 3) {
+                    VStack(alignment: .leading, spacing: 2) {
                         Text(user.username)
                             .font(.subheadline)
                             .foregroundStyle(.primary.opacity(0.7))
                         
-                        Text("Active 6m ago")
-                 //       Text(message.timestamp.timestampString())
-                            .font(.caption2)
-                            .foregroundStyle(.gray)
+                        if let lastActive = user.lastActive {
+                            Text("Active \(lastActive.timestampString()) ago")
+                                .font(.caption2)
+                                .foregroundStyle(.gray)
+                        } else {
+                            Text("Inactive")
+                                .font(.caption2)
+                                .foregroundStyle(.gray)
+                        }
                         
                     }
                     

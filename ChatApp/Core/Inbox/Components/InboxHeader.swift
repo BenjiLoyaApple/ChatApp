@@ -75,6 +75,7 @@ struct InboxHeader<ProfileImageView: View>: View {
             
             Divider()
                 .offset(y: 10)
+                .opacity(0.5)
         }
         .padding(.top, safeArea().top)
         .padding(.bottom, 10)

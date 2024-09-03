@@ -74,6 +74,7 @@ struct InboxCell<ProfileImageView: View>: View {
                 }
                 
                 Divider()
+                    .opacity(0.5)
                 
                 
             }

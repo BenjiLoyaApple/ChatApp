@@ -30,6 +30,9 @@ class ChatViewModel: ObservableObject {
         service.observeMessages { [weak self] messages in
             guard let self = self else { return }
             self.messages.append(contentsOf: messages)
+            Task {
+                try? await UserService.shared.updateLastActive()
+            }
         }
     }
     
