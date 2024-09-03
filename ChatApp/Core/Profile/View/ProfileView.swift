@@ -45,14 +45,18 @@ struct ProfileView: View {
     private func HeaderView() -> some View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
-                Button("Cancel") {
+                CustomChatButton(
+                    imageName: "chevron.left",
+                    font: .title2,
+                    foregroundStyle: Color.theme.primaryText,
+                    padding: 5
+                ) {
                     router.dismissScreen()
                     Task {
                         try? await viewModel.loadCurrentUser()
                     }
                 }
-                .font(.subheadline)
-                .foregroundColor(Color.theme.primaryText)
+                
                 
                 Spacer(minLength: 0)
                 
@@ -61,23 +65,25 @@ struct ProfileView: View {
                 
                 Spacer(minLength: 0)
                 
-                Button("Done") {
+                CustomChatButton(
+                    text: "Done",
+                    font: .subheadline,
+                    foregroundStyle: Color.theme.primaryText,
+                    padding: 5
+                ) {
                     router.dismissScreen()
                     Task {
                         try await viewModel.updateUserData()
                         try? await viewModel.loadCurrentUser()
                     }
                 }
-                .font(.subheadline)
-                .fontWeight(.semibold)
-                .foregroundColor(Color.theme.primaryText)
                 
             }
             .padding(.horizontal, 15)
-            .padding(.bottom, 5)
             
             Divider()
                 .offset(y: 10)
+                .opacity(0.5)
         }
         .padding(.vertical)
     }

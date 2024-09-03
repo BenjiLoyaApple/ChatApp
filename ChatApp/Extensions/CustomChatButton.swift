@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CustomChatButton: View {
-    
     var imageName: String?
+    var text: String?
     var font: Font? = .title3
     var foregroundStyle: Color? = .primary
     var padding: CGFloat? = 10
@@ -19,12 +19,18 @@ struct CustomChatButton: View {
         Button(action: {
             onButtonPressed?()
         }) {
-            Image(systemName: imageName ?? "")
-                .font(font)
-                .foregroundStyle(foregroundStyle ?? .primary)
-                .padding(padding ?? 10)
-                .background(Color.black.opacity(0.001))
-                .clipShape(Circle())
+            Group {
+                if let imageName = imageName, !imageName.isEmpty {
+                    Image(systemName: imageName)
+                } else if let text = text, !text.isEmpty {
+                    Text(text)
+                }
+            }
+            .font(font)
+            .foregroundStyle(foregroundStyle ?? .primary)
+            .padding(padding ?? 10)
+            .background(Color.black.opacity(0.001))
+            .clipShape(Capsule())
         }
     }
 }
@@ -43,7 +49,7 @@ struct CustomChatButton: View {
         )
         
         CustomChatButton(
-            imageName: "gamecontroller",
+            text: "Done",
             foregroundStyle: .purple
         )
     }

@@ -232,6 +232,13 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		E47FADFE2C877E120073D406 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		E4C721A52C875CFD00A79BB2 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,6 +545,7 @@
 		E4FDFAE62A83F5F60058898E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E47FADFE2C877E120073D406 /* Components */,
 				E4FDFAE82A83F62B0058898E /* ViewModel */,
 				E4FDFAE72A83F61F0058898E /* View */,
 			);

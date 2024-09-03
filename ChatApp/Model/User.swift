@@ -31,10 +31,10 @@ struct User: Identifiable, Codable, Hashable {
         return userId ?? UUID().uuidString
     }
     
-    var firstName: String {
-        let components = username.components(separatedBy: " ")
-        return components.first ?? username
-    }
+//    var firstName: String {
+//        let components = username.components(separatedBy: " ")
+//        return components.first ?? username
+//    }
 }
 
 extension User: Equatable {
