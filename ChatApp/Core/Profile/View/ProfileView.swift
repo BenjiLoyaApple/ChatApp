@@ -46,7 +46,7 @@ struct ProfileView: View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
                 CustomChatButton(
-                    imageName: "chevron.left",
+                    imageName: .systemName("chevron.left"),
                     font: .title2,
                     foregroundStyle: Color.theme.primaryText,
                     padding: 5

@@ -72,7 +72,7 @@ struct ChatView: View {
             HStack(alignment: .center, spacing: 20) {
                 
                 CustomChatButton(
-                    imageName: "chevron.left",
+                    imageName: .systemName("chevron.left"),
                     font: .title2,
                     foregroundStyle: Color.theme.primaryText,
                     padding: 5

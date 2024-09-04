@@ -31,7 +31,7 @@ struct MessageInputView: View {
                             )
 
                         CustomChatButton(
-                            imageName: "xmark.circle.fill",
+                            imageName: .systemName("xmark.circle.fill"),
                             font: .callout,
                             foregroundStyle: .gray.opacity(0.8),
                             padding: 5,
@@ -48,39 +48,83 @@ struct MessageInputView: View {
                         .padding(12)
                         .padding(.leading, 4)
                         .padding(.trailing, 48)
-                        .background(Color.theme.secondaryBackground)
+                        .background {
+                            TransparentBlurView(removeAllFilters: true)
+                                .blur(radius: 50, opaque: true)
+                                .background(Color.theme.messageImputBG.opacity(0.5))
+                        }
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                         .font(.subheadline)
+                    
+//                    if !messageText.isEmpty {
+//                        Button(action: {
+//                            messageText = ""
+//                        }) {
+//                            Image(systemName: "xmark.circle.fill")
+//                                .foregroundColor(.gray.opacity(0.8))
+//                                .padding(.trailing, 16)
+//                        }
+//                    }
+                    
                 }
             }
 
-            Button {
+            HStack(spacing: 0) {
                 if messageText.isEmpty && viewModel.messageImage == nil {
-                    // Открываем фото пикер
-                    showPhotoPicker.toggle()
-                } else {
-                    // Отправляем сообщение
-                    Task {
-                        await viewModel.sendMessageAndClearState(messageText)
-                        messageText = ""
-                    }
-                }
-            } label: {
-                MorphingSymbolView(
-                    symbol: messageText.isEmpty && viewModel.messageImage == nil ? "photo.on.rectangle" : "paperplane.fill",
-                    config: .init(
-                        font: .title2,
-                        frame: .init(width: 50, height: 50),
-                        radius: 2,
-                        foregroudColor: .primary,
-                        keyFrameDuration: 0.3,
-                        symbolAnimation: .smooth(duration: 0.3, extraBounce: 0)
+                    
+                    CustomChatButton(
+                        imageName: .assetName("gallery"),
+                        font: .system(size: 10),
+                        foregroundStyle: .primary,
+                        padding: 12,
+                        frame: CGSize(width: 22, height: 22),
+                        onButtonPressed: {
+                            showPhotoPicker.toggle()
+                        }
                     )
-                )
-                .background(Color.clear)
-                .clipShape(.circle)
-            } 
+                    
+                    CustomChatButton(
+                        imageName: .systemName("mic.fill"),
+                        text: "",
+                        font: .title3,
+                        foregroundStyle: .primary,
+                        padding: 5,
+                        onButtonPressed: {
+                            
+                        }
+                    )
+                }
+                
+                Button {
+                    if messageText.isEmpty && viewModel.messageImage == nil {
+                        // Открываем фото пикер
+                      //  showPhotoPicker.toggle()
+                    } else {
+                        // Отправляем сообщение
+                        Task {
+                            await viewModel.sendMessageAndClearState(messageText)
+                            messageText = ""
+                        }
+                    }
+                    
+                } label: {
+                    MorphingSymbolView(
+                        symbol: messageText.isEmpty && viewModel.messageImage == nil ? "circle.square" : "paperplane.fill",
+                        config: .init(
+                            font: .title2,
+                            frame: .init(width: 50, height: 50),
+                            radius: 2,
+                            foregroudColor: .primary,
+                            keyFrameDuration: 0.3,
+                            symbolAnimation: .smooth(duration: 0.3, extraBounce: 0)
+                        )
+                    )
+                    .clipShape(.circle)
+                }
+            }
+            .padding(.trailing, 10)
         }
+        .background(Color.theme.igChatBG)
         .photosPicker(
             isPresented: $showPhotoPicker,
             selection: Binding<[PhotosPickerItem]>(
@@ -95,13 +139,13 @@ struct MessageInputView: View {
             selectionBehavior: .ordered
         )
         .overlay {
+            // когда выбрано фото
             if viewModel.messageImage != nil {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color(.systemGray4), lineWidth: 0.7)
+                    .stroke(Color(.gray), lineWidth: 0.5)
             }
         }
         .padding(.horizontal, 10)
-       // .padding(.bottom, 8)
     }
 }
 

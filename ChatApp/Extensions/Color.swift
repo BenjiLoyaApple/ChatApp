@@ -24,6 +24,7 @@ struct ColorTheme {
     // chat
     let igChatBG = Color("igChatBG")
     let igChatViolet = Color("igChatViolet")
+    let messageImputBG = Color("messageImputBG")
     
     /// colors text & BG
     let darkWhite = Color("darkWhite")
