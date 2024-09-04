@@ -44,10 +44,16 @@ struct ChatView: View {
                     }
                 }
             }
-            
-            Spacer()
-            
-            MessageInputView(messageText: $messageText, viewModel: viewModel)
+            .overlay(alignment: .bottom) {
+                MessageInputView(messageText: $messageText, viewModel: viewModel)
+                    .background(
+                        Color.theme.igChatBG
+                            .padding(.bottom, -20)
+                            .offset(y: 25)
+                    )
+            }
+            .scrollDismissesKeyboard(.immediately)
+            .scrollIndicators(.hidden)
         }
         .navigationBarBackButtonHidden()
         .background(Color.theme.igChatBG)
@@ -57,7 +63,6 @@ struct ChatView: View {
         .onChange(of: viewModel.messages, perform: { _ in
             Task { try await viewModel.updateMessageStatusIfNecessary()}
         })
-        
     }
     
     // MARK: - Header
@@ -65,7 +70,6 @@ struct ChatView: View {
     private func HeaderView() -> some View {
         VStack(spacing: 0) {
             HStack(alignment: .center, spacing: 20) {
-                
                 
                 CustomChatButton(
                     imageName: "chevron.left",
@@ -93,13 +97,9 @@ struct ChatView: View {
                                 .font(.caption2)
                                 .foregroundStyle(.gray)
                         }
-                        
                     }
-                    
                 }
-                
                 Spacer(minLength: 0)
-                
             }
             .padding(.horizontal, 15)
             .padding(.bottom, 10)

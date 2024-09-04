@@ -37,6 +37,7 @@
 		E474D8592C839C8C00FAA4DA /* ThemeChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8582C839C8C00FAA4DA /* ThemeChangeView.swift */; };
 		E474D85B2C83A2C900FAA4DA /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D85A2C83A2C900FAA4DA /* CustomButton.swift */; };
 		E474D85F2C844EBA00FAA4DA /* InboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D85E2C844EBA00FAA4DA /* InboxCell.swift */; };
+		E47FAE082C881F990073D406 /* TransparentBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FAE072C881F990073D406 /* TransparentBlurView.swift */; };
 		E4C721A62C875CFD00A79BB2 /* AuthenticationFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C721A42C875CFD00A79BB2 /* AuthenticationFormProtocol.swift */; };
 		E4F2AE0A2C85EF1900FD523A /* SettingsOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE022C85EF1900FD523A /* SettingsOptions.swift */; };
 		E4F2AE0C2C85EF1900FD523A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE052C85EF1900FD523A /* SettingsView.swift */; };
@@ -109,6 +110,7 @@
 		E474D8582C839C8C00FAA4DA /* ThemeChangeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeChangeView.swift; sourceTree = "<group>"; };
 		E474D85A2C83A2C900FAA4DA /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		E474D85E2C844EBA00FAA4DA /* InboxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxCell.swift; sourceTree = "<group>"; };
+		E47FAE072C881F990073D406 /* TransparentBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentBlurView.swift; sourceTree = "<group>"; };
 		E4C721A42C875CFD00A79BB2 /* AuthenticationFormProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationFormProtocol.swift; sourceTree = "<group>"; };
 		E4F2AE022C85EF1900FD523A /* SettingsOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsOptions.swift; sourceTree = "<group>"; };
 		E4F2AE052C85EF1900FD523A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 		E4FDFAD22A82A5470058898E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E47FAE072C881F990073D406 /* TransparentBlurView.swift */,
 				E4FDFAF22A854DB60058898E /* CircularProfileImageView.swift */,
 				E46724CD2A8D36DC00CD865B /* Color.swift */,
 				E474D85A2C83A2C900FAA4DA /* CustomButton.swift */,
@@ -738,6 +741,7 @@
 				E4FDFAF62A8556850058898E /* ChatView.swift in Sources */,
 				E474D8342C825B1800FAA4DA /* IntrosView.swift in Sources */,
 				E46724C62A8D350100CD865B /* LPLinkViewRepresented.swift in Sources */,
+				E47FAE082C881F990073D406 /* TransparentBlurView.swift in Sources */,
 				E46724CE2A8D36DC00CD865B /* Color.swift in Sources */,
 				E4F2AE142C86150900FD523A /* MessageImageView.swift in Sources */,
 				E474D8322C825AB000FAA4DA /* Page.swift in Sources */,
