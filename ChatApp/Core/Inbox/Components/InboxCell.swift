@@ -20,7 +20,7 @@ struct InboxCell<ProfileImageView: View>: View {
     var showChatTapped: (() -> Void)? = nil
     
     var body: some View {
-        HStack(spacing: 6) {
+        HStack(spacing: 10) {
             // Отображение изображения
             profileImage
             

@@ -40,7 +40,7 @@ struct NewMessageView: View {
             LazyVStack {
                 ForEach(viewModel.filteredUsers) { user in
                         HStack(spacing: 15) {
-                            CircularProfileImageView(user: user, size: .medium46)
+                            CircularProfileImageView(user: user, size: .medium50)
                             
                             Text(user.username)
                                 .font(.subheadline)
@@ -48,7 +48,8 @@ struct NewMessageView: View {
                             
                             Spacer()
                         }
-                        .padding(.vertical, 2)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical, 5)
                         .onTapGesture {
                             selectedUser = user
                             router.showScreen(.push) { _ in

@@ -10,7 +10,7 @@ import SwiftUI
 struct Test: View {
     
     var body: some View {
-        HStack(spacing: 6) {
+        HStack(spacing: 10) {
             // Отображение переданного изображения
             Circle()
                 .frame(width: 50, height: 50)
@@ -57,7 +57,7 @@ struct Test: View {
                     .overlay {
                         // Текст сообщения
                         VStack (spacing: 2) {
-                            Text("Hello \nHow are you?")
+                            Text("How are you?")
                             
                             Spacer(minLength: 0)
                         }
