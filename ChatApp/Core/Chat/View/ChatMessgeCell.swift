@@ -82,10 +82,16 @@ struct ChatMessageCell: View {
     }
 }
 
-
-
 struct ChatMessageCell_Previews: PreviewProvider {
     static var previews: some View {
-        ChatMessageCell(message: dev.messages[0], nextMessage: dev.messages[1])
+        let messages = DeveloperPreview.shared.messages
+        
+        VStack(spacing: 20) {
+            ChatMessageCell(message: messages[0], nextMessage: messages[1])
+                .previewLayout(.sizeThatFits)
+            
+            ChatMessageCell(message: messages[1], nextMessage: nil)
+                .previewLayout(.sizeThatFits)
+        }
     }
 }

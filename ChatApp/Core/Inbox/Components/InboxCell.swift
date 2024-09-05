@@ -91,41 +91,35 @@ struct InboxCell<ProfileImageView: View>: View {
         }
         .padding(.top, 8)
         
-        
-        
-        
-
     }
 }
 
 
-
-//#Preview {
-////    // Используем подставные данные для превью
-//    MessageCell(
-//        profileImage: Image(systemName: "person.crop.circle").resizable().frame(width: 40, height: 40),
-//        username: "benjiloya",
-//        timestamp: "10 min",
-//        textMessage: "Hello",
-//        actionButtonTapped: {
-//            print("Action button tapped")
-//        }
-//    )
-//    .padding()
-//    .previewLayout(.sizeThatFits)
-//}
-
-
-/*
- MessageCell(
-     viewModel: viewModel,
-     message: recentMessage,
-     profileImage: CircularProfileImageView(user: user, size: .small),
-     username: user.username,
-     timestamp: recentMessage.timestamp.timestampString(),
-     textMessage: recentMessage.text,
-     actionButtonTapped: {
-         Task { try await viewModel.deleteMessage(recentMessage) }
-     }
- )
- */
+struct InboxCell_Previews: PreviewProvider {
+    static var previews: some View {
+        let messages = DeveloperPreview.shared.messages
+        let user = DeveloperPreview.shared.user
+        
+        return VStack {
+            InboxCell(
+                message: messages[0],
+                profileImage: CircularProfileImageView(user: user, size: .medium50),
+                username: user.username,
+                timestamp: "2h ago",
+                textMessage: messages[0].text
+            )
+            .previewLayout(.sizeThatFits)
+            .padding()
+            
+            InboxCell(
+                message: messages[1],
+                profileImage: CircularProfileImageView(user: user, size: .medium50),
+                username: user.username,
+                timestamp: "1h ago",
+                textMessage: messages[1].text
+            )
+            .previewLayout(.sizeThatFits)
+            .padding()
+        }
+    }
+}
