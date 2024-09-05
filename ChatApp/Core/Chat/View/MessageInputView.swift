@@ -16,6 +16,7 @@ struct MessageInputView: View {
     
     var body: some View {
         ZStack(alignment: .trailing) {
+            
             HStack {
                 if let image = viewModel.messageImage {
                     ZStack(alignment: .topTrailing) {
@@ -75,7 +76,6 @@ struct MessageInputView: View {
                     CustomChatButton(
                         imageName: .assetName("gallery"),
                         font: .system(size: 10),
-                        foregroundStyle: .primary,
                         padding: 12,
                         frame: CGSize(width: 22, height: 22),
                         onButtonPressed: {
@@ -124,7 +124,8 @@ struct MessageInputView: View {
             }
             .padding(.trailing, 10)
         }
-        .background(Color.theme.igChatBG)
+        .background(viewModel.messageImage != nil ? Color.theme.igChatBG : Color.clear)
+                
         .photosPicker(
             isPresented: $showPhotoPicker,
             selection: Binding<[PhotosPickerItem]>(

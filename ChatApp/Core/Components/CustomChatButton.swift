@@ -33,7 +33,8 @@ struct CustomChatButton: View {
                     case .assetName(let name):
                         Image(name)
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            .renderingMode(.template)
+                            .aspectRatio(contentMode: .fill)
                     }
                 } else if let text = text, !text.isEmpty {
                     Text(text)
