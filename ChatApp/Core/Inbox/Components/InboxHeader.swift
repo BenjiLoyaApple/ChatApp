@@ -16,7 +16,6 @@ enum SwipeDirection {
 }
 
 struct InboxHeader<ProfileImageView: View>: View {
-  //  var user: User?
     @Binding var headerHeight: CGFloat
     @Binding var headerOffset: CGFloat
 
@@ -44,31 +43,25 @@ struct InboxHeader<ProfileImageView: View>: View {
                 
                 HStack(spacing: 2) {
                     // Search
-                    Button(action: {
-                        searchTapped?()
-                    }) {
-                        Image(systemName: "magnifyingglass")
-                            .resizable()
-                            .frame(width: 22, height: 22)
-                            .foregroundColor(.primary)
-                            .padding(10)
-                            .background(Color.black.opacity(0.001))
-                            .clipShape(Circle())
-                    }
+                    CustomChatButton(
+                        imageName: .systemName("magnifyingglass"),
+                        font: .title2,
+                        foregroundStyle: .primary,
+                        padding: 10,
+                        onButtonPressed: {
+                            searchTapped?()
+                        }
+                    )
                     
-                    // New Chat
-                    Button(action: {
-                        newChatTapped?()
-                    }) {
-                        Image("edit")
-                            .renderingMode(.template)
-                            .resizable()
-                            .frame(width: 26, height: 26)
-                            .foregroundColor(.primary)
-                            .padding(10)
-                            .background(Color.black.opacity(0.001))
-                            .clipShape(Circle())
-                    }
+                    CustomChatButton(
+                        imageName: .assetName("pen"),
+                        foregroundStyle: .primary,
+                        padding: 10,
+                        frame: CGSize(width: 23, height: 23),
+                        onButtonPressed: {
+                            newChatTapped?()
+                        }
+                    )
                 }
             }
             .padding(.horizontal, 15)

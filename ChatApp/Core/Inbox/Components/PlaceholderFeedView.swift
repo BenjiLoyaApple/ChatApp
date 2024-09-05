@@ -12,7 +12,7 @@ struct PlaceholderFeedView: View {
         VStack(spacing: 10) {
             HStack(alignment: .top, spacing: 6) {
                 Circle()
-                    .frame(width: 40, height: 40)
+                    .frame(width: 50, height: 50)
                     .foregroundStyle(.gray.opacity(0.25))
                 
                 VStack(alignment: .leading, spacing: 2) {
@@ -21,14 +21,8 @@ struct PlaceholderFeedView: View {
                            // .textScale(.secondary)
                             .fontWeight(.semibold)
                         
-                        Text("2w")
-                            .textScale(.secondary)
-                            .fontWeight(.light)
-                            .foregroundStyle(.secondary)
-                        
                         Spacer(minLength: 0)
                         
-                        Image(systemName: "ellipsis")
                     }
                     
                     VStack(alignment: .leading, spacing: 2) {

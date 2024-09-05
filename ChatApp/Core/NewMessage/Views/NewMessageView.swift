@@ -18,16 +18,22 @@ struct NewMessageView: View {
         VStack(alignment: .leading, spacing: 0) {
             header
             Divider()
+                .opacity(0.5)
             
         ScrollView {
-            TextField("To: ", text: $viewModel.searchText)
-                .frame(height: 44)
-                .padding(.leading)
-                .background(Color.gray.opacity(0.1))
             
-            Text("CONTACTS")
-                .foregroundColor(.gray)
-                .font(.footnote)
+            HStack(spacing: 10) {
+                Text("To:")
+                
+                TextField("Search ", text: $viewModel.searchText)
+            }
+            .foregroundStyle(.gray.opacity(0.8))
+            .frame(height: 50)
+            .padding(.leading)
+            .background(Color.gray.opacity(0.001))
+            
+            Text("Suggested")
+                .fontWeight(.semibold)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
             
@@ -85,78 +91,3 @@ struct NewMessageView_Previews: PreviewProvider {
         NewMessageView(selectedUser: .constant(nil))
     }
 }
-
-
-
-
-/*
- import SwiftUI
- import SwiftfulRouting
-
- struct NewMessageView: View {
-     @Environment(\.router) var router
-     @Environment(\.dismiss) var dismiss
-     @StateObject var viewModel = NewMessageViewModel()
-     @Binding var selectedUser: User?
-     
-     var body: some View {
-         NavigationStack {
-             ScrollView {
-                 TextField("To: ", text: $viewModel.searchText)
-                     .frame(height: 44)
-                     .padding(.leading)
-                     .background(Color.gray.opacity(0.1))
-                 
-                 Text("CONTACTS")
-                     .foregroundColor(.gray)
-                     .font(.footnote)
-                     .frame(maxWidth: .infinity, alignment: .leading)
-                     .padding()
-                 
-                 LazyVStack {
-                     ForEach(viewModel.filteredUsers) { user in
-                         VStack {
-                             HStack(spacing: 15) {
-                                 CircularProfileImageView(user: user, size: .medium)
-
-                                 Text(user.username)
-                                     .font(.subheadline)
-                                     .fontWeight(.semibold)
-
-                                 Spacer()
-                             }
-                             .onTapGesture {
-                                 dismiss()
-                                 selectedUser = user
-                             }
-                             
-                             Divider()
-                                 .padding(.leading, 60)
-                                 .padding(.trailing)
-                         }
-                         .padding(.leading)
-                     }
-                 }
-             }
-             .navigationTitle("New Message")
-             .navigationBarTitleDisplayMode(.inline)
-             .toolbar {
-                 ToolbarItem(placement: .navigationBarLeading) {
-                     Button("Cancel") {
-                         dismiss()
-                     }
-                     .foregroundColor(Color.theme.primaryText)
-                 }
-             }
-         }
-         .background(Color.theme.darkBlack)
-     }
- }
-
- struct NewMessageView_Previews: PreviewProvider {
-     static var previews: some View {
-         NewMessageView(selectedUser: .constant(nil))
-     }
- }
-
- */

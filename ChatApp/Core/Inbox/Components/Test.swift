@@ -1,50 +1,43 @@
 //
-//  PostHeaderView.swift
+//  Test.swift
 //  ChatApp
 //
-//  Created by Benji Loya on 01.09.2024.
+//  Created by Benji Loya on 05.09.2024.
 //
 
 import SwiftUI
-import SwiftfulUI
 
-struct InboxCell<ProfileImageView: View>: View {
-    
-    var message: Message = DeveloperPreview.shared.messages[0]
-    
-    let profileImage: ProfileImageView
-    let username: String
-    let timestamp: String
-    let textMessage: String?
-    var actionButtonTapped: (() -> Void)? = nil
-    var showChatTapped: (() -> Void)? = nil
+struct Test: View {
     
     var body: some View {
         HStack(spacing: 6) {
-            // Отображение изображения
-            profileImage
+            // Отображение переданного изображения
+            Circle()
+                .frame(width: 50, height: 50)
             
             VStack(alignment: .leading, spacing: 0) {
+                
+                Divider()
+                    .offset(y: 18)
+                
                 HStack(alignment: .center, spacing: 10) {
                     // имя юзера
-                    if let user = message.user {
-                        Text(username)
+                        Text("username")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                    }
                     
                     // Дата
-                    Text(message.timestamp.timestampString())
+                    Text("10 min")
                         .textScale(.secondary)
                         .fontWeight(.light)
                         .foregroundStyle(.secondary.opacity(0.7))
                     
                     // прочнено - или нет
-                    if !message.read && !message.isFromCurrentUser {
                         Circle()
                             .fill(Color.theme.primaryBlue)
                             .frame(width: 6, height: 6)
-                    }
+                        //    .offset(y: 9)
+                    
                     
                     Spacer(minLength: 0)
                     
@@ -54,7 +47,7 @@ struct InboxCell<ProfileImageView: View>: View {
                         .background(Color.black.opacity(0.001))
                         .clipShape(Circle())
                         .asButton(.press) {
-                            actionButtonTapped?()
+                  //          actionButtonTapped?()
                         }
                 }
                 
@@ -64,9 +57,7 @@ struct InboxCell<ProfileImageView: View>: View {
                     .overlay {
                         // Текст сообщения
                         VStack (spacing: 2) {
-                            if let textMessage {
-                                Text("\(message.isFromCurrentUser ? "You: \(message.text)" : message.text)")
-                            }
+                            Text("Hello \nHow are you?")
                             
                             Spacer(minLength: 0)
                         }
@@ -77,7 +68,7 @@ struct InboxCell<ProfileImageView: View>: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(Color.red.opacity(0.001))
                         .asButton(.press) {
-                             showChatTapped?()
+                            // showChatTapped?()
                         }
                     }
                 
@@ -90,42 +81,15 @@ struct InboxCell<ProfileImageView: View>: View {
             .padding(.leading, 5)
         }
         .padding(.top, 8)
-        
-        
-        
-        
 
     }
 }
 
-
-
-//#Preview {
-////    // Используем подставные данные для превью
-//    MessageCell(
-//        profileImage: Image(systemName: "person.crop.circle").resizable().frame(width: 40, height: 40),
-//        username: "benjiloya",
-//        timestamp: "10 min",
-//        textMessage: "Hello",
-//        actionButtonTapped: {
-//            print("Action button tapped")
-//        }
-//    )
-//    .padding()
-//    .previewLayout(.sizeThatFits)
-//}
-
-
-/*
- MessageCell(
-     viewModel: viewModel,
-     message: recentMessage,
-     profileImage: CircularProfileImageView(user: user, size: .small),
-     username: user.username,
-     timestamp: recentMessage.timestamp.timestampString(),
-     textMessage: recentMessage.text,
-     actionButtonTapped: {
-         Task { try await viewModel.deleteMessage(recentMessage) }
-     }
- )
- */
+#Preview {
+    VStack {
+        Test()
+        Test()
+        Test()
+    }
+    .padding(.horizontal)
+}
