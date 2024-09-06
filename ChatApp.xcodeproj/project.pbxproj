@@ -245,6 +245,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		E47FAE0F2C8B3FF80073D406 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E4FDFAF92A855D2D0058898E /* ChatBubble.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		E4C721A52C875CFD00A79BB2 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,7 +307,6 @@
 		E4F3B0402A879F5700CA37ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E4F2AE132C86150900FD523A /* MessageImageView.swift */,
 				E4FDFAE42A83F17D0058898E /* NewMessageView.swift */,
 			);
 			path = Views;
@@ -316,10 +323,9 @@
 		E4F3B0482A87AE8100CA37ED /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E4FDFAF92A855D2D0058898E /* ChatBubble.swift */,
 				E4FDFAF72A8559C80058898E /* ChatMessgeCell.swift */,
-				E4FDFAF52A8556850058898E /* ChatView.swift */,
 				E46724BE2A8D344B00CD865B /* MessageInputView.swift */,
+				E4FDFAF52A8556850058898E /* ChatView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -439,8 +445,8 @@
 			isa = PBXGroup;
 			children = (
 				E474D8372C825BD100FAA4DA /* Components */,
-				E46724BB2A8D332200CD865B /* Model */,
 				E4FDFB0B2A867AC40058898E /* Service */,
+				E46724BB2A8D332200CD865B /* Model */,
 				E4FDFB0A2A867AC00058898E /* ViewModel */,
 				E4FDFACF2A82A53D0058898E /* View */,
 			);
@@ -450,8 +456,8 @@
 		E4FDFAD12A82A5440058898E /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				E4FDFB122A86998D0058898E /* View */,
 				E4FDFB132A8699970058898E /* ViewModel */,
+				E4FDFB122A86998D0058898E /* View */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -492,15 +498,16 @@
 		E4FDFAD52A82A5500058898E /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				E4FDFADE2A83E9F50058898E /* ActiveNow */,
-				E4FDFAD02A82A5410058898E /* Auth */,
-				E4FDFAF42A8551120058898E /* Chat */,
 				E4FDFAF12A854D450058898E /* Components */,
+				E4FDFAD02A82A5410058898E /* Auth */,
+				E4FDFADE2A83E9F50058898E /* ActiveNow */,
+				E4FDFAF42A8551120058898E /* Chat */,
 				E4FDFADB2A83E7E80058898E /* Inbox */,
+				E46724C02A8D34BB00CD865B /* LinkPreviews */,
 				E4FDFAE32A83F1150058898E /* NewMessage */,
-				E4F2AE092C85EF1900FD523A /* Settings */,
 				E4FDFAE62A83F5F60058898E /* Profile */,
 				E4FDFAD12A82A5440058898E /* Root */,
+				E4F2AE092C85EF1900FD523A /* Settings */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -527,8 +534,8 @@
 		E4FDFADE2A83E9F50058898E /* ActiveNow */ = {
 			isa = PBXGroup;
 			children = (
-				E4F3B0572A88151A00CA37ED /* View */,
 				E4F3B0582A88152600CA37ED /* ViewModel */,
+				E4F3B0572A88151A00CA37ED /* View */,
 			);
 			path = ActiveNow;
 			sourceTree = "<group>";
@@ -536,8 +543,8 @@
 		E4FDFAE32A83F1150058898E /* NewMessage */ = {
 			isa = PBXGroup;
 			children = (
-				E4F3B0402A879F5700CA37ED /* Views */,
 				E4F3B0412A879F6500CA37ED /* ViewModel */,
+				E4F3B0402A879F5700CA37ED /* Views */,
 			);
 			path = NewMessage;
 			sourceTree = "<group>";
@@ -574,10 +581,10 @@
 				E4FDFAF22A854DB60058898E /* CircularProfileImageView.swift */,
 				E474D85A2C83A2C900FAA4DA /* CustomButton.swift */,
 				E4F2AE0F2C860B2B00FD523A /* CustomChatButton.swift */,
-				E46724C02A8D34BB00CD865B /* LinkPreviews */,
 				E474D8352C825B3E00FAA4DA /* MorphingSymbolView.swift */,
 				E474D8542C839C5100FAA4DA /* ShimmerEffect.swift */,
 				E47FAE072C881F990073D406 /* TransparentBlurView.swift */,
+				E4F2AE132C86150900FD523A /* MessageImageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -585,9 +592,10 @@
 		E4FDFAF42A8551120058898E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				E47FAE0F2C8B3FF80073D406 /* Components */,
 				E4F3B04C2A87BDF600CA37ED /* Service */,
-				E4F3B0482A87AE8100CA37ED /* View */,
 				E4F3B0492A87AE8F00CA37ED /* ViewModel */,
+				E4F3B0482A87AE8100CA37ED /* View */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
