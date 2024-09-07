@@ -48,7 +48,7 @@ class DeveloperPreview {
                 messageId: "2",
                 fromId: "67890",
                 toId: "12345",
-                text: "Hi! Here's another test message.",
+                text: "Hi! Here's another test message.\nstring test message.",
                 timestamp: Timestamp(),
                 user: user,
                 read: true,

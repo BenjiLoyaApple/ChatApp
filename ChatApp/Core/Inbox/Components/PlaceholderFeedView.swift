@@ -36,10 +36,16 @@ struct PlaceholderFeedView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 15)
-        .padding(.bottom, 50)
+        .padding(.bottom, 20)
     }
 }
 
 #Preview {
-    PlaceholderFeedView()
+    VStack {
+        PlaceholderFeedView()
+        PlaceholderFeedView()
+        PlaceholderFeedView()
+        PlaceholderFeedView()
+        PlaceholderFeedView()
+    }
 }

@@ -23,6 +23,11 @@ struct InboxCell<ProfileImageView: View>: View {
         HStack(spacing: 10) {
             // Отображение изображения
             profileImage
+                .onTapGesture {
+             //       router.showScreen(.push) { _ in
+                        
+            //        }
+                }
             
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .center, spacing: 10) {
@@ -108,8 +113,6 @@ struct InboxCell_Previews: PreviewProvider {
                 timestamp: "2h ago",
                 textMessage: messages[0].text
             )
-            .previewLayout(.sizeThatFits)
-            .padding()
             
             InboxCell(
                 message: messages[1],
@@ -118,8 +121,17 @@ struct InboxCell_Previews: PreviewProvider {
                 timestamp: "1h ago",
                 textMessage: messages[1].text
             )
-            .previewLayout(.sizeThatFits)
-            .padding()
+            
+            InboxCell(
+                message: messages[1],
+                profileImage: CircularProfileImageView(user: user, size: .medium50),
+                username: user.username,
+                timestamp: "1h ago",
+                textMessage: messages[1].text
+            )
         }
+        .padding(.horizontal)
+        .previewLayout(.sizeThatFits)
+        
     }
 }

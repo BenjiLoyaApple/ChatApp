@@ -62,7 +62,7 @@ struct InboxView: View {
                     
                     ActiveNowView()
                         .padding(.bottom)
-                        .padding(.horizontal)
+                        .safeAreaPadding(.leading)
                         .onTapGesture {
                             if let user = selectedUser {
                                 router.showScreen(.push) { _ in
