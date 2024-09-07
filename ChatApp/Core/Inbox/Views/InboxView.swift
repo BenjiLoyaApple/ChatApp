@@ -131,7 +131,7 @@ struct InboxView: View {
                                 profileImage: CircularProfileImageView(user: user, size: .medium50),
                                 username: user.username,
                                 timestamp: recentMessage.timestamp.timestampString(),
-                                textMessage: recentMessage.text,
+                                textMessage: recentMessage.caption,
                                 actionButtonTapped: {
                                     Task { try await viewModel.deleteMessage(recentMessage) }
                                 },

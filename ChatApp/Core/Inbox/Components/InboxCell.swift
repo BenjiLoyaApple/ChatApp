@@ -70,7 +70,7 @@ struct InboxCell<ProfileImageView: View>: View {
                         // Текст сообщения
                         VStack (spacing: 2) {
                             if let textMessage {
-                                Text("\(message.isFromCurrentUser ? "You: \(message.text)" : message.text)")
+                                Text("\(message.isFromCurrentUser ? "You: \(message.caption)" : message.caption)")
                             }
                             
                             Spacer(minLength: 0)
@@ -111,7 +111,7 @@ struct InboxCell_Previews: PreviewProvider {
                 profileImage: CircularProfileImageView(user: user, size: .medium50),
                 username: user.username,
                 timestamp: "2h ago",
-                textMessage: messages[0].text
+                textMessage: messages[0].caption
             )
             
             InboxCell(
@@ -119,7 +119,7 @@ struct InboxCell_Previews: PreviewProvider {
                 profileImage: CircularProfileImageView(user: user, size: .medium50),
                 username: user.username,
                 timestamp: "1h ago",
-                textMessage: messages[1].text
+                textMessage: messages[1].caption
             )
             
             InboxCell(
@@ -127,7 +127,7 @@ struct InboxCell_Previews: PreviewProvider {
                 profileImage: CircularProfileImageView(user: user, size: .medium50),
                 username: user.username,
                 timestamp: "1h ago",
-                textMessage: messages[1].text
+                textMessage: messages[1].caption
             )
         }
         .padding(.horizontal)

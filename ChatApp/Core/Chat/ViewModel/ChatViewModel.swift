@@ -10,8 +10,12 @@ import Firebase
 import FirebaseFirestoreSwift
 import PhotosUI
 import SwiftUI
+import LinkPresentation
 
 class ChatViewModel: ObservableObject {
+    @Published var linkMetaData: LinkMetadataWrapper?
+    @Published var previewLoading = false
+
     @Published var messages = [Message]()
     @Published var selectedItem: PhotosPickerItem? {
         didSet { Task { try await loadImage() } }
@@ -42,18 +46,59 @@ class ChatViewModel: ObservableObject {
             if messageImage != nil {
                 // Отправляем изображение
                 try await sendMessage("")
+            } else if let url = URL(string: messageText), UIApplication.shared.canOpenURL(url) {
+                // Обрабатываем ссылку
+                previewLoading = true
+                fetchLinkMetaData(for: url) { [weak self] in
+                    self?.previewLoading = false
+                    Task { try await self?.sendMessage(messageText) }
+                }
             } else {
                 // Отправляем текст
                 try await sendMessage(messageText)
             }
+            
             // Очистка состояния после отправки
             messageImage = nil
             uiImage = nil
+            linkMetaData = nil
         } catch {
             print("Ошибка при отправке сообщения: \(error.localizedDescription)")
         }
     }
-    
+    func fetchLinkMetaData(for url: URL, completion: @escaping () -> Void) {
+        let provider = LPMetadataProvider()
+        provider.startFetchingMetadata(for: url) { [weak self] meta, error in
+            guard let self = self else { return }
+            if let meta = meta {
+                self.extractImageData(from: meta) { imageData in
+                    let metaDataWrapper = LinkMetadataWrapper(metadata: meta, imageData: imageData)
+                    DispatchQueue.main.async {
+                        self.linkMetaData = metaDataWrapper
+                        completion()
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.linkMetaData = nil
+                    completion()
+                }
+            }
+        }
+    }
+
+    private func extractImageData(from metadata: LPLinkMetadata, completion: @escaping (Data?) -> Void) {
+        guard let provider = metadata.imageProvider else {
+            completion(nil)
+            return
+        }
+
+        provider.loadObject(ofClass: UIImage.self) { image, error in
+            let imageData = (image as? UIImage)?.pngData()
+            completion(imageData)
+        }
+    }
+
     @MainActor
     func sendMessage(_ messageText: String) async throws {
         if let image = uiImage {
@@ -61,10 +106,13 @@ class ChatViewModel: ObservableObject {
             // Очистка состояния после отправки
             messageImage = nil
             uiImage = nil
+        } else if let linkMetaData = linkMetaData {
+            try await service.sendMessage(type: .link(linkMetaData))
         } else {
             try await service.sendMessage(type: .text(messageText))
         }
     }
+
     
     func updateMessageStatusIfNecessary() async throws {
         guard let lastMessage = messages.last else { return }

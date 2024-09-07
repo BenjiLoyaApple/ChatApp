@@ -11,8 +11,8 @@
 		E46724BD2A8D333600CD865B /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724BC2A8D333600CD865B /* AuthError.swift */; };
 		E46724BF2A8D344B00CD865B /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724BE2A8D344B00CD865B /* MessageInputView.swift */; };
 		E46724C42A8D34F200CD865B /* LinkPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724C32A8D34F200CD865B /* LinkPreviewViewModel.swift */; };
-		E46724C62A8D350100CD865B /* LPLinkViewRepresented.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724C52A8D350100CD865B /* LPLinkViewRepresented.swift */; };
-		E46724C82A8D351100CD865B /* LinkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724C72A8D351100CD865B /* LinkPreview.swift */; };
+		E46724C62A8D350100CD865B /* LPLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724C52A8D350100CD865B /* LPLinkView.swift */; };
+		E46724C82A8D351100CD865B /* LinkPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724C72A8D351100CD865B /* LinkPreviewCell.swift */; };
 		E46724CC2A8D36C700CD865B /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724CB2A8D36C700CD865B /* PreviewProvider.swift */; };
 		E46724CE2A8D36DC00CD865B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724CD2A8D36DC00CD865B /* Color.swift */; };
 		E46724D22A8D378C00CD865B /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724D12A8D378C00CD865B /* ImageUploader.swift */; };
@@ -88,8 +88,8 @@
 		E46724BC2A8D333600CD865B /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		E46724BE2A8D344B00CD865B /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
 		E46724C32A8D34F200CD865B /* LinkPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreviewViewModel.swift; sourceTree = "<group>"; };
-		E46724C52A8D350100CD865B /* LPLinkViewRepresented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPLinkViewRepresented.swift; sourceTree = "<group>"; };
-		E46724C72A8D351100CD865B /* LinkPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreview.swift; sourceTree = "<group>"; };
+		E46724C52A8D350100CD865B /* LPLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPLinkView.swift; sourceTree = "<group>"; };
+		E46724C72A8D351100CD865B /* LinkPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreviewCell.swift; sourceTree = "<group>"; };
 		E46724CB2A8D36C700CD865B /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		E46724CD2A8D36DC00CD865B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E46724D12A8D378C00CD865B /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
@@ -186,8 +186,8 @@
 		E46724C02A8D34BB00CD865B /* LinkPreviews */ = {
 			isa = PBXGroup;
 			children = (
-				E46724C22A8D34DA00CD865B /* View */,
 				E46724C12A8D34D000CD865B /* ViewModel */,
+				E46724C22A8D34DA00CD865B /* View */,
 			);
 			path = LinkPreviews;
 			sourceTree = "<group>";
@@ -195,6 +195,7 @@
 		E46724C12A8D34D000CD865B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E46724C52A8D350100CD865B /* LPLinkView.swift */,
 				E46724C32A8D34F200CD865B /* LinkPreviewViewModel.swift */,
 			);
 			path = ViewModel;
@@ -203,8 +204,7 @@
 		E46724C22A8D34DA00CD865B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E46724C72A8D351100CD865B /* LinkPreview.swift */,
-				E46724C52A8D350100CD865B /* LPLinkViewRepresented.swift */,
+				E46724C72A8D351100CD865B /* LinkPreviewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -739,7 +739,7 @@
 				E4F3B04B2A87AEF700CA37ED /* ChatViewModel.swift in Sources */,
 				E4F3B0562A88109E00CA37ED /* Date.swift in Sources */,
 				E474D83B2C825C0100FAA4DA /* SizeKey.swift in Sources */,
-				E46724C82A8D351100CD865B /* LinkPreview.swift in Sources */,
+				E46724C82A8D351100CD865B /* LinkPreviewCell.swift in Sources */,
 				E4F2AE102C860B2B00FD523A /* CustomChatButton.swift in Sources */,
 				E4FDFB1B2A86AC8E0058898E /* InboxViewModel.swift in Sources */,
 				E4FDFAEA2A83F65C0058898E /* ProfileView.swift in Sources */,
@@ -751,7 +751,7 @@
 				E4FDFAF82A8559C80058898E /* ChatMessgeCell.swift in Sources */,
 				E4FDFAF62A8556850058898E /* ChatView.swift in Sources */,
 				E474D8342C825B1800FAA4DA /* IntrosView.swift in Sources */,
-				E46724C62A8D350100CD865B /* LPLinkViewRepresented.swift in Sources */,
+				E46724C62A8D350100CD865B /* LPLinkView.swift in Sources */,
 				E47FAE082C881F990073D406 /* TransparentBlurView.swift in Sources */,
 				E46724CE2A8D36DC00CD865B /* Color.swift in Sources */,
 				E4F2AE142C86150900FD523A /* MessageImageView.swift in Sources */,

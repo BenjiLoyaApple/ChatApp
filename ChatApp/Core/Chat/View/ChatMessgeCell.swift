@@ -29,8 +29,10 @@ struct ChatMessageCell: View {
                 Spacer()
                 
                 switch message.contentType {
+                    // Отправленные
                 case .image(let imageUrl):
                     MessageImageView(imageUrlString: imageUrl)
+                        .padding(.horizontal)
                 case .text(let messageText):
                     Text(messageText)
                         .font(.subheadline)
@@ -43,11 +45,13 @@ struct ChatMessageCell: View {
                         .clipShape(ChatBubble(isFromCurrentUser: true, shouldRoundAllCorners: false))
                         .frame(maxWidth: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
                         .padding(.horizontal)
-                case .link(let urlString):
-                    LinkPreview(urlString: urlString)
+                case .link(let linkMetaData):
+                    LinkPreviewCell(linkMetaData: linkMetaData)
+                        .frame(maxWidth: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
                         .padding(.horizontal)
                 }
             } else {
+                // Полученные
                 HStack(alignment: .bottom, spacing: 8) {
                     if shouldShowChatPartnerImage {
                         CircularProfileImageView(user: message.user, size: .small28)
@@ -70,8 +74,10 @@ struct ChatMessageCell: View {
                             .frame(maxWidth: UIScreen.main.bounds.width / 1.75, alignment: .leading)
                             .padding(.leading, shouldShowChatPartnerImage ? 0 : 32)
                         
-                    case .link(let urlString):
-                        LinkPreview(urlString: urlString)
+                    case .link(let linkMetaData):
+                                          LinkPreviewCell(linkMetaData: linkMetaData)
+                            .frame(maxWidth: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
+                            .padding(.leading, shouldShowChatPartnerImage ? 0 : 45)
                     }
                 }
                 .padding(.horizontal)

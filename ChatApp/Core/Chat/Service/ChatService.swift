@@ -43,15 +43,19 @@ class ChatService {
     
     func sendMessage(type: MessageSendType) async throws {
         switch type {
-        case .text(let messageText), .link(let messageText):
+        case .text(let messageText):
             uploadMessage(messageText)
         case .image(let uIImage):
             let imageUrl = try await ImageUploader.uploadImage(image: uIImage, type: .message)
             uploadMessage("Image", imageUrl: imageUrl)
+        case .link(let linkMetadata):
+                 let encodedLinkMetadata = try? JSONEncoder().encode(linkMetadata)
+                 let encodedLinkMetadataString = encodedLinkMetadata?.base64EncodedString()
+                 uploadMessage(linkMetadata.title ?? "Link", linkMetadata: encodedLinkMetadataString)
         }
     }
     
-    private func uploadMessage(_ messageText: String, imageUrl: String? = nil) {
+    private func uploadMessage(_ messageText: String, imageUrl: String? = nil, linkMetadata: String? = nil) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         let chatPartnerId = chatPartner.id
         
@@ -73,10 +77,12 @@ class ChatService {
             messageId: messageId,
             fromId: currentUid,
             toId: chatPartnerId,
-            text: messageText,
+            caption: messageText,
             timestamp: Timestamp(),
             read: false,
-            imageUrl: imageUrl
+            imageUrl: imageUrl,
+            linkMetaData: linkMetadata != nil ? try? JSONDecoder().decode(LinkMetadataWrapper.self, from: Data(base64Encoded: linkMetadata!)!) : nil
+                 
         )
         var currentUserMessage = message
         currentUserMessage.read = true

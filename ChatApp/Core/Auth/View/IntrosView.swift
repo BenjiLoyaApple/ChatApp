@@ -355,7 +355,7 @@ struct IntrosView: View {
                 CustomTF(hint: "Username", text: $registrationVM.username, icon: "person")
                     .padding(10)
                 
-//                CustomTF(hint: "Full Name", text: $registrationVM.fullname, icon: "person.wave.2")
+//                CustomTF(hint: "Full Name", caption: $registrationVM.fullname, icon: "person.wave.2")
 //                    .padding(10)
                 
                 CustomTF(hint: "Email Adress", text: $registrationVM.email, icon: "envelope")

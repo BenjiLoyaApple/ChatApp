@@ -7,31 +7,32 @@
 
 import FirebaseFirestoreSwift
 import Firebase
+import LinkPresentation
 
 enum MessageSendType {
     case text(String)
     case image(UIImage)
-    case link(String)
+    case link(LinkMetadataWrapper)
 }
 
 enum ContentType {
     case text(String)
     case image(String)
-    case link(String)
+    case link(LinkMetadataWrapper)
 }
 
 struct Message: Identifiable, Codable, Hashable {
     @DocumentID var messageId: String?
     let fromId: String
     let toId: String
-    let text: String
+    let caption: String
     let timestamp: Timestamp
     var user: User?
     var read: Bool
     var imageUrl: String?
     
     var id: String {
-        return messageId ?? NSUUID().uuidString
+        return messageId ?? UUID().uuidString
     }
     
     var chatPartnerId: String {
@@ -51,11 +52,31 @@ struct Message: Identifiable, Codable, Hashable {
             return .image(imageUrl)
         }
         
-        if text.hasPrefix("http") {
-            return .link(text)
+        if let linkMetaData = linkMetaData {
+            return .link(linkMetaData)
         }
         
-        return .text(text)
+        return .text(caption)
+    }
+    
+    var linkURLString: String?
+    var linkMetaData: LinkMetadataWrapper?
+    var linkURL: URL? {
+        guard let linkURLString = linkURLString else { return nil }
+        return URL(string: linkURLString)
+    }
+}
+
+// Обертка для LPLinkMetadata
+struct LinkMetadataWrapper: Codable, Hashable {
+    let title: String?
+    let originalURL: URL?
+    let imageData: Data?
+
+    init(metadata: LPLinkMetadata, imageData: Data?) {
+        self.title = metadata.title
+        self.originalURL = metadata.originalURL
+        self.imageData = imageData
     }
 }
 
@@ -65,7 +86,6 @@ struct Conversation: Identifiable, Hashable, Codable {
     var firstMessageId: String?
     
     var id: String {
-        return conversationId ?? NSUUID().uuidString
+        return conversationId ?? UUID().uuidString
     }
 }
-
