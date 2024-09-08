@@ -249,6 +249,8 @@
 			isa = PBXGroup;
 			children = (
 				E4FDFAF92A855D2D0058898E /* ChatBubble.swift */,
+				E4FDFAF72A8559C80058898E /* ChatMessgeCell.swift */,
+				E46724BE2A8D344B00CD865B /* MessageInputView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -323,8 +325,6 @@
 		E4F3B0482A87AE8100CA37ED /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E4FDFAF72A8559C80058898E /* ChatMessgeCell.swift */,
-				E46724BE2A8D344B00CD865B /* MessageInputView.swift */,
 				E4FDFAF52A8556850058898E /* ChatView.swift */,
 			);
 			path = View;

@@ -35,6 +35,7 @@ struct ChatView: View {
                         }
                     }
                     .padding(.vertical)
+                    .padding(.bottom, 50)
                 }
                 .onChange(of: viewModel.messages) {_, newValue in
                     guard  let lastMessage = newValue.last else { return }
@@ -52,7 +53,7 @@ struct ChatView: View {
                             .offset(y: 25)
                     )
             }
-            .scrollDismissesKeyboard(.immediately)
+            .scrollDismissesKeyboard(.interactively)
             .scrollIndicators(.hidden)
         }
         .navigationBarBackButtonHidden()
