@@ -36,6 +36,9 @@ struct ColorTheme {
     let sun = Color("Sun")
     let themeBG = Color("ThemeBG")
     
+    // in appNotification message icon
+    let appNotification = Color("appNotification")
+    
     let searchShadow = Color("searchShadow")
     
    

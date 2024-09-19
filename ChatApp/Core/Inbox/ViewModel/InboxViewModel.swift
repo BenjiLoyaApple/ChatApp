@@ -105,8 +105,11 @@ class InboxViewModel: ObservableObject {
         self.recentMessages.remove(at: index)
         self.recentMessages.insert(message, at: 0)
         
-        // Показать уведомление при получении нового сообщения
-            showInAppNotification(for: message)
+        // Проверяем, что сообщение отправлено другим пользователем (не текущим)
+           if message.fromId != self.user?.id {
+               // Показать уведомление при получении нового сообщения
+               showInAppNotification(for: message)
+           }
     }
     
     func showInAppNotification(for message: Message) {
@@ -117,33 +120,7 @@ class InboxViewModel: ObservableObject {
             timeout: 3,
             swipeToClose: true
         ) {
-            HStack(spacing: 10) {
-                /// Иконка профиля отправителя
-                CircularProfileImageView(user: user, size: .small24)
-                
-                Text(user.username)
-                    .font(.caption)
-                    .foregroundStyle(.white)
-
-                Spacer(minLength: 0)
-
-                /// Текст сообщения или иконка чата
-                Button(action: {
-                    // Можно добавить действие при нажатии, например, переход в чат с пользователем
-                }, label: {
-                    Image(systemName: "envelope")
-                        .font(.system(size: 16))
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.white.opacity(0.9))
-                })
-            }
-            .padding(.bottom, 1)
-            .padding(6)
-            .background {
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(.black)
-            }
-            .frame(maxWidth: 190)
+            InAppNotificationView(message: message, user: user)
         }
     }
     

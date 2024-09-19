@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E4474F432C7DE4A1003997F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4474F422C7DE4A1003997F2 /* GoogleService-Info.plist */; };
+		E45ECDC32C9BF588009F450D /* InAppNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45ECDC22C9BF588009F450D /* InAppNotificationView.swift */; };
 		E46724BD2A8D333600CD865B /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724BC2A8D333600CD865B /* AuthError.swift */; };
 		E46724BF2A8D344B00CD865B /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724BE2A8D344B00CD865B /* MessageInputView.swift */; };
 		E46724C42A8D34F200CD865B /* LinkPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724C32A8D34F200CD865B /* LinkPreviewViewModel.swift */; };
@@ -86,6 +87,7 @@
 
 /* Begin PBXFileReference section */
 		E4474F422C7DE4A1003997F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		E45ECDC22C9BF588009F450D /* InAppNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppNotificationView.swift; sourceTree = "<group>"; };
 		E46724BC2A8D333600CD865B /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		E46724BE2A8D344B00CD865B /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
 		E46724C32A8D34F200CD865B /* LinkPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreviewViewModel.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				E474D84E2C83999400FAA4DA /* InboxHeader.swift */,
 				E474D85E2C844EBA00FAA4DA /* InboxCell.swift */,
 				E47FAE0D2C8971620073D406 /* Test.swift */,
+				E45ECDC22C9BF588009F450D /* InAppNotificationView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -761,6 +764,7 @@
 				E474D8322C825AB000FAA4DA /* Page.swift in Sources */,
 				E4FDFB112A867B6C0058898E /* AuthService.swift in Sources */,
 				E4F2AE0C2C85EF1900FD523A /* SettingsView.swift in Sources */,
+				E45ECDC32C9BF588009F450D /* InAppNotificationView.swift in Sources */,
 				E4F3B0542A87C52700CA37ED /* InboxService.swift in Sources */,
 				E474D8552C839C5100FAA4DA /* ShimmerEffect.swift in Sources */,
 				E4F3B0512A87BFC000CA37ED /* Constants.swift in Sources */,
