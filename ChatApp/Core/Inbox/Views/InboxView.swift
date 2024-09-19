@@ -11,7 +11,7 @@ import SwiftfulRouting
 struct InboxView: View {
     @Environment(\.router) var router
     
-    @StateObject var viewModel = InboxViewModel()
+    @StateObject var vm = InboxViewModel()
     @State private var selectedUser: User?
     
   //  @State private var showNewMessageView = false
@@ -87,10 +87,10 @@ struct InboxView: View {
             .overlay(alignment: .top) {
                 // Header
                 InboxHeader(
-                    headerHeight: $headerHeight, headerOffset: $headerOffset, profileImage: CircularProfileImageView(user: viewModel.user, size: .small40), username: viewModel.user?.username ?? "",
+                    headerHeight: $headerHeight, headerOffset: $headerOffset, profileImage: CircularProfileImageView(user: vm.user, size: .small40), username: vm.user?.username ?? "",
                     profileimageTapped: {
                         router.showScreen(.push) { _ in
-                            if let user = viewModel.user {
+                            if let user = vm.user {
                                 ProfileView(user: user)
                             }
                         }
@@ -117,14 +117,14 @@ struct InboxView: View {
     @ViewBuilder
     func ChatsView() -> some View {
             LazyVStack {
-                if !viewModel.didCompleteInitialLoad {
+                if !vm.didCompleteInitialLoad {
                     ForEach(0..<10) { _ in
                         PlaceholderFeedView()
                             .redacted(reason: .placeholder)
                             .shimmer(.init(tint: Color.theme.buttonsPostCard.opacity(0.6), highlight: .gray, blur: 5))
                     }
                 } else {
-                    ForEach(viewModel.filteredMessages) { recentMessage in
+                    ForEach(vm.filteredMessages) { recentMessage in
                         if let user = recentMessage.user {
                             InboxCell(
                                 message: recentMessage,
@@ -133,7 +133,7 @@ struct InboxView: View {
                                 timestamp: recentMessage.timestamp.timestampString(),
                                 textMessage: recentMessage.caption,
                                 actionButtonTapped: {
-                                    Task { try await viewModel.deleteMessage(recentMessage) }
+                                    Task { try await vm.deleteMessage(recentMessage) }
                                 },
                                 showChatTapped: {
                                     router.showScreen(.push) { _ in
@@ -146,7 +146,7 @@ struct InboxView: View {
                             )
                             .padding(.horizontal, 10)
                             .onAppear {
-                                if recentMessage == viewModel.recentMessages.last {
+                                if recentMessage == vm.recentMessages.last {
                                     print("DEBUG: Paginate here..")
                                 }
                             }

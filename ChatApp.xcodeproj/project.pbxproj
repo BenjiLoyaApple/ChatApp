@@ -39,6 +39,7 @@
 		E47FAE082C881F990073D406 /* TransparentBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FAE072C881F990073D406 /* TransparentBlurView.swift */; };
 		E47FAE0C2C896A690073D406 /* PlaceholderActiveNow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FAE0B2C896A690073D406 /* PlaceholderActiveNow.swift */; };
 		E47FAE0E2C8971620073D406 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FAE0D2C8971620073D406 /* Test.swift */; };
+		E4B031F92C97F658005A9E03 /* InAppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B031F82C97F658005A9E03 /* InAppExtensions.swift */; };
 		E4C721A62C875CFD00A79BB2 /* AuthenticationFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C721A42C875CFD00A79BB2 /* AuthenticationFormProtocol.swift */; };
 		E4F2AE0A2C85EF1900FD523A /* SettingsOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE022C85EF1900FD523A /* SettingsOptions.swift */; };
 		E4F2AE0C2C85EF1900FD523A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE052C85EF1900FD523A /* SettingsView.swift */; };
@@ -113,6 +114,7 @@
 		E47FAE072C881F990073D406 /* TransparentBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentBlurView.swift; sourceTree = "<group>"; };
 		E47FAE0B2C896A690073D406 /* PlaceholderActiveNow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderActiveNow.swift; sourceTree = "<group>"; };
 		E47FAE0D2C8971620073D406 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		E4B031F82C97F658005A9E03 /* InAppExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppExtensions.swift; sourceTree = "<group>"; };
 		E4C721A42C875CFD00A79BB2 /* AuthenticationFormProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationFormProtocol.swift; sourceTree = "<group>"; };
 		E4F2AE022C85EF1900FD523A /* SettingsOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsOptions.swift; sourceTree = "<group>"; };
 		E4F2AE052C85EF1900FD523A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 				E4F3B0552A88109E00CA37ED /* Date.swift */,
 				E474D8502C839A0800FAA4DA /* Extensions.swift */,
 				E474D83E2C825C5600FAA4DA /* View+Extensions.swift */,
+				E4B031F82C97F658005A9E03 /* InAppExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -792,6 +795,7 @@
 				E4F2AE0A2C85EF1900FD523A /* SettingsOptions.swift in Sources */,
 				E4F3B05A2A88155300CA37ED /* ActiveNowViewModel.swift in Sources */,
 				E4F3B0452A87A81700CA37ED /* Message.swift in Sources */,
+				E4B031F92C97F658005A9E03 /* InAppExtensions.swift in Sources */,
 				E474D8512C839A0800FAA4DA /* Extensions.swift in Sources */,
 				E474D85F2C844EBA00FAA4DA /* InboxCell.swift in Sources */,
 				E474D8572C839C6500FAA4DA /* CustomRefreshView.swift in Sources */,

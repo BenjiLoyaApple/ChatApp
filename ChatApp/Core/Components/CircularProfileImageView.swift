@@ -10,7 +10,8 @@ import SDWebImageSwiftUI
 
 enum ProfileImageSize {
     case small14
-    case small22
+    case small20
+    case small24
     case small28
     case small34
     case small40
@@ -22,7 +23,8 @@ enum ProfileImageSize {
     var dimension: CGFloat {
         switch self {
         case .small14: return 14
-        case .small22: return 22
+        case .small20: return 20
+        case .small24: return 24
         case .small28: return 28
         case .small34: return 34
         case .small40: return 40
@@ -36,7 +38,8 @@ enum ProfileImageSize {
     var fontSize: CGFloat {
           switch self {
           case .small14: return 7
-          case .small22: return 11
+          case .small20: return 10
+          case .small24: return 12
           case .small28: return 14
           case .small34: return 17
           case .small40: return 20

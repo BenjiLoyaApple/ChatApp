@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import Combine
+import SwiftUI
 
 @MainActor
 class InboxViewModel: ObservableObject {
@@ -89,6 +90,7 @@ class InboxViewModel: ObservableObject {
         UserService.fetchUser(withUid: message.chatPartnerId) { user in
             message.user = user
             self.recentMessages.insert(message, at: 0)
+            
         }
     }
     
@@ -102,6 +104,47 @@ class InboxViewModel: ObservableObject {
         
         self.recentMessages.remove(at: index)
         self.recentMessages.insert(message, at: 0)
+        
+        // Показать уведомление при получении нового сообщения
+            showInAppNotification(for: message)
+    }
+    
+    func showInAppNotification(for message: Message) {
+        guard let user = message.user else { return }
+        
+        UIApplication.shared.inAppNotification(
+            adaptForDynamicIsland: true,
+            timeout: 3,
+            swipeToClose: true
+        ) {
+            HStack(spacing: 10) {
+                /// Иконка профиля отправителя
+                CircularProfileImageView(user: user, size: .small24)
+                
+                Text(user.username)
+                    .font(.caption)
+                    .foregroundStyle(.white)
+
+                Spacer(minLength: 0)
+
+                /// Текст сообщения или иконка чата
+                Button(action: {
+                    // Можно добавить действие при нажатии, например, переход в чат с пользователем
+                }, label: {
+                    Image(systemName: "envelope")
+                        .font(.system(size: 16))
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.white.opacity(0.9))
+                })
+            }
+            .padding(.bottom, 1)
+            .padding(6)
+            .background {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.black)
+            }
+            .frame(maxWidth: 190)
+        }
     }
     
     func deleteMessage(_ message: Message) async throws {

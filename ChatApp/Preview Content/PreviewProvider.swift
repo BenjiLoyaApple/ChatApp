@@ -43,7 +43,7 @@ class DeveloperPreview {
                 timestamp: Timestamp(),
                 user: user,
                 read: false,
-                imageUrl: nil
+                imageUrl: "https://i.pinimg.com/originals/63/f0/17/63f017a7b9ad24d609b404515d86f9f4.jpg"
             ),
             Message(
                 messageId: "2",
