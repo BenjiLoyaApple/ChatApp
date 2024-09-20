@@ -30,7 +30,7 @@ struct InAppNotificationView: View {
                     .font(.system(size: 16))
                     .fontWeight(.semibold)
                     .foregroundStyle(Color.theme.appNotification)
-                    .padding(.trailing, 5)
+                    .padding(.horizontal, 2)
             })
         }
         .padding(.bottom, 1)
@@ -39,7 +39,7 @@ struct InAppNotificationView: View {
             RoundedRectangle(cornerRadius: 20)
                 .fill(.black)
         }
-        .frame(maxWidth: 190)
+        .frame(maxWidth: 200)
     }
     
     /// Функция для выбора иконки в зависимости от типа сообщения

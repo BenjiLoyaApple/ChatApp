@@ -35,8 +35,8 @@ struct ChatView: View {
                         }
                     }
                     .padding(.vertical)
+                    .padding(.bottom, 60)
                 }
-                .padding(.bottom, 60)
                 .onChange(of: viewModel.messages) {_, newValue in
                     guard  let lastMessage = newValue.last else { return }
             
@@ -49,7 +49,7 @@ struct ChatView: View {
                 MessageInputView(messageText: $messageText, viewModel: viewModel)
                     .background(
                         Color.theme.igChatBG
-                            .padding(.bottom, -20)
+                            .padding(.bottom, -320)
                             .offset(y: 25)
                     )
             }
