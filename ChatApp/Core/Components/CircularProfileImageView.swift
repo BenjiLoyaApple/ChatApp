@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
+import Kingfisher
 
 enum ProfileImageSize {
     case small14
@@ -102,15 +102,15 @@ struct CircularProfileImageView: View {
     
     var body: some View {
         if let imageUrl = user?.profileImageUrl {
-            WebImage(url: URL(string: imageUrl))
+            KFImage(URL(string: imageUrl))
                 .resizable()
                 .scaledToFill()
                 .frame(width: size.dimension, height: size.dimension)
                 .clipShape(Circle())
-                .overlay {
+                .overlay(
                     Circle()
                         .stroke(Color(.systemGray4), lineWidth: 0.5)
-                }
+                )
         } else {
             UserInitialsView(username: user?.username ?? "", fontSize: size.fontSize)
                 .scaledToFill()

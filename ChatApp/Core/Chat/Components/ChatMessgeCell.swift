@@ -62,7 +62,6 @@ struct ChatMessageCell: View {
         case .link(let linkMetaData):
             return AnyView(LinkPreviewCell(linkMetaData: linkMetaData)
                 .frame(maxWidth: UIScreen.main.bounds.width / (message.isFromCurrentUser ? 1.5 : 1.75), alignment: message.isFromCurrentUser ? .trailing : .leading)
-                .padding(message.isFromCurrentUser ? .horizontal : .leading, message.isFromCurrentUser ? 0 : 32)
             )
         }
     }

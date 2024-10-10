@@ -44,8 +44,9 @@ struct CustomChatButton: View {
             .foregroundStyle(foregroundStyle ?? .primary)
             .frame(width: frame?.width, height: frame?.height)
             .padding(padding ?? 10)
-            .background(Color.black.opacity(0.001))
+            .background(Color.black.opacity(0.0001))
             .clipShape(Capsule())
+            
         }
     }
 }

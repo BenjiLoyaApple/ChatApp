@@ -84,7 +84,7 @@ struct MessageInputView: View {
                     )
                     
                     CustomChatButton(
-                        imageName: .systemName("mic.fill"),
+                        imageName: .systemName("mic"),
                         text: "",
                         font: .title3,
                         foregroundStyle: .primary,
@@ -150,9 +150,9 @@ struct MessageInputView: View {
     }
 }
 
-struct MessageInputView_Previews: PreviewProvider {
-    static var previews: some View {
-        MessageInputView(messageText: .constant(""),
-                         viewModel: ChatViewModel(user: .mock))
-    }
+#Preview {
+    MessageInputView(
+        messageText: .constant(""),
+        viewModel: ChatViewModel(user: .mock)
+    )
 }

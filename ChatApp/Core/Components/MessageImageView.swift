@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
+import Kingfisher
 
 struct MessageImageView: View {
     let imageUrlString: String
     
     var body: some View {
-        WebImage(url: URL(string: imageUrlString))
+        KFImage(URL(string: imageUrlString))
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(maxWidth: UIScreen.main.bounds.width / 1.5, maxHeight: 360)

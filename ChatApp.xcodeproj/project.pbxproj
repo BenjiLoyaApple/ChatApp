@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E4474F432C7DE4A1003997F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4474F422C7DE4A1003997F2 /* GoogleService-Info.plist */; };
+		E454129A2CB81FDC00E5FCA2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E45412992CB81FDC00E5FCA2 /* Kingfisher */; };
 		E45ECDC32C9BF588009F450D /* InAppNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45ECDC22C9BF588009F450D /* InAppNotificationView.swift */; };
 		E46724BD2A8D333600CD865B /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724BC2A8D333600CD865B /* AuthError.swift */; };
 		E46724BF2A8D344B00CD865B /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724BE2A8D344B00CD865B /* MessageInputView.swift */; };
@@ -25,7 +26,6 @@
 		E474D83B2C825C0100FAA4DA /* SizeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D83A2C825C0100FAA4DA /* SizeKey.swift */; };
 		E474D83D2C825C0900FAA4DA /* OffsetKeyLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D83C2C825C0900FAA4DA /* OffsetKeyLogin.swift */; };
 		E474D83F2C825C5600FAA4DA /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D83E2C825C5600FAA4DA /* View+Extensions.swift */; };
-		E474D8422C8269F100FAA4DA /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E474D8412C8269F100FAA4DA /* SDWebImageSwiftUI */; };
 		E474D8462C830AE900FAA4DA /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = E474D8452C830AE900FAA4DA /* FirebaseMessaging */; };
 		E474D8492C8397C600FAA4DA /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = E474D8482C8397C600FAA4DA /* SwiftfulRouting */; };
 		E474D84C2C8397E300FAA4DA /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = E474D84B2C8397E300FAA4DA /* SwiftfulUI */; };
@@ -166,9 +166,9 @@
 			files = (
 				E474D8462C830AE900FAA4DA /* FirebaseMessaging in Frameworks */,
 				E474D8492C8397C600FAA4DA /* SwiftfulRouting in Frameworks */,
-				E474D8422C8269F100FAA4DA /* SDWebImageSwiftUI in Frameworks */,
 				E4FDFB012A86790D0058898E /* FirebaseAuth in Frameworks */,
 				E474D84C2C8397E300FAA4DA /* SwiftfulUI in Frameworks */,
+				E454129A2CB81FDC00E5FCA2 /* Kingfisher in Frameworks */,
 				E4FDFB072A86790D0058898E /* FirebaseStorage in Frameworks */,
 				E4FDFB032A86790D0058898E /* FirebaseFirestore in Frameworks */,
 				E4FDFB052A86790D0058898E /* FirebaseFirestoreSwift in Frameworks */,
@@ -676,10 +676,10 @@
 				E4FDFB022A86790D0058898E /* FirebaseFirestore */,
 				E4FDFB042A86790D0058898E /* FirebaseFirestoreSwift */,
 				E4FDFB062A86790D0058898E /* FirebaseStorage */,
-				E474D8412C8269F100FAA4DA /* SDWebImageSwiftUI */,
 				E474D8452C830AE900FAA4DA /* FirebaseMessaging */,
 				E474D8482C8397C600FAA4DA /* SwiftfulRouting */,
 				E474D84B2C8397E300FAA4DA /* SwiftfulUI */,
+				E45412992CB81FDC00E5FCA2 /* Kingfisher */,
 			);
 			productName = ChatApp;
 			productReference = E4FDFABC2A82A2C10058898E /* ChatApp.app */;
@@ -711,9 +711,9 @@
 			mainGroup = E4FDFAB32A82A2C10058898E;
 			packageReferences = (
 				E4FDFAFF2A86790D0058898E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				E474D8402C8269F100FAA4DA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				E474D8472C8397C600FAA4DA /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
 				E474D84A2C8397E300FAA4DA /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
+				E45412982CB81FDC00E5FCA2 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = E4FDFABD2A82A2C10058898E /* Products */;
 			projectDirPath = "";
@@ -958,6 +958,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -995,6 +996,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1025,12 +1027,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E474D8402C8269F100FAA4DA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+		E45412982CB81FDC00E5FCA2 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.2;
+				minimumVersion = 8.0.3;
 			};
 		};
 		E474D8472C8397C600FAA4DA /* XCRemoteSwiftPackageReference "SwiftfulRouting" */ = {
@@ -1060,10 +1062,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E474D8412C8269F100FAA4DA /* SDWebImageSwiftUI */ = {
+		E45412992CB81FDC00E5FCA2 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E474D8402C8269F100FAA4DA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
+			package = E45412982CB81FDC00E5FCA2 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		E474D8452C830AE900FAA4DA /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;

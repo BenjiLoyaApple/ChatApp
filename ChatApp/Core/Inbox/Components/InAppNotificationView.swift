@@ -42,7 +42,9 @@ struct InAppNotificationView: View {
                         // нажатие кнопки
                     }
                 )
+             //   .symbolEffect(.bounce, options: .nonRepeating, value: showContent)
                 .transition(.opacity)
+                .sensoryFeedback(.selection, trigger: showContent)
             }  else {
                 Circle()
                     .frame(width: 24, height: 24)
