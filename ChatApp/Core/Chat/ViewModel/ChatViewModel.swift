@@ -15,18 +15,17 @@ import LinkPresentation
 class ChatViewModel: ObservableObject {
     @Published var linkMetaData: LinkMetadataWrapper?
     @Published var previewLoading = false
-
     @Published var messages = [Message]()
     @Published var selectedItem: PhotosPickerItem? {
         didSet { Task { try await loadImage() } }
     }
     @Published var messageImage: Image?
     
-    private let service: ChatService
+    private let service: ChatServiceProtocol
     private var uiImage: UIImage?
-            
-    init(user: User) {
-        self.service = ChatService(chatPartner: user)
+    
+    init(service: ChatServiceProtocol) {
+        self.service = service
         observeChatMessages()
     }
     
@@ -44,21 +43,17 @@ class ChatViewModel: ObservableObject {
     func sendMessageAndClearState(_ messageText: String) async {
         do {
             if messageImage != nil {
-                // Отправляем изображение
                 try await sendMessage("")
             } else if let url = URL(string: messageText), UIApplication.shared.canOpenURL(url) {
-                // Обрабатываем ссылку
                 previewLoading = true
                 fetchLinkMetaData(for: url) { [weak self] in
                     self?.previewLoading = false
                     Task { try await self?.sendMessage(messageText) }
                 }
             } else {
-                // Отправляем текст
                 try await sendMessage(messageText)
             }
             
-            // Очистка состояния после отправки
             messageImage = nil
             uiImage = nil
             linkMetaData = nil
@@ -66,6 +61,7 @@ class ChatViewModel: ObservableObject {
             print("Ошибка при отправке сообщения: \(error.localizedDescription)")
         }
     }
+    
     func fetchLinkMetaData(for url: URL, completion: @escaping () -> Void) {
         let provider = LPMetadataProvider()
         provider.startFetchingMetadata(for: url) { [weak self] meta, error in
@@ -103,7 +99,6 @@ class ChatViewModel: ObservableObject {
     func sendMessage(_ messageText: String) async throws {
         if let image = uiImage {
             try await service.sendMessage(type: .image(image))
-            // Очистка состояния после отправки
             messageImage = nil
             uiImage = nil
         } else if let linkMetaData = linkMetaData {
@@ -112,7 +107,6 @@ class ChatViewModel: ObservableObject {
             try await service.sendMessage(type: .text(messageText))
         }
     }
-
     
     func updateMessageStatusIfNecessary() async throws {
         guard let lastMessage = messages.last else { return }

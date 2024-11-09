@@ -17,9 +17,10 @@ struct ChatView: View {
     private var thread: Thread?
     
     init(user: User) {
-        self.user = user
-        self._viewModel = StateObject(wrappedValue: ChatViewModel(user: user))
-    }
+            self.user = user
+            let chatService = DIContainer.shared.createChatService(chatPartner: user)
+            self._viewModel = StateObject(wrappedValue: ChatViewModel(service: chatService))
+        }
     
     var body: some View {
         VStack {

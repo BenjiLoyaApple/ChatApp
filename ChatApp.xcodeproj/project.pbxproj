@@ -22,7 +22,6 @@
 		E474D8342C825B1800FAA4DA /* IntrosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8332C825B1800FAA4DA /* IntrosView.swift */; };
 		E474D8362C825B3E00FAA4DA /* MorphingSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8352C825B3E00FAA4DA /* MorphingSymbolView.swift */; };
 		E474D8392C825BE000FAA4DA /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8382C825BE000FAA4DA /* CustomTF.swift */; };
-		E474D83B2C825C0100FAA4DA /* SizeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D83A2C825C0100FAA4DA /* SizeKey.swift */; };
 		E474D83D2C825C0900FAA4DA /* OffsetKeyLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D83C2C825C0900FAA4DA /* OffsetKeyLogin.swift */; };
 		E474D83F2C825C5600FAA4DA /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D83E2C825C5600FAA4DA /* View+Extensions.swift */; };
 		E474D8462C830AE900FAA4DA /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = E474D8452C830AE900FAA4DA /* FirebaseMessaging */; };
@@ -43,6 +42,7 @@
 		E4E6B98C2CDFED50004F6104 /* ChatServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E6B98B2CDFED50004F6104 /* ChatServiceProtocol.swift */; };
 		E4E6B98E2CDFEE9B004F6104 /* InboxServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E6B98D2CDFEE9B004F6104 /* InboxServiceProtocol.swift */; };
 		E4E6B9902CDFEF9F004F6104 /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E6B98F2CDFEF9F004F6104 /* UserServiceProtocol.swift */; };
+		E4E6B9922CDFF431004F6104 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E6B9912CDFF431004F6104 /* DIContainer.swift */; };
 		E4F2AE0A2C85EF1900FD523A /* SettingsOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE022C85EF1900FD523A /* SettingsOptions.swift */; };
 		E4F2AE0C2C85EF1900FD523A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE052C85EF1900FD523A /* SettingsView.swift */; };
 		E4F2AE0D2C85EF1900FD523A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE072C85EF1900FD523A /* SettingsViewModel.swift */; };
@@ -101,7 +101,6 @@
 		E474D8332C825B1800FAA4DA /* IntrosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrosView.swift; sourceTree = "<group>"; };
 		E474D8352C825B3E00FAA4DA /* MorphingSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorphingSymbolView.swift; sourceTree = "<group>"; };
 		E474D8382C825BE000FAA4DA /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
-		E474D83A2C825C0100FAA4DA /* SizeKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeKey.swift; sourceTree = "<group>"; };
 		E474D83C2C825C0900FAA4DA /* OffsetKeyLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffsetKeyLogin.swift; sourceTree = "<group>"; };
 		E474D83E2C825C5600FAA4DA /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		E474D8432C83086000FAA4DA /* ChatApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatApp.entitlements; sourceTree = "<group>"; };
@@ -120,6 +119,7 @@
 		E4E6B98B2CDFED50004F6104 /* ChatServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatServiceProtocol.swift; sourceTree = "<group>"; };
 		E4E6B98D2CDFEE9B004F6104 /* InboxServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxServiceProtocol.swift; sourceTree = "<group>"; };
 		E4E6B98F2CDFEF9F004F6104 /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
+		E4E6B9912CDFF431004F6104 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		E4F2AE022C85EF1900FD523A /* SettingsOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsOptions.swift; sourceTree = "<group>"; };
 		E4F2AE052C85EF1900FD523A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E4F2AE072C85EF1900FD523A /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -218,7 +218,6 @@
 		E474D8372C825BD100FAA4DA /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				E474D83A2C825C0100FAA4DA /* SizeKey.swift */,
 				E474D83C2C825C0900FAA4DA /* OffsetKeyLogin.swift */,
 				E474D8382C825BE000FAA4DA /* CustomTF.swift */,
 			);
@@ -266,6 +265,7 @@
 				E4E6B98D2CDFEE9B004F6104 /* InboxServiceProtocol.swift */,
 				E4E6B9872CDFEAD0004F6104 /* MessageServiceProtocol.swift */,
 				E4E6B98F2CDFEF9F004F6104 /* UserServiceProtocol.swift */,
+				E4E6B9912CDFF431004F6104 /* DIContainer.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -723,7 +723,6 @@
 			files = (
 				E4F3B04B2A87AEF700CA37ED /* ChatViewModel.swift in Sources */,
 				E4F3B0562A88109E00CA37ED /* Date.swift in Sources */,
-				E474D83B2C825C0100FAA4DA /* SizeKey.swift in Sources */,
 				E46724C82A8D351100CD865B /* LinkPreviewCell.swift in Sources */,
 				E4F2AE102C860B2B00FD523A /* CustomChatButton.swift in Sources */,
 				E4FDFB1B2A86AC8E0058898E /* InboxViewModel.swift in Sources */,
@@ -756,6 +755,7 @@
 				E474D84F2C83999400FAA4DA /* InboxHeader.swift in Sources */,
 				E474D83D2C825C0900FAA4DA /* OffsetKeyLogin.swift in Sources */,
 				E4FDFADD2A83E8050058898E /* InboxView.swift in Sources */,
+				E4E6B9922CDFF431004F6104 /* DIContainer.swift in Sources */,
 				E4FDFB0D2A867AF90058898E /* LoginViewModel.swift in Sources */,
 				E4C721A62C875CFD00A79BB2 /* AuthServiceProtocol.swift in Sources */,
 				E4F3B0432A879F9C00CA37ED /* NewMessageViewModel.swift in Sources */,

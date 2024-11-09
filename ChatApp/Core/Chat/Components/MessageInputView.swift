@@ -153,6 +153,6 @@ struct MessageInputView: View {
 #Preview {
     MessageInputView(
         messageText: .constant(""),
-        viewModel: ChatViewModel(user: .mock)
+        viewModel: ChatViewModel(service: DIContainer.shared.createChatService(chatPartner: .mock))
     )
 }
