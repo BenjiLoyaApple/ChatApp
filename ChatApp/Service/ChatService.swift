@@ -8,11 +8,10 @@
 import Foundation
 import Firebase
 
-class ChatService {
+class ChatService: ChatServiceProtocol {
     
     let chatPartner: User
     private let fetchLimit = 50
-    
     private var firestoreListener: ListenerRegistration?
     
     init(chatPartner: User) {

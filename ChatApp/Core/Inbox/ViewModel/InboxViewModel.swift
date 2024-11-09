@@ -5,120 +5,114 @@
 //  Created by Benji Loya on 11.08.2023.
 //
 
-import Foundation
-import Firebase
-import Combine
-import SwiftUI
+ import Foundation
+ import Firebase
+ import SwiftUI
 
-@MainActor
-class InboxViewModel: ObservableObject {
-    @Published var recentMessages = [Message]()
-    @Published var conversations = [Conversation]()
-    @Published var user: User?
-    @Published var searchText = ""
-    var didCompleteInitialLoad = false
-    private var firestoreListener: ListenerRegistration?
-    private var cancellables = Set<AnyCancellable>()
-    
-    var filteredMessages: [Message] {
-        if searchText.isEmpty {
-            return recentMessages
-        } else {
-            return recentMessages.filter { message in
-                guard let user = message.user else { return false }
-                return user.username.lowercased().contains(searchText.lowercased())
-            }
-        }
-    }
-    
-    
-    
-    init() {
-        setupSubscribers()
-        observeRecentMessages()
-    }
-    
-    private func setupSubscribers() {
-        UserService.shared.$currentUser.sink { [weak self] user in
-            self?.user = user
-        }.store(in: &cancellables)
-        
-        InboxService.shared.$documentChanges.sink { [weak self] changes in
-            guard let self = self, !changes.isEmpty else { return }
-            
-            if !self.didCompleteInitialLoad {
-                self.loadInitialMessages(fromChanges: changes)
-            } else {
-                self.updateMessages(fromChanges: changes)
-            }
-        }.store(in: &cancellables)
-    }
-    
-    func observeRecentMessages() {
-        InboxService.shared.observeRecentMessages()
-    }
-    
-    private func loadInitialMessages(fromChanges changes: [DocumentChange]) {
-        self.recentMessages = changes.compactMap{ try? $0.document.data(as: Message.self) }
-        
-        for i in 0 ..< recentMessages.count {
-            let message = recentMessages[i]
+ @MainActor
+ class InboxViewModel: ObservableObject {
+     @Published var recentMessages = [Message]()
+     @Published var conversations = [Conversation]()
+     @Published var user: User?
+     @Published var searchText = ""
+     var didCompleteInitialLoad = false
 
-            UserService.fetchUser(withUid: message.chatPartnerId) { [weak self] user in
-                guard let self else { return }
-                self.recentMessages[i].user = user
-                
-                if i == self.recentMessages.count - 1 {
-                    self.didCompleteInitialLoad = true
-                }
-            }
-        }
-    }
-    
-    private func updateMessages(fromChanges changes: [DocumentChange]) {
-        for change in changes {
-            if change.type == .added {
-                self.createNewConversation(fromChange: change)
-            } else if change.type == .modified {
-                self.updateMessagesFromExisitingConversation(fromChange: change)
-            }
-        }
-    }
-    
-    private func createNewConversation(fromChange change: DocumentChange) {
-        guard var message = try? change.document.data(as: Message.self) else { return }
-        
-        UserService.fetchUser(withUid: message.chatPartnerId) { user in
-            message.user = user
-            self.recentMessages.insert(message, at: 0)
-            
-        }
-    }
-    
-    private func updateMessagesFromExisitingConversation(fromChange change: DocumentChange) {
-        guard var message = try? change.document.data(as: Message.self) else { return }
-        guard let index = self.recentMessages.firstIndex(where: {
-            $0.user?.id ?? "" == message.chatPartnerId
-        }) else { return }
-        guard let user = self.recentMessages[index].user else { return }
-        message.user = user
-        
-        self.recentMessages.remove(at: index)
-        self.recentMessages.insert(message, at: 0)
-        
-        // Проверяем, что сообщение отправлено другим пользователем (не текущим)
-           if message.fromId != self.user?.id {
-               // Показать уведомление при получении нового сообщения
-           }
-    }
-    
-    
-    func deleteMessage(_ message: Message) async throws {
-        do {
-            recentMessages.removeAll(where: { $0.id == message.id })
-            try await InboxService.deleteMessage(message)
-        } catch {
-            // TODO: If deletion fails add message back at original index
-        }
-    }
-}
+     var filteredMessages: [Message] {
+         if searchText.isEmpty {
+             return recentMessages
+         } else {
+             return recentMessages.filter { message in
+                 guard let user = message.user else { return false }
+                 return user.username.lowercased().contains(searchText.lowercased())
+             }
+         }
+     }
+     
+     init() {
+         Task {
+             await setupUser()
+             await observeRecentMessages()
+         }
+     }
+
+     
+     private func setupUser1() {
+         user = UserService.shared.currentUser
+     }
+     
+     private func setupUser() async {
+         user = try? await UserService.shared.fetchCurrentUser()
+     }
+
+     
+     func observeRecentMessages() async {
+         for await changes in InboxService.shared.observeRecentMessagesStream() {
+             if !didCompleteInitialLoad {
+                 await loadInitialMessages(fromChanges: changes)
+             } else {
+                 await updateMessages(fromChanges: changes)
+             }
+         }
+     }
+     
+     private func loadInitialMessages(fromChanges changes: [DocumentChange]) async {
+         recentMessages = changes.compactMap { try? $0.document.data(as: Message.self) }
+         
+         await withTaskGroup(of: Void.self) { group in
+             for i in recentMessages.indices {
+                 group.addTask {
+                     let message = await self.recentMessages[i]
+                     let user = try? await UserService.fetchUser(uid: message.chatPartnerId)
+                     await MainActor.run {
+                         self.recentMessages[i].user = user
+                         if i == self.recentMessages.count - 1 {
+                             self.didCompleteInitialLoad = true
+                         }
+                     }
+                 }
+             }
+         }
+     }
+     
+     private func updateMessages(fromChanges changes: [DocumentChange]) async {
+         for change in changes {
+             if change.type == .added {
+                 await createNewConversation(fromChange: change)
+             } else if change.type == .modified {
+                 await updateMessagesFromExistingConversation(fromChange: change)
+             }
+         }
+     }
+     
+     private func createNewConversation(fromChange change: DocumentChange) async {
+         guard var message = try? change.document.data(as: Message.self) else { return }
+         message.user = try? await UserService.fetchUser(uid: message.chatPartnerId)
+         await MainActor.run {
+             recentMessages.insert(message, at: 0)
+         }
+     }
+     
+     private func updateMessagesFromExistingConversation(fromChange change: DocumentChange) async {
+         guard var message = try? change.document.data(as: Message.self) else { return }
+         guard let index = recentMessages.firstIndex(where: {
+             $0.user?.id ?? "" == message.chatPartnerId
+         }) else { return }
+         message.user = recentMessages[index].user
+         await MainActor.run {
+             recentMessages.remove(at: index)
+             recentMessages.insert(message, at: 0)
+             
+             if message.fromId != user?.id {
+                 // Запуск уведомления о новом сообщении
+             }
+         }
+     }
+     
+     func deleteMessage(_ message: Message) async throws {
+         await MainActor.run {
+             recentMessages.removeAll { $0.id == message.id }
+         }
+         try await InboxService.shared.deleteMessage(message)
+     }
+
+ }

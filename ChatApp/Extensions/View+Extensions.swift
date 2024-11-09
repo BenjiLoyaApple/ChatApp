@@ -14,8 +14,8 @@ extension View {
             .overlay {
                 GeometryReader(content: { geometry in
                     Color.clear
-                        .preference(key: SizeKey.self, value: geometry.size.height)
-                        .onPreferenceChange(SizeKey.self, perform: { value in
+                        .preference(key: OffsetKeyLogin.self, value: geometry.size.height)
+                        .onPreferenceChange(OffsetKeyLogin.self, perform: { value in
                             completion(value)
                         })
                 })

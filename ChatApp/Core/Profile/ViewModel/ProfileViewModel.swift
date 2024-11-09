@@ -33,7 +33,7 @@ class ProfileViewModel: ObservableObject {
     // MARK: - Init
         
     init() {
-        setupSubscribers()
+     //   setupSubscribers()
         loadUserData()
     }
     
@@ -109,18 +109,18 @@ extension ProfileViewModel {
 }
 
 // MARK: - Subscribers
-extension ProfileViewModel {
-    
-    @MainActor
-    private func setupSubscribers() {
-        UserService.shared.$currentUser
-            .sink { [weak self] user in
-                self?.currentUser = user
-                self?.loadUserData() 
-            }
-            .store(in: &cancellables)
-    }
-}
+//extension ProfileViewModel {
+//    
+//    @MainActor
+//    private func setupSubscribers() {
+//        UserService.shared.$currentUser
+//            .sink { [weak self] user in
+//                self?.currentUser = user
+//                self?.loadUserData() 
+//            }
+//            .store(in: &cancellables)
+//    }
+//}
 
 // MARK: - Image Loading
 extension ProfileViewModel {

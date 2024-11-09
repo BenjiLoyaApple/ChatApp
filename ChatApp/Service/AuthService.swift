@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestoreSwift
 import FirebaseAuth
 
-class AuthService {
+class AuthService: AuthServiceProtocol {
     
     @Published var userSession: FirebaseAuth.User?
     

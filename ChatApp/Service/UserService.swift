@@ -20,11 +20,16 @@ class UserService {
     }
     
     @MainActor
-    func fetchCurrentUser() async throws {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let snapshot = try await FirestoreConstants.UsersCollection.document(uid).getDocument()
-        self.currentUser = try snapshot.data(as: User.self)
-    }
+    func fetchCurrentUser() async throws -> User? {
+           if let currentUser = self.currentUser {
+               return currentUser
+           }
+           guard let uid = Auth.auth().currentUser?.uid else { return nil }
+           let snapshot = try await FirestoreConstants.UsersCollection.document(uid).getDocument()
+           let user = try snapshot.data(as: User.self)
+           self.currentUser = user
+           return user
+       }
     
     static func fetchUser(uid: String) async throws -> User {
         let snapshot = try await FirestoreConstants.UsersCollection.document(uid).getDocument()
