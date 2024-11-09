@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		E4474F432C7DE4A1003997F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4474F422C7DE4A1003997F2 /* GoogleService-Info.plist */; };
 		E454129A2CB81FDC00E5FCA2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E45412992CB81FDC00E5FCA2 /* Kingfisher */; };
-		E45ECDC32C9BF588009F450D /* InAppNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45ECDC22C9BF588009F450D /* InAppNotificationView.swift */; };
 		E46724BD2A8D333600CD865B /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724BC2A8D333600CD865B /* AuthError.swift */; };
 		E46724BF2A8D344B00CD865B /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724BE2A8D344B00CD865B /* MessageInputView.swift */; };
 		E46724C42A8D34F200CD865B /* LinkPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46724C32A8D34F200CD865B /* LinkPreviewViewModel.swift */; };
@@ -39,9 +38,9 @@
 		E474D85F2C844EBA00FAA4DA /* InboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D85E2C844EBA00FAA4DA /* InboxCell.swift */; };
 		E47FAE082C881F990073D406 /* TransparentBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FAE072C881F990073D406 /* TransparentBlurView.swift */; };
 		E47FAE0C2C896A690073D406 /* PlaceholderActiveNow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FAE0B2C896A690073D406 /* PlaceholderActiveNow.swift */; };
-		E47FAE0E2C8971620073D406 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FAE0D2C8971620073D406 /* Test.swift */; };
 		E4B031F92C97F658005A9E03 /* InAppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B031F82C97F658005A9E03 /* InAppExtensions.swift */; };
 		E4C721A62C875CFD00A79BB2 /* AuthenticationFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C721A42C875CFD00A79BB2 /* AuthenticationFormProtocol.swift */; };
+		E4E6B9852CDFA0D8004F6104 /* ResentChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E6B9842CDFA0D8004F6104 /* ResentChatView.swift */; };
 		E4F2AE0A2C85EF1900FD523A /* SettingsOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE022C85EF1900FD523A /* SettingsOptions.swift */; };
 		E4F2AE0C2C85EF1900FD523A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE052C85EF1900FD523A /* SettingsView.swift */; };
 		E4F2AE0D2C85EF1900FD523A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AE072C85EF1900FD523A /* SettingsViewModel.swift */; };
@@ -87,7 +86,6 @@
 
 /* Begin PBXFileReference section */
 		E4474F422C7DE4A1003997F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		E45ECDC22C9BF588009F450D /* InAppNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppNotificationView.swift; sourceTree = "<group>"; };
 		E46724BC2A8D333600CD865B /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		E46724BE2A8D344B00CD865B /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
 		E46724C32A8D34F200CD865B /* LinkPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreviewViewModel.swift; sourceTree = "<group>"; };
@@ -115,9 +113,9 @@
 		E474D85E2C844EBA00FAA4DA /* InboxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxCell.swift; sourceTree = "<group>"; };
 		E47FAE072C881F990073D406 /* TransparentBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentBlurView.swift; sourceTree = "<group>"; };
 		E47FAE0B2C896A690073D406 /* PlaceholderActiveNow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderActiveNow.swift; sourceTree = "<group>"; };
-		E47FAE0D2C8971620073D406 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		E4B031F82C97F658005A9E03 /* InAppExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppExtensions.swift; sourceTree = "<group>"; };
 		E4C721A42C875CFD00A79BB2 /* AuthenticationFormProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationFormProtocol.swift; sourceTree = "<group>"; };
+		E4E6B9842CDFA0D8004F6104 /* ResentChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResentChatView.swift; sourceTree = "<group>"; };
 		E4F2AE022C85EF1900FD523A /* SettingsOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsOptions.swift; sourceTree = "<group>"; };
 		E4F2AE052C85EF1900FD523A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E4F2AE072C85EF1900FD523A /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -237,8 +235,6 @@
 				E47FAE0B2C896A690073D406 /* PlaceholderActiveNow.swift */,
 				E474D84E2C83999400FAA4DA /* InboxHeader.swift */,
 				E474D85E2C844EBA00FAA4DA /* InboxCell.swift */,
-				E47FAE0D2C8971620073D406 /* Test.swift */,
-				E45ECDC22C9BF588009F450D /* InAppNotificationView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -643,6 +639,7 @@
 			isa = PBXGroup;
 			children = (
 				E4FDFADC2A83E8050058898E /* InboxView.swift */,
+				E4E6B9842CDFA0D8004F6104 /* ResentChatView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -693,7 +690,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					E4FDFABB2A82A2C10058898E = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -764,7 +761,6 @@
 				E474D8322C825AB000FAA4DA /* Page.swift in Sources */,
 				E4FDFB112A867B6C0058898E /* AuthService.swift in Sources */,
 				E4F2AE0C2C85EF1900FD523A /* SettingsView.swift in Sources */,
-				E45ECDC32C9BF588009F450D /* InAppNotificationView.swift in Sources */,
 				E4F3B0542A87C52700CA37ED /* InboxService.swift in Sources */,
 				E474D8552C839C5100FAA4DA /* ShimmerEffect.swift in Sources */,
 				E4F3B0512A87BFC000CA37ED /* Constants.swift in Sources */,
@@ -781,7 +777,6 @@
 				E4C721A62C875CFD00A79BB2 /* AuthenticationFormProtocol.swift in Sources */,
 				E4F3B0432A879F9C00CA37ED /* NewMessageViewModel.swift in Sources */,
 				E46724CC2A8D36C700CD865B /* PreviewProvider.swift in Sources */,
-				E47FAE0E2C8971620073D406 /* Test.swift in Sources */,
 				E4F3B05D2A8819AE00CA37ED /* Route.swift in Sources */,
 				E46724C42A8D34F200CD865B /* LinkPreviewViewModel.swift in Sources */,
 				E4FDFB172A86A9C00058898E /* UserService.swift in Sources */,
@@ -803,6 +798,7 @@
 				E474D8512C839A0800FAA4DA /* Extensions.swift in Sources */,
 				E474D85F2C844EBA00FAA4DA /* InboxCell.swift in Sources */,
 				E474D8572C839C6500FAA4DA /* CustomRefreshView.swift in Sources */,
+				E4E6B9852CDFA0D8004F6104 /* ResentChatView.swift in Sources */,
 				E46724D82A8D384000CD865B /* PhotosPickerHelper.swift in Sources */,
 				E46724BD2A8D333600CD865B /* AuthError.swift in Sources */,
 				E474D8532C839C2300FAA4DA /* PlaceholderFeedView.swift in Sources */,
@@ -817,6 +813,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -849,6 +846,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -877,6 +875,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -909,6 +908,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

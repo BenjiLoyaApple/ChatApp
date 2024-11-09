@@ -71,11 +71,10 @@ struct InboxHeader<ProfileImageView: View>: View {
                 .opacity(0.5)
         }
         .padding(.top, safeArea().top)
-        .padding(.bottom, 10)
         .background {
             Color.theme.darkBlack
         }
-        .padding(.bottom, 20)
+        .padding(.bottom, 10)
         .anchorPreference(key: HeaderBoundsKey.self, value: .bounds) { $0 }
         .overlayPreferenceValue(HeaderBoundsKey.self) { value in
             GeometryReader { proxy in

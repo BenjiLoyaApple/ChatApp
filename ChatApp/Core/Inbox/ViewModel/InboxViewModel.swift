@@ -108,21 +108,9 @@ class InboxViewModel: ObservableObject {
         // Проверяем, что сообщение отправлено другим пользователем (не текущим)
            if message.fromId != self.user?.id {
                // Показать уведомление при получении нового сообщения
-               showInAppNotification(for: message)
            }
     }
     
-    func showInAppNotification(for message: Message) {
-        guard let user = message.user else { return }
-        
-        UIApplication.shared.inAppNotification(
-            adaptForDynamicIsland: true,
-            timeout: 3,
-            swipeToClose: true
-        ) {
-            InAppNotificationView(message: message, user: user)
-        }
-    }
     
     func deleteMessage(_ message: Message) async throws {
         do {

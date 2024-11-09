@@ -355,9 +355,6 @@ struct IntrosView: View {
                 CustomTF(hint: "Username", text: $registrationVM.username, icon: "person")
                     .padding(10)
                 
-//                CustomTF(hint: "Full Name", caption: $registrationVM.fullname, icon: "person.wave.2")
-//                    .padding(10)
-                
                 CustomTF(hint: "Email Adress", text: $registrationVM.email, icon: "envelope")
                     .padding(10)
                 
@@ -459,7 +456,7 @@ extension IntrosView: AuthenticationFormProtocol {
                 && registrationVM.email.contains("@")
                 && !registrationVM.password.isEmpty
                 && registrationVM.password.count > 5
-                && !registrationVM.fullname.isEmpty
+            && !registrationVM.username.isEmpty
         }
     }
 }

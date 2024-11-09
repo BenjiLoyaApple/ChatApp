@@ -58,6 +58,19 @@ class DeveloperPreview {
         ]
     }
     
+     func createMessage(id: String, caption: String, read: Bool, imageUrl: String? = nil) -> Message {
+            Message(
+                messageId: id,
+                fromId: user.userId ?? "nil",
+                toId: "67890",
+                caption: caption,
+                timestamp: Timestamp(),
+                user: user,
+                read: read,
+                imageUrl: imageUrl
+            )
+        }
+    
     // Создаем метаданные ссылки
     var linkMetadataWrapper: LinkMetadataWrapper {
         let metadata = LPLinkMetadata()
@@ -73,4 +86,76 @@ class DeveloperPreview {
     
     lazy var imageUrlString =  "https://i.pinimg.com/originals/63/f0/17/63f017a7b9ad24d609b404515d86f9f4.jpg"
     
+}
+
+//MARK: - ActiveNow MOCK DATA
+extension ActiveNowViewModel {
+    static var mockActive: ActiveNowViewModel {
+        let viewModel = ActiveNowViewModel()
+        
+        // Устанавливаем состояние загрузки в false для превью
+        viewModel.isLoading = false
+        
+        // Наполняем users данными вручную, не вызывая fetchUsers
+        viewModel.users = [
+            User(
+                userId: "1",
+                username: "superhero",
+                fullname: "Clark Kent",
+                email: "clark@gmail.com",
+                profileImageUrl: "https://example.com/clark.jpg",
+                bio: "Just a regular guy with super strength.",
+                link: "https://superhero.com"
+            ),
+            User(
+                userId: "2",
+                username: "wonderwoman",
+                fullname: "Diana Prince",
+                email: "diana@gmail.com",
+                profileImageUrl: "https://example.com/diana.jpg",
+                bio: "Amazonian princess and warrior.",
+                link: "https://wonderwoman.com"
+            ),
+            // Добавьте больше пользователей по необходимости
+        ]
+        
+        return viewModel
+    }
+}
+
+//MARK: - Inbox MOCK DATA
+extension InboxViewModel {
+    static var mock: InboxViewModel {
+        let viewModel = InboxViewModel()
+        viewModel.didCompleteInitialLoad = true
+        viewModel.recentMessages = [
+            DeveloperPreview.shared
+                .createMessage(
+                    id: "1",
+                    caption: "Hello! This is a test message.",
+                    read: false,
+                    imageUrl: "https://i.pinimg.com/originals/63/f0/17/63f017a7b9ad24d609b404515d86f9f4.jpg"
+                ),
+            DeveloperPreview.shared
+                .createMessage(
+                    id: "2",
+                    caption: "Hi! Another test message with a multi-line caption to showcase.",
+                    read: true
+                ),
+            DeveloperPreview.shared
+                .createMessage(
+                    id: "3",
+                    caption: "Third message to add more content.",
+                    read: false,
+                    imageUrl: "https://i.pinimg.com/originals/63/f0/17/63f017a7b9ad24d609b404515d86f9f4.jpg"
+                ),
+            DeveloperPreview.shared
+                .createMessage(
+                    id: "4",
+                    caption: "Just another day, another message.",
+                    read: true
+                )
+        ]
+        return viewModel
+    }
 }

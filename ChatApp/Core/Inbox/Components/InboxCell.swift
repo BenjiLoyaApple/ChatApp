@@ -9,34 +9,29 @@ import SwiftUI
 import SwiftfulUI
 
 struct InboxCell<ProfileImageView: View>: View {
-    
-    var message: Message = DeveloperPreview.shared.messages[0]
-    
+    var message: Message
     let profileImage: ProfileImageView
     let username: String
     let timestamp: String
     let textMessage: String?
     var actionButtonTapped: (() -> Void)? = nil
     var showChatTapped: (() -> Void)? = nil
+    var profileImageTapped: (() -> Void)? = nil
     
     var body: some View {
         HStack(spacing: 10) {
             // Отображение изображения
             profileImage
-                .onTapGesture {
-             //       router.showScreen(.push) { _ in
-                        
-            //        }
+                .asButton(.press) {
+                    profileImageTapped?()
                 }
             
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .center, spacing: 10) {
                     // имя юзера
-                    if let user = message.user {
                         Text(username)
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                    }
                     
                     // Дата
                     Text(message.timestamp.timestampString())
@@ -69,8 +64,8 @@ struct InboxCell<ProfileImageView: View>: View {
                     .overlay {
                         // Текст сообщения
                         VStack (spacing: 2) {
-                            if let textMessage {
-                                Text("\(message.isFromCurrentUser ? "You: \(message.caption)" : message.caption)")
+                            if let textMessage = textMessage {
+                                Text("\(message.isFromCurrentUser ? "Вы: \(textMessage)" : textMessage)")
                             }
                             
                             Spacer(minLength: 0)
@@ -81,7 +76,7 @@ struct InboxCell<ProfileImageView: View>: View {
                         .lineLimit(2)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(Color.red.opacity(0.001))
-                        .asButton(.press) {
+                        .asButton(.opacity) {
                              showChatTapped?()
                         }
                     }
@@ -104,34 +99,20 @@ struct InboxCell_Previews: PreviewProvider {
     static var previews: some View {
         let messages = DeveloperPreview.shared.messages
         let user = DeveloperPreview.shared.user
+        let profileImageView = CircularProfileImageView(user: user, size: .medium50)
         
         return VStack {
-            InboxCell(
-                message: messages[0],
-                profileImage: CircularProfileImageView(user: user, size: .medium50),
-                username: user.username,
-                timestamp: "2h ago",
-                textMessage: messages[0].caption
-            )
-            
-            InboxCell(
-                message: messages[1],
-                profileImage: CircularProfileImageView(user: user, size: .medium50),
-                username: user.username,
-                timestamp: "1h ago",
-                textMessage: messages[1].caption
-            )
-            
-            InboxCell(
-                message: messages[1],
-                profileImage: CircularProfileImageView(user: user, size: .medium50),
-                username: user.username,
-                timestamp: "1h ago",
-                textMessage: messages[1].caption
-            )
+            ForEach(messages.indices, id: \.self) { index in
+                InboxCell(
+                    message: messages[index],
+                    profileImage: profileImageView,
+                    username: user.username,
+                    timestamp: "\(index + 1)h ago",
+                    textMessage: messages[index].caption
+                )
+            }
         }
         .padding(.horizontal)
         .previewLayout(.sizeThatFits)
-        
     }
 }
