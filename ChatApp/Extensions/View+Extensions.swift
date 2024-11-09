@@ -6,43 +6,6 @@
 
 import SwiftUI
 
-///   MARK: View Extension For UI Building
-extension View {
-    
-    //   MARK: - Closing all Active Keyboards
-    func closeKeyboard(){
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-    
-    //     MARK: - Disabling with Opacity
-    func disableWithOpacity(_ condition: Bool)->some View{
-        self
-            .disabled(condition)
-            .opacity(condition ? 0.6 : 1)
-    }
-    
-    func hAlign(_ aligment: Alignment)->some View {
-        self
-            .frame(maxWidth: .infinity, alignment: aligment)
-    }
-    func vAlign(_ aligment: Alignment)->some View {
-        self
-            .frame(maxHeight: .infinity, alignment: aligment)
-    }
-    
-    //    MARK: - Custom Border View With Padding
-    func border(_ width: CGFloat,_ color: Color)->some View {
-        self
-            .padding(.horizontal, 15)
-            .padding(.vertical, 10)
-            .background {
-                RoundedRectangle(cornerRadius: 5, style: .continuous)
-                    .stroke(color, lineWidth: width)
-            }
-    }
-}
-
-
 //MARK: - LOGIN SHEET
 extension View {
     @ViewBuilder
@@ -73,5 +36,63 @@ extension View {
                         })
                 })
             }
+    }
+}
+
+//MARK: - PLACEHOLDERS
+extension View {
+    func placeholderActiveNow() -> some View {
+        VStack {
+            Image("nullProfile")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 60, height: 60)
+                .clipShape(Circle())
+                .overlay(
+                    Circle()
+                        .stroke(Color.gray.opacity(0.25), lineWidth: 0.5)
+                )
+                
+            Text("benjiloya")
+                .font(.footnote)
+                .foregroundColor(.primary.opacity(0.8))
+        }
+        .redacted(reason: .placeholder)
+        .shimmer(.init(tint: Color.theme.buttonsPostCard.opacity(0.4), highlight: .gray, blur: 5))
+    }
+}
+
+//MARK: - placeholder Recent Chats
+extension View {
+    func placeholderRecentChats() -> some View {
+        VStack(spacing: 10) {
+            HStack(alignment: .top, spacing: 6) {
+                Circle()
+                    .frame(width: 50, height: 50)
+                    .foregroundStyle(.gray.opacity(0.25))
+                
+                VStack(alignment: .leading, spacing: 2) {
+                    HStack(alignment: .top, spacing: 10) {
+                        Text("user name")
+                            .fontWeight(.semibold)
+                        
+                        Spacer(minLength: 0)
+                        
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("The first post title here")
+                        
+                        Text("The first post description here")
+                    }
+                    .font(.system(size: 15))
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 15)
+        .padding(.bottom, 20)
+        .redacted(reason: .placeholder)
+        .shimmer(.init(tint: Color.theme.buttonsPostCard.opacity(0.4), highlight: .gray, blur: 5))
     }
 }

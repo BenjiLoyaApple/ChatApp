@@ -61,10 +61,24 @@ struct InboxView: View {
                 }
             
             //Active now
-            ActiveNowView(viewModel: vmActiveNow)
+            ActiveNowView(
+                viewModel: vmActiveNow,
+                onChatTapped: { user in
+                    router
+                        .showScreen(.push) { _ in
+                            ChatView(user: user)
+                }
+            })
             
             // Resent Chats
-            RecentChatsView(viewModel: vmInbox)
+            RecentChatsView(
+                viewModel: vmInbox,
+                onChatTapped: { user in
+                    router
+                        .showScreen(.push) { _ in
+                            ChatView(user: user)
+                }
+            })
             
         }
         .background(Color.theme.darkBlack)

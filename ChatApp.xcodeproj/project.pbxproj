@@ -30,14 +30,12 @@
 		E474D84C2C8397E300FAA4DA /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = E474D84B2C8397E300FAA4DA /* SwiftfulUI */; };
 		E474D84F2C83999400FAA4DA /* InboxHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D84E2C83999400FAA4DA /* InboxHeader.swift */; };
 		E474D8512C839A0800FAA4DA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8502C839A0800FAA4DA /* Extensions.swift */; };
-		E474D8532C839C2300FAA4DA /* PlaceholderFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8522C839C2300FAA4DA /* PlaceholderFeedView.swift */; };
 		E474D8552C839C5100FAA4DA /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8542C839C5100FAA4DA /* ShimmerEffect.swift */; };
 		E474D8572C839C6500FAA4DA /* CustomRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8562C839C6500FAA4DA /* CustomRefreshView.swift */; };
 		E474D8592C839C8C00FAA4DA /* ThemeChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D8582C839C8C00FAA4DA /* ThemeChangeView.swift */; };
 		E474D85B2C83A2C900FAA4DA /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D85A2C83A2C900FAA4DA /* CustomButton.swift */; };
-		E474D85F2C844EBA00FAA4DA /* InboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D85E2C844EBA00FAA4DA /* InboxCell.swift */; };
+		E474D85F2C844EBA00FAA4DA /* RecentChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D85E2C844EBA00FAA4DA /* RecentChatCell.swift */; };
 		E47FAE082C881F990073D406 /* TransparentBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FAE072C881F990073D406 /* TransparentBlurView.swift */; };
-		E47FAE0C2C896A690073D406 /* PlaceholderActiveNow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FAE0B2C896A690073D406 /* PlaceholderActiveNow.swift */; };
 		E4B031F92C97F658005A9E03 /* InAppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B031F82C97F658005A9E03 /* InAppExtensions.swift */; };
 		E4C721A62C875CFD00A79BB2 /* AuthenticationFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C721A42C875CFD00A79BB2 /* AuthenticationFormProtocol.swift */; };
 		E4E6B9852CDFA0D8004F6104 /* ResentChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E6B9842CDFA0D8004F6104 /* ResentChatView.swift */; };
@@ -105,14 +103,12 @@
 		E474D8432C83086000FAA4DA /* ChatApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatApp.entitlements; sourceTree = "<group>"; };
 		E474D84E2C83999400FAA4DA /* InboxHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxHeader.swift; sourceTree = "<group>"; };
 		E474D8502C839A0800FAA4DA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		E474D8522C839C2300FAA4DA /* PlaceholderFeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderFeedView.swift; sourceTree = "<group>"; };
 		E474D8542C839C5100FAA4DA /* ShimmerEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
 		E474D8562C839C6500FAA4DA /* CustomRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshView.swift; sourceTree = "<group>"; };
 		E474D8582C839C8C00FAA4DA /* ThemeChangeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeChangeView.swift; sourceTree = "<group>"; };
 		E474D85A2C83A2C900FAA4DA /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		E474D85E2C844EBA00FAA4DA /* InboxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxCell.swift; sourceTree = "<group>"; };
+		E474D85E2C844EBA00FAA4DA /* RecentChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatCell.swift; sourceTree = "<group>"; };
 		E47FAE072C881F990073D406 /* TransparentBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentBlurView.swift; sourceTree = "<group>"; };
-		E47FAE0B2C896A690073D406 /* PlaceholderActiveNow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderActiveNow.swift; sourceTree = "<group>"; };
 		E4B031F82C97F658005A9E03 /* InAppExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppExtensions.swift; sourceTree = "<group>"; };
 		E4C721A42C875CFD00A79BB2 /* AuthenticationFormProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationFormProtocol.swift; sourceTree = "<group>"; };
 		E4E6B9842CDFA0D8004F6104 /* ResentChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResentChatView.swift; sourceTree = "<group>"; };
@@ -231,10 +227,8 @@
 		E474D84D2C83996F00FAA4DA /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				E474D8522C839C2300FAA4DA /* PlaceholderFeedView.swift */,
-				E47FAE0B2C896A690073D406 /* PlaceholderActiveNow.swift */,
 				E474D84E2C83999400FAA4DA /* InboxHeader.swift */,
-				E474D85E2C844EBA00FAA4DA /* InboxCell.swift */,
+				E474D85E2C844EBA00FAA4DA /* RecentChatCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -767,7 +761,6 @@
 				E4FDFB0F2A867B380058898E /* RegisterViewModel.swift in Sources */,
 				E4FDFAFA2A855D2D0058898E /* ChatBubble.swift in Sources */,
 				E4FDFAF32A854DB60058898E /* CircularProfileImageView.swift in Sources */,
-				E47FAE0C2C896A690073D406 /* PlaceholderActiveNow.swift in Sources */,
 				E4F3B04E2A87BE0A00CA37ED /* ChatService.swift in Sources */,
 				E46724BF2A8D344B00CD865B /* MessageInputView.swift in Sources */,
 				E474D84F2C83999400FAA4DA /* InboxHeader.swift in Sources */,
@@ -796,12 +789,11 @@
 				E4F3B0452A87A81700CA37ED /* Message.swift in Sources */,
 				E4B031F92C97F658005A9E03 /* InAppExtensions.swift in Sources */,
 				E474D8512C839A0800FAA4DA /* Extensions.swift in Sources */,
-				E474D85F2C844EBA00FAA4DA /* InboxCell.swift in Sources */,
+				E474D85F2C844EBA00FAA4DA /* RecentChatCell.swift in Sources */,
 				E474D8572C839C6500FAA4DA /* CustomRefreshView.swift in Sources */,
 				E4E6B9852CDFA0D8004F6104 /* ResentChatView.swift in Sources */,
 				E46724D82A8D384000CD865B /* PhotosPickerHelper.swift in Sources */,
 				E46724BD2A8D333600CD865B /* AuthError.swift in Sources */,
-				E474D8532C839C2300FAA4DA /* PlaceholderFeedView.swift in Sources */,
 				E4FDFAC02A82A2C10058898E /* ChatAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

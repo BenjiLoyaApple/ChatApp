@@ -36,7 +36,7 @@ struct InboxHeader<ProfileImageView: View>: View {
                 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(username)
-                        .font(.system(size: 23, weight: .semibold, design: .default))
+                        .font(.system(size: 20, weight: .semibold))
                 }
                 
                 Spacer(minLength: 0)

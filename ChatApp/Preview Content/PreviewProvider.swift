@@ -92,32 +92,14 @@ class DeveloperPreview {
 extension ActiveNowViewModel {
     static var mockActive: ActiveNowViewModel {
         let viewModel = ActiveNowViewModel()
+        viewModel.isLoading = true
         
-        // Устанавливаем состояние загрузки в false для превью
-        viewModel.isLoading = false
-        
-        // Наполняем users данными вручную, не вызывая fetchUsers
         viewModel.users = [
-            User(
-                userId: "1",
-                username: "superhero",
-                fullname: "Clark Kent",
-                email: "clark@gmail.com",
-                profileImageUrl: "https://example.com/clark.jpg",
-                bio: "Just a regular guy with super strength.",
-                link: "https://superhero.com"
-            ),
-            User(
-                userId: "2",
-                username: "wonderwoman",
-                fullname: "Diana Prince",
-                email: "diana@gmail.com",
-                profileImageUrl: "https://example.com/diana.jpg",
-                bio: "Amazonian princess and warrior.",
-                link: "https://wonderwoman.com"
-            ),
-            // Добавьте больше пользователей по необходимости
-        ]
+                    DeveloperPreview.shared.user,
+                    DeveloperPreview.shared.user,
+                    DeveloperPreview.shared.user,
+                    DeveloperPreview.shared.user
+                ]
         
         return viewModel
     }
@@ -128,6 +110,7 @@ extension InboxViewModel {
     static var mock: InboxViewModel {
         let viewModel = InboxViewModel()
         viewModel.didCompleteInitialLoad = true
+        
         viewModel.recentMessages = [
             DeveloperPreview.shared
                 .createMessage(

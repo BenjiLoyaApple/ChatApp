@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftfulUI
 
-struct InboxCell<ProfileImageView: View>: View {
+struct RecentChatCell<ProfileImageView: View>: View {
     var message: Message
     let profileImage: ProfileImageView
     let username: String
@@ -103,11 +103,11 @@ struct InboxCell_Previews: PreviewProvider {
         
         return VStack {
             ForEach(messages.indices, id: \.self) { index in
-                InboxCell(
+                RecentChatCell(
                     message: messages[index],
                     profileImage: profileImageView,
                     username: user.username,
-                    timestamp: "\(index + 1)h ago",
+                    timestamp: "1h ago",
                     textMessage: messages[index].caption
                 )
             }

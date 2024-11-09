@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: Custom View Extensions
+// MARK: Custom View Extensions for INBOX HEADER
 // Offset Extensions
 extension View{
     // MARK: Previou,Current Offset To Find the Direction Of Swipe
@@ -65,3 +65,4 @@ struct HeaderBoundsKey: PreferenceKey{
         value = nextValue()
     }
 }
+

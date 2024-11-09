@@ -16,6 +16,9 @@ class InboxViewModel: ObservableObject {
     @Published var conversations = [Conversation]()
     @Published var user: User?
     @Published var searchText = ""
+    var didCompleteInitialLoad = false
+    private var firestoreListener: ListenerRegistration?
+    private var cancellables = Set<AnyCancellable>()
     
     var filteredMessages: [Message] {
         if searchText.isEmpty {
@@ -28,9 +31,7 @@ class InboxViewModel: ObservableObject {
         }
     }
     
-    var didCompleteInitialLoad = false
-    private var firestoreListener: ListenerRegistration?
-    private var cancellables = Set<AnyCancellable>()
+    
     
     init() {
         setupSubscribers()

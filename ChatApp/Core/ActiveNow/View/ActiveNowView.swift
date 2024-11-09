@@ -20,24 +20,23 @@ struct ActiveNowView: View {
                 .fontWeight(.semibold)
                 .foregroundStyle(.primary.opacity(0.85))
                 .padding(10)
-                .padding(.leading, 10)
+                .padding(.leading, 5)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             Spacer(minLength: 0)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 25) {
-                    if viewModel.isLoading {
+                    if !viewModel.isLoading {
                         ForEach(0..<10) { _ in
-                            PlaceholderActiveNow()
-                                .redacted(reason: .placeholder)
-                                .shimmer(.init(tint: Color.theme.buttonsPostCard.opacity(0.4), highlight: .gray, blur: 5))
+                            placeholderActiveNow()
+                                
                         }
                     } else {
                         ForEach(viewModel.users) { user in
-                            ActiveView(
+                            ActiveCell(
                                 user: user,
-                                profileImage: CircularProfileImageView(user: user, size: .medium50),
+                                profileImage: CircularProfileImageView(user: user, size: .large60),
                                 username: user.username,
                                 showChatTapped: {
                                     onChatTapped?(user)
@@ -56,8 +55,8 @@ struct ActiveNowView: View {
     }
 }
 
-// MARK: - ActiveView
-struct ActiveView<ProfileImageView: View>: View {
+// MARK: - Active Cell
+struct ActiveCell<ProfileImageView: View>: View {
     var user: User
     let profileImage: ProfileImageView
     let username: String
@@ -78,5 +77,5 @@ struct ActiveView<ProfileImageView: View>: View {
 
 // MARK: - Preview with Mock Data
 #Preview {
-        ActiveNowView(viewModel: .mockActive)
+    ActiveNowView(viewModel: .mockActive)
 }

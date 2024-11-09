@@ -109,7 +109,7 @@ struct CircularProfileImageView: View {
                 .clipShape(Circle())
                 .overlay(
                     Circle()
-                        .stroke(Color(.systemGray4), lineWidth: 0.5)
+                        .stroke(Color.gray.opacity(0.2), lineWidth: 0.5)
                 )
         } else {
             UserInitialsView(username: user?.username ?? "", fontSize: size.fontSize)

@@ -25,14 +25,12 @@ struct RecentChatsView: View {
                 
                 if !viewModel.didCompleteInitialLoad {
                     ForEach(0..<10) { _ in
-                        PlaceholderFeedView()
-                            .redacted(reason: .placeholder)
-                            .shimmer(.init(tint: Color.theme.buttonsPostCard.opacity(0.6), highlight: .gray, blur: 5))
+                        placeholderRecentChats()
                     }
                 } else {
                     ForEach(viewModel.filteredMessages) { recentMessage in
                         if let user = recentMessage.user {
-                            InboxCell(
+                            RecentChatCell(
                                 message: recentMessage,
                                 profileImage: CircularProfileImageView(user: user, size: .medium50),
                                 username: user.username,
