@@ -9,6 +9,7 @@ import SwiftUI
 
 struct IntrosView: View {
     
+    
     @StateObject var logigVM = LoginViewModel()
     @StateObject var registrationVM = RegistrationViewModel()
     

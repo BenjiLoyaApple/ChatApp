@@ -24,7 +24,7 @@ enum Page: String, CaseIterable {
      
      var subTitle: String {
          switch self {
-         case .page1: "We know how hard it is to be a developer. It\ndoesn’t have to be."
+         case .page1: "We know how hard it is to be a developer. It\ndoesn’t have to be..."
          case .page2: "Personalized news feed, dev communities and\nsearch, much better than what’s out there."
          case .page3: "Post your own ideas and get feedback\n from others"
          case .page4: "The world's best chat platform\nfor staying up to date"
