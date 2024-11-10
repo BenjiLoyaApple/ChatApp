@@ -122,16 +122,26 @@ struct IntrosView: View {
                                     proxy.scrollTo("Second Page", anchor: .leading)
                                 }
                             } else {
-                                /// Get Started Button
-                                /// YOUR CODE
+                                // Вход или регистрация
                                 if alreadyHavingAccount {
-                                    /// Login
-                                    Task { try await logigVM.login() }
+                                    // Логин
+                                    Task {
+                                        do {
+                                            try await logigVM.login()
+                                        } catch {
+                                            print("Ошибка входа: \(error.localizedDescription)")
+                                        }
+                                    }
                                 } else {
-                                    /// Registr
-                                    Task { try await registrationVM.createUser() }
+                                    // Регистрация
+                                    Task {
+                                        do {
+                                            try await registrationVM.createUser()
+                                        } catch {
+                                            print("Ошибка регистрации: \(error.localizedDescription)")
+                                        }
+                                    }
                                 }
-                                
                             }
                         }, label: {
                             Text("Continie")
@@ -456,7 +466,7 @@ extension IntrosView: AuthenticationFormProtocol {
                 && registrationVM.email.contains("@")
                 && !registrationVM.password.isEmpty
                 && registrationVM.password.count > 5
-            && !registrationVM.username.isEmpty
+                && !registrationVM.username.isEmpty
         }
     }
 }

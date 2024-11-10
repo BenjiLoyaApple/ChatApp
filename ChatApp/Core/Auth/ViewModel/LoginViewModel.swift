@@ -5,6 +5,7 @@
 //  Created by Benji Loya on 11.08.2023.
 //
 
+import Foundation
 import FirebaseAuth
 
 class LoginViewModel: ObservableObject {
@@ -14,12 +15,18 @@ class LoginViewModel: ObservableObject {
     @Published var showAlert = false
     @Published var authError: AuthError?
     
+    private let authService: AuthServiceProtocol
+
+    init(authService: AuthServiceProtocol = DIContainer.shared.authService) {
+        self.authService = authService
+    }
+    
     @MainActor
     func login() async throws {
         isAuthenticating = true
         
         do {
-            try await AuthService.shared.login(withEmail: email, password: password)
+            try await authService.login(withEmail: email, password: password)
             isAuthenticating = false
         } catch {
             let authError = AuthErrorCode.Code(rawValue: (error as NSError).code)
@@ -29,3 +36,39 @@ class LoginViewModel: ObservableObject {
         }
     }
 }
+
+class RegistrationViewModel: ObservableObject {
+    @Published var email = ""
+    @Published var password = ""
+    @Published var username = ""
+    @Published var fullname = ""
+    @Published var showAlert = false
+    @Published var authError: AuthError?
+    @Published var isAuthenticating = false
+    
+    private let authService: AuthServiceProtocol
+
+    init(authService: AuthServiceProtocol = DIContainer.shared.authService) {
+        self.authService = authService
+    }
+    
+    @MainActor
+    func createUser() async throws {
+        isAuthenticating = true
+        do {
+            try await authService.createUser(
+                withEmail: email,
+                password: password,
+                username: username,
+                fullname: fullname
+            )
+            isAuthenticating = false
+        } catch {
+            let authErrorCode = AuthErrorCode.Code(rawValue: (error as NSError).code)
+            showAlert = true
+            isAuthenticating = false
+            authError = AuthError(authErrorCode: authErrorCode ?? .userNotFound)
+        }
+    }
+}
+

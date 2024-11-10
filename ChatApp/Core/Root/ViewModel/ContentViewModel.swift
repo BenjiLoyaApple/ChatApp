@@ -17,17 +17,17 @@ class ContentViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        setupSubscribers()
+     //   setupSubscribers()
     }
     
-    private func setupSubscribers() {
-        UserService.shared.$currentUser.sink { [weak self] user in
-            self?.user = user
-        }.store(in: &cancellables)
-        
-        AuthService.shared.$userSession.sink { [weak self] session in
-            self?.userSession = session
-        }.store(in: &cancellables)
-    }
+//    private func setupSubscribers() {
+//        UserService.shared.$currentUser.sink { [weak self] user in
+//            self?.user = user
+//        }.store(in: &cancellables)
+//        
+//        AuthService.shared.$userSession.sink { [weak self] session in
+//            self?.userSession = session
+//        }.store(in: &cancellables)
+//    }
 }
 
