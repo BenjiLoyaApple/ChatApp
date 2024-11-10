@@ -13,6 +13,7 @@ enum Page: String, CaseIterable {
     case page3 = "paperplane.fill"
     case page4 = "globe.americas.fill"
     
+    
     var title: String {
          switch self {
          case .page1: "Welcome to chat"
