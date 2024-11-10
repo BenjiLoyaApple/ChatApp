@@ -20,11 +20,16 @@ class UserService {
     }
     
     @MainActor
-    func fetchCurrentUser() async throws {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let snapshot = try await FirestoreConstants.UsersCollection.document(uid).getDocument()
-        self.currentUser = try snapshot.data(as: User.self)
-    }
+    func fetchCurrentUser() async throws -> User? {
+           if let currentUser = self.currentUser {
+               return currentUser
+           }
+           guard let uid = Auth.auth().currentUser?.uid else { return nil }
+           let snapshot = try await FirestoreConstants.UsersCollection.document(uid).getDocument()
+           let user = try snapshot.data(as: User.self)
+           self.currentUser = user
+           return user
+       }
     
     static func fetchUser(uid: String) async throws -> User {
         let snapshot = try await FirestoreConstants.UsersCollection.document(uid).getDocument()
@@ -62,14 +67,25 @@ class UserService {
 }
 
 
-// MARK: - Update User Data
-
+// MARK: - Update profile image
 extension UserService {
     @MainActor
     func updateUserProfileImageUrl(_ profileImageUrl: String) async throws {
         self.currentUser?.profileImageUrl = profileImageUrl
         try await FirestoreConstants.UsersCollection.document(currentUser?.id ?? "").updateData([
             "profileImageUrl": profileImageUrl
+        ])
+    }
+}
+
+// MARK: - Update last active
+extension UserService {
+    @MainActor
+    func updateLastActive() async throws {
+        guard let userId = currentUser?.id else { return }
+        let timestamp = Timestamp(date: Date())
+        try await FirestoreConstants.UsersCollection.document(userId).updateData([
+            "lastActive": timestamp
         ])
     }
 }

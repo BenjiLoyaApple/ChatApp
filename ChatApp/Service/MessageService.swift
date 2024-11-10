@@ -7,8 +7,10 @@
 
 import Firebase
 
-struct MessageService {
-    static func updateMessageStatusIfNecessary(_ messages: [Message]) async throws {
+struct MessageService: MessageServiceProtocol {
+    static let shared: MessageServiceProtocol = MessageService()
+    
+    func updateMessageStatusIfNecessary(_ messages: [Message]) async throws {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         guard let lastMessage = messages.last, !lastMessage.read else { return }
         

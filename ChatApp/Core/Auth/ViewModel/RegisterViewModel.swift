@@ -15,15 +15,24 @@ class RegistrationViewModel: ObservableObject {
     @Published var fullname = ""
     @Published var showAlert = false
     @Published var authError: AuthError?
+    @Published var isAuthenticating = false
     
     @MainActor
     func createUser() async throws {
+        isAuthenticating = true
         do {
-            try await AuthService.shared.createUser(withEmail: email, password: password, username: username, fullname: fullname)
+            try await AuthService.shared.createUser(
+                withEmail: email,
+                password: password,
+                username: username,
+                fullname: fullname
+            )
+            isAuthenticating = false
         } catch {
-            let authError = AuthErrorCode.Code(rawValue: (error as NSError).code)
-            self.showAlert = true
-            self.authError = AuthError(authErrorCode: authError ?? .userNotFound)
+            let authErrorCode = AuthErrorCode.Code(rawValue: (error as NSError).code)
+            showAlert = true
+            isAuthenticating = false
+            authError = AuthError(authErrorCode: authErrorCode ?? .userNotFound)
         }
     }
 }

@@ -7,24 +7,34 @@
 
 import FirebaseFirestoreSwift
 import Foundation
+import Firebase
 
 struct User: Identifiable, Codable, Hashable {
     @DocumentID var userId: String?
-    let username: String
-    let fullname: String?
+    var username: String
+    var fullname: String?
     let email: String
     var profileImageUrl: String?
     var bio: String?
     var link: String?
+    var lastActive: Timestamp?
+    var isOnline: Bool {
+            guard let lastActiveDate = lastActive?.dateValue() else {
+                return false // Если lastActive равен nil, считаем пользователя офлайн
+            }
+            let now = Date()
+            let timeInterval = now.timeIntervalSince(lastActiveDate)
+            return timeInterval < 1 * 60 // 1 мин в секундах
+        }
     
     var id: String {
-        return userId ?? NSUUID().uuidString
+        return userId ?? UUID().uuidString
     }
     
-    var firstName: String {
-        let components = username.components(separatedBy: " ")
-        return components.first ?? username
-    }
+//    var firstName: String {
+//        let components = username.components(separatedBy: " ")
+//        return components.first ?? username
+//    }
 }
 
 extension User: Equatable {

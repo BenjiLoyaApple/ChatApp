@@ -9,14 +9,26 @@ import Foundation
 
 class ActiveNowViewModel: ObservableObject {
     @Published var users = [User]()
-    private let fetchLimit = 10
+    @Published var isLoading = false
+    
+    private let fetchLimit = 20
     
     init() {
-        Task { try await fetchUsers() }
+        Task {
+            await fetchUsers()
+        }
     }
     
     @MainActor
-    func fetchUsers() async throws {
-        self.users = try await UserService.fetchUsers(limit: fetchLimit)
+    func fetchUsers() async {
+        isLoading = false
+        do {
+            self.users = try await UserService.fetchUsers(limit: fetchLimit)
+            isLoading = true
+        } catch {
+            print("Ошибка при загрузке пользователей: \(error)")
+            isLoading = false
+        }
     }
 }
+

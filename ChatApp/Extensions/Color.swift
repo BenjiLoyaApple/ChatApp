@@ -8,10 +8,10 @@
 import SwiftUI
 
 extension Color {
-    static var theme = Theme()
+    static var theme = ColorTheme()
 }
 
-struct Theme {
+struct ColorTheme {
     let primaryText = Color("PrimaryTextColor")
     let background = Color("BackgroundColor")
     let secondaryBackground = Color("SecondaryBackground")
@@ -19,6 +19,12 @@ struct Theme {
     let primaryBlue = Color("PrimaryBlue")
     let primaryGray = Color("PrimaryGray")
     let primaryGray2 = Color("PrimaryGray2")
+    
+    
+    // chat
+    let igChatBG = Color("igChatBG")
+    let igChatViolet = Color("igChatViolet")
+    let messageImputBG = Color("messageImputBG")
     
     /// colors text & BG
     let darkWhite = Color("darkWhite")
@@ -30,10 +36,8 @@ struct Theme {
     let sun = Color("Sun")
     let themeBG = Color("ThemeBG")
     
-    // Activity
-    let pink = Color("Pink")
-    let purple = Color("Purple")
-    
+    // in appNotification message icon
+    let appNotification = Color("appNotification")
     
     let searchShadow = Color("searchShadow")
     
