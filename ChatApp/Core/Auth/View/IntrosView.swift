@@ -63,14 +63,6 @@ struct IntrosView: View {
                 .fill(.black.gradient)
                 .ignoresSafeArea()
         }
-//        .alert(isPresented: $logigVM.showAlert) {
-//            Alert(title: Text("Error"),
-//                  message: Text(logigVM.authError?.description ?? ""))
-//        }
-//        .alert(isPresented: $registrationVM.showAlert) {
-//            Alert(title: Text("Error"),
-//                  message: Text(registrationVM.authError?.localizedDescription ?? ""))
-//        }
         .alert(isPresented: Binding<Bool>(
             get: { logigVM.showAlert || registrationVM.showAlert },
             set: { newValue in

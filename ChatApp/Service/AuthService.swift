@@ -39,7 +39,6 @@ class AuthService: AuthServiceProtocol {
 }
 
 
-
 class EmailAuthProvider: AuthProviderProtocol {
     @Published var userSession: FirebaseAuth.User?
     
@@ -47,20 +46,12 @@ class EmailAuthProvider: AuthProviderProtocol {
         self.userSession = Auth.auth().currentUser
     }
     
-    func signIn(email: String?, password: String?) async throws {
-        guard let email = email, let password = password else {
-            throw NSError(domain: "Email and password are required", code: 400, userInfo: nil)
-        }
-        
+    func signIn(email: String, password: String) async throws {
         let result = try await Auth.auth().signIn(withEmail: email, password: password)
         self.userSession = result.user
     }
     
-    func createUser(email: String?, password: String?, username: String?, fullname: String?) async throws {
-        guard let email = email, let password = password else {
-            throw NSError(domain: "Email and password are required", code: 400, userInfo: nil)
-        }
-        
+    func createUser(email: String, password: String, username: String, fullname: String?) async throws {
         let result = try await Auth.auth().createUser(withEmail: email, password: password)
         self.userSession = result.user
         
@@ -69,10 +60,10 @@ class EmailAuthProvider: AuthProviderProtocol {
         try await saveUserData(userId: user.uid, email: email, username: username, fullname: fullname)
     }
 
-    private func saveUserData(userId: String, email: String, username: String?, fullname: String?) async throws {
+    private func saveUserData(userId: String, email: String, username: String, fullname: String?) async throws {
         let user = User(
-            username: username ?? "Unknown", // Задайте значение по умолчанию, если `username` - nil
-            fullname: fullname ?? "Not provided", // Задайте значение по умолчанию, если `fullname` - nil
+            username: username,
+            fullname: fullname ?? "", // `fullname` опционален
             email: email,
             profileImageUrl: nil
         )
@@ -80,7 +71,6 @@ class EmailAuthProvider: AuthProviderProtocol {
         try await FirestoreConstants.UsersCollection.document(userId).setData(encodedUser)
     }
 
-    
     func signOut() async throws {
         try Auth.auth().signOut()
         self.userSession = nil

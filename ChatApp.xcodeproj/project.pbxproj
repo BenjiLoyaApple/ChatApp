@@ -35,7 +35,6 @@
 		E474D85B2C83A2C900FAA4DA /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D85A2C83A2C900FAA4DA /* CustomButton.swift */; };
 		E474D85F2C844EBA00FAA4DA /* RecentChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474D85E2C844EBA00FAA4DA /* RecentChatCell.swift */; };
 		E47FAE082C881F990073D406 /* TransparentBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FAE072C881F990073D406 /* TransparentBlurView.swift */; };
-		E4B031F92C97F658005A9E03 /* InAppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B031F82C97F658005A9E03 /* InAppExtensions.swift */; };
 		E4C721A62C875CFD00A79BB2 /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C721A42C875CFD00A79BB2 /* AuthServiceProtocol.swift */; };
 		E4E6B9852CDFA0D8004F6104 /* ResentChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E6B9842CDFA0D8004F6104 /* ResentChatView.swift */; };
 		E4E6B9882CDFEAD0004F6104 /* MessageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E6B9872CDFEAD0004F6104 /* MessageServiceProtocol.swift */; };
@@ -112,7 +111,6 @@
 		E474D85A2C83A2C900FAA4DA /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		E474D85E2C844EBA00FAA4DA /* RecentChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatCell.swift; sourceTree = "<group>"; };
 		E47FAE072C881F990073D406 /* TransparentBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentBlurView.swift; sourceTree = "<group>"; };
-		E4B031F82C97F658005A9E03 /* InAppExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppExtensions.swift; sourceTree = "<group>"; };
 		E4C721A42C875CFD00A79BB2 /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
 		E4E6B9842CDFA0D8004F6104 /* ResentChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResentChatView.swift; sourceTree = "<group>"; };
 		E4E6B9872CDFEAD0004F6104 /* MessageServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageServiceProtocol.swift; sourceTree = "<group>"; };
@@ -462,7 +460,6 @@
 				E4F3B0552A88109E00CA37ED /* Date.swift */,
 				E474D8502C839A0800FAA4DA /* Extensions.swift */,
 				E474D83E2C825C5600FAA4DA /* View+Extensions.swift */,
-				E4B031F82C97F658005A9E03 /* InAppExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -778,7 +775,6 @@
 				E4F2AE0A2C85EF1900FD523A /* SettingsOptions.swift in Sources */,
 				E4F3B05A2A88155300CA37ED /* ActiveNowViewModel.swift in Sources */,
 				E4F3B0452A87A81700CA37ED /* Message.swift in Sources */,
-				E4B031F92C97F658005A9E03 /* InAppExtensions.swift in Sources */,
 				E474D8512C839A0800FAA4DA /* Extensions.swift in Sources */,
 				E474D85F2C844EBA00FAA4DA /* RecentChatCell.swift in Sources */,
 				E474D8572C839C6500FAA4DA /* CustomRefreshView.swift in Sources */,

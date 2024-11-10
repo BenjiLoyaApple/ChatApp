@@ -24,8 +24,8 @@ protocol AuthenticationFormProtocol {
 protocol AuthProviderProtocol {
     var userSession: FirebaseAuth.User? { get }
     
-    func signIn(email: String?, password: String?) async throws
-    func createUser(email: String?, password: String?, username: String?, fullname: String?) async throws
+    func signIn(email: String, password: String) async throws
+    func createUser(email: String, password: String, username: String, fullname: String?) async throws
     func signOut() async throws
     func deleteUser() async throws
 }
@@ -47,4 +47,3 @@ class AuthProviderFactory {
         }
     }
 }
-
