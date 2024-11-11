@@ -43,6 +43,7 @@ struct InboxHeader<ProfileImageView: View>: View {
                 
                 HStack(spacing: 2) {
                     // Search
+#if DEBUG
                     CustomChatButton(
                         imageName: .systemName("magnifyingglass"),
                         font: .title2,
@@ -52,7 +53,7 @@ struct InboxHeader<ProfileImageView: View>: View {
                             searchTapped?()
                         }
                     )
-                    
+#endif
                     CustomChatButton(
                         imageName: .assetName("pen"),
                         foregroundStyle: .primary,
