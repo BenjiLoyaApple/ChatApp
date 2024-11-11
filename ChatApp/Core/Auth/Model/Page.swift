@@ -16,19 +16,19 @@ enum Page: String, CaseIterable {
     
     var title: String {
          switch self {
-         case .page1: "Welcome to chat"
-         case .page2: "Connect with friends"
-         case .page3: "Share Your Ideas"
-         case .page4: "Build Your Network"
+         case .page1: "Welcome to our chat"
+         case .page2: "Connect with your friends"
+         case .page3: "Share Your New Ideas"
+         case .page4: "Build Your Cool Network"
          }
      }
      
      var subTitle: String {
          switch self {
-         case .page1: "We know how hard it is to be a developer. It\ndoesn’t have to be."
-         case .page2: "Personalized news feed, dev communities and\nsearch, much better than what’s out there."
-         case .page3: "Post your own ideas and get feedback\n from others"
-         case .page4: "The world's best chat platform\nfor staying up to date"
+         case .page1: "We know how hard it is to be a developer. It\ndoesn’t have to be!"
+         case .page2: "Personalized news feed, dev communities and\nsearch, much better than what’s out there!"
+         case .page3: "Post your new ideas and get feedback\n from others"
+         case .page4: "It's The world's best chat platform\nfor staying up to date"
          }
      }
     
