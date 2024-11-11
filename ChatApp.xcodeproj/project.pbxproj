@@ -260,12 +260,12 @@
 		E4C721A52C875CFD00A79BB2 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				E4E6B9912CDFF431004F6104 /* DIContainer.swift */,
 				E4C721A42C875CFD00A79BB2 /* AuthServiceProtocol.swift */,
 				E4E6B98B2CDFED50004F6104 /* ChatServiceProtocol.swift */,
 				E4E6B98D2CDFEE9B004F6104 /* InboxServiceProtocol.swift */,
 				E4E6B9872CDFEAD0004F6104 /* MessageServiceProtocol.swift */,
 				E4E6B98F2CDFEF9F004F6104 /* UserServiceProtocol.swift */,
-				E4E6B9912CDFF431004F6104 /* DIContainer.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -406,8 +406,8 @@
 				E4FDFAD22A82A5470058898E /* Extensions */,
 				E4FDFAD42A82A54D0058898E /* Model */,
 				E4C721A52C875CFD00A79BB2 /* Protocols */,
-				E4F3B05B2A88198F00CA37ED /* Routing */,
 				E4FDFAD32A82A54A0058898E /* Service */,
+				E4F3B05B2A88198F00CA37ED /* Routing */,
 				E4F3B04F2A87BF6500CA37ED /* Utilits */,
 				E4FDFAC32A82A2C20058898E /* Assets.xcassets */,
 				E4474F422C7DE4A1003997F2 /* GoogleService-Info.plist */,

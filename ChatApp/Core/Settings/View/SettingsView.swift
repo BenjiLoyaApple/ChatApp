@@ -125,7 +125,7 @@ struct SettingsView: View {
                 title: "Log Out"
             ) {
                 Task {
-                    await AuthService.shared.signOut()
+                     AuthService.shared.signOut()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         router.dismissScreen()
                     }
@@ -139,7 +139,7 @@ struct SettingsView: View {
                 textForegroundStyle: .red
             ) {
                 Task {
-                    await AuthService.shared.deleteUser()
+                     AuthService.shared.deleteUser()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         router.dismissScreen()
                     }

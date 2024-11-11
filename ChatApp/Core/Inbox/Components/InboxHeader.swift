@@ -54,6 +54,7 @@ struct InboxHeader<ProfileImageView: View>: View {
                         }
                     )
 #endif
+                    
                     CustomChatButton(
                         imageName: .assetName("pen"),
                         foregroundStyle: .primary,
