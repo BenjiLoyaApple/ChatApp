@@ -10,7 +10,7 @@ import FirebaseAuth
 
 protocol AuthServiceProtocol {
     var userSession: FirebaseAuth.User? { get }
-    
+
     func login(withEmail email: String, password: String) async throws
     func createUser(withEmail email: String, password: String, username: String, fullname: String?) async throws
     func signOut() async throws
@@ -33,7 +33,7 @@ protocol AuthProviderProtocol {
 enum AuthProviderType {
     case email
     case google
-    // Добавьте другие типы провайдеров при необходимости
+    case apple
 }
 
 class AuthProviderFactory {
@@ -42,8 +42,9 @@ class AuthProviderFactory {
         case .email:
             return EmailAuthProvider()
         case .google:
-            // Реализуйте GoogleAuthProvider, когда потребуется
             fatalError("GoogleAuthProvider not implemented")
+        case .apple:
+            fatalError("AppleAuthProvider not implemented")
         }
     }
 }

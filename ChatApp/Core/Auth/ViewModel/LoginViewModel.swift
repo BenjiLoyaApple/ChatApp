@@ -72,3 +72,21 @@ class RegistrationViewModel: ObservableObject {
     }
 }
 
+extension LoginViewModel: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty &&
+               email.contains("@") &&
+               !password.isEmpty
+    }
+}
+
+extension RegistrationViewModel: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty &&
+               email.contains("@") &&
+               !password.isEmpty &&
+               password.count > 5 &&
+               !username.isEmpty &&
+               username.count <= 15
+    }
+}

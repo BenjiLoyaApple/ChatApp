@@ -258,12 +258,12 @@
 		E4C721A52C875CFD00A79BB2 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				E4E6B9912CDFF431004F6104 /* DIContainer.swift */,
 				E4C721A42C875CFD00A79BB2 /* AuthServiceProtocol.swift */,
 				E4E6B98B2CDFED50004F6104 /* ChatServiceProtocol.swift */,
 				E4E6B98D2CDFEE9B004F6104 /* InboxServiceProtocol.swift */,
 				E4E6B9872CDFEAD0004F6104 /* MessageServiceProtocol.swift */,
 				E4E6B98F2CDFEF9F004F6104 /* UserServiceProtocol.swift */,
-				E4E6B9912CDFF431004F6104 /* DIContainer.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

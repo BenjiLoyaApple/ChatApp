@@ -9,7 +9,6 @@ import SwiftUI
 
 struct IntrosView: View {
     
-    
     @StateObject var logigVM = LoginViewModel()
     @StateObject var registrationVM = RegistrationViewModel()
     
@@ -174,8 +173,8 @@ struct IntrosView: View {
                         /// Moving Button Near to the Next View
                         .offset(y: sheetScrollProgress * -120)
                         // Disable button when form is not valid and the button is in the Login or Get Started state
-                          .disabled(sheetScrollProgress >= 1 && !formIsValid)
-                          .opacity(sheetScrollProgress < 1 || formIsValid ? 1 : 0.7)
+                        .disabled(sheetScrollProgress >= 1 && !(alreadyHavingAccount ? logigVM.formIsValid : registrationVM.formIsValid))
+                        .opacity(sheetScrollProgress < 1 || (alreadyHavingAccount ? logigVM.formIsValid : registrationVM.formIsValid) ? 1 : 0.7)
                     }
                 })
             })
@@ -443,25 +442,6 @@ struct IntrosView: View {
         }
     }
     
-}
-
-// MARK: - Form Validation
-extension IntrosView: AuthenticationFormProtocol {
-    var formIsValid: Bool {
-        if alreadyHavingAccount {
-            // Валидация для входа
-            return !logigVM.email.isEmpty
-                && logigVM.email.contains("@")
-                && !logigVM.password.isEmpty
-        } else {
-            // Валидация для регистрации
-            return !registrationVM.email.isEmpty
-                && registrationVM.email.contains("@")
-                && !registrationVM.password.isEmpty
-                && registrationVM.password.count > 5
-                && !registrationVM.username.isEmpty
-        }
-    }
 }
 
 #Preview {
