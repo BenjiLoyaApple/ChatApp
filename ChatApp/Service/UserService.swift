@@ -9,10 +9,9 @@ import Foundation
 import FirebaseFirestoreSwift
 import Firebase
 
-class UserService {
-    
+class UserService: UserServiceProtocol, ObservableObject {
+   
     @Published var currentUser: User?
-    
     static let shared = UserService()
     
     init() {

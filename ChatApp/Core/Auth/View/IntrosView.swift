@@ -26,7 +26,6 @@ struct IntrosView: View {
     @State private var sheetScrollProgress: CGFloat = .zero
     /// Other Properties
     @State private var isKeyboardShowing: Bool = false
-    
     var body: some View {
         GeometryReader {
             let size = $0.size
@@ -114,7 +113,6 @@ struct IntrosView: View {
                                     proxy.scrollTo("Second Page", anchor: .leading)
                                 }
                             } else {
-                                // Вход или регистрация
                                 if alreadyHavingAccount {
                                     // Логин
                                     Task {

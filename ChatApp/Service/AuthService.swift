@@ -9,34 +9,46 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 import FirebaseAuth
+import Combine
 
-class AuthService: AuthServiceProtocol {
+class AuthService: AuthServiceProtocol, ObservableObject {
     private let provider: AuthProviderProtocol
-    
+    @Published private var _userSession: FirebaseAuth.User?
+
     init(provider: AuthProviderProtocol) {
         self.provider = provider
+        self._userSession = provider.userSession
     }
-    
+
     var userSession: FirebaseAuth.User? {
-        return provider.userSession
+        return _userSession
     }
-    
+
+    var userSessionPublisher: AnyPublisher<FirebaseAuth.User?, Never> {
+        $_userSession.eraseToAnyPublisher()
+    }
+
     func login(withEmail email: String, password: String) async throws {
         try await provider.signIn(email: email, password: password)
+        _userSession = provider.userSession
     }
-    
+
     func createUser(withEmail email: String, password: String, username: String, fullname: String?) async throws {
         try await provider.createUser(email: email, password: password, username: username, fullname: fullname)
+        _userSession = provider.userSession
     }
-    
+
     func signOut() async throws {
         try await provider.signOut()
+        _userSession = nil
     }
-    
+
     func deleteUser() async throws {
         try await provider.deleteUser()
+        _userSession = nil
     }
 }
+
 
 
 class EmailAuthProvider: AuthProviderProtocol {

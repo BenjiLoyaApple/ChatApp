@@ -7,10 +7,12 @@
 
 import Foundation
 import FirebaseAuth
+import Combine
 
 protocol AuthServiceProtocol {
     var userSession: FirebaseAuth.User? { get }
-
+    var userSessionPublisher: AnyPublisher<FirebaseAuth.User?, Never> { get }
+    
     func login(withEmail email: String, password: String) async throws
     func createUser(withEmail email: String, password: String, username: String, fullname: String?) async throws
     func signOut() async throws
