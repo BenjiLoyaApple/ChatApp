@@ -26,6 +26,8 @@ struct InboxView: View {
     /// MARK: Shift Offset Means The Value From Where It Shifted From Up/Down
     @State private var shiftOffset: CGFloat = 0
     
+    @State private var isAuthenticated = false
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             RoundedRectangle(cornerRadius: 10)

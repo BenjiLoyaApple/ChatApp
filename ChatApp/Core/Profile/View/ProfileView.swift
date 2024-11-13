@@ -32,7 +32,7 @@ struct ProfileView: View {
             Text("Settings")
                 .onTapGesture {
                     router.showScreen(.fullScreenCover) { _ in
-                        SettingsView()
+                        SettingsView(authService: DIContainer.shared.authService)
                     }
                 }
         }
