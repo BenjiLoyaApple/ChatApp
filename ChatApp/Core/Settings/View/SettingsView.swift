@@ -13,9 +13,14 @@ struct SettingsView: View {
     @Environment(\.colorScheme) private var scheme
     @State private var changeTheme: Bool = false
     @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
-    
     @StateObject private var notification = NotificationsManager()
     
+    private let authService: AuthServiceProtocol
+
+        // Инициализатор с внедрением зависимости
+        init(authService: AuthServiceProtocol) {
+            self.authService = authService
+        }
     
     var body: some View {
         VStack(spacing: 10) {
@@ -125,9 +130,13 @@ struct SettingsView: View {
                 title: "Log Out"
             ) {
                 Task {
-                    await AuthService.shared.signOut()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        router.dismissScreen()
+                    do {
+                        try await authService.signOut()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            router.dismissScreen()
+                        }
+                    } catch {
+                        print("Ошибка при выходе из системы: \(error.localizedDescription)")
                     }
                 }
             }
@@ -139,9 +148,13 @@ struct SettingsView: View {
                 textForegroundStyle: .red
             ) {
                 Task {
-                    await AuthService.shared.deleteUser()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        router.dismissScreen()
+                    do {
+                        try await authService.deleteUser()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            router.dismissScreen()
+                        }
+                    } catch {
+                        print("Ошибка при удалении аккаунта: \(error.localizedDescription)")
                     }
                 }
             }
@@ -153,7 +166,7 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         RouterView { _ in
-            SettingsView()
+            SettingsView(authService: EmailAuthProvider() as! AuthServiceProtocol)
         }
     }
 }

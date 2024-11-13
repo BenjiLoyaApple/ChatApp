@@ -13,14 +13,19 @@ class DIContainer {
     
     private init() { }
     
-    // Сервисы, которые не зависят от конкретного пользователя
-    lazy var authService: AuthServiceProtocol = AuthService()
     lazy var inboxService: InboxServiceProtocol = InboxService.shared
     lazy var messageService: MessageServiceProtocol = MessageService()
-    lazy var userService: UserServiceProtocol = UserService.shared as! UserServiceProtocol
+    lazy var userService: UserServiceProtocol = UserService.shared
     
     // Фабрика для создания экземпляра ChatService с указанным партнером
     func createChatService(chatPartner: User) -> ChatServiceProtocol {
         return ChatService(chatPartner: chatPartner)
     }
+    
+    private let authProviderType: AuthProviderType = .email
+
+       lazy var authService: AuthServiceProtocol = {
+           let provider = AuthProviderFactory.createProvider(type: authProviderType)
+           return AuthService(provider: provider)
+       }()
 }
